@@ -10,7 +10,7 @@
    ```javascript
    module.exports = {
     kafka: {
-      TOPIC: 'covid19',
+      TOPIC: 'passenger',
       BROKERS: ['172.18.13.12:19092','172.18.13.12:29092','172.18.13.12:39092'],
       GROUPID: 'covid-tracker-consumer-group',
       CLIENTID: 'sample-kafka-client'
@@ -112,7 +112,7 @@
 
     producer.send(payloads).then(data => {
       res.set('Content-Type', 'application/json');
-      res.json({ message: 'event posted to ' + topic });
+      res.json({ message: 'event posted to ' + topic + ' topic' });
     });
 
   });

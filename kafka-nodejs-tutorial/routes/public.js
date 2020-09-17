@@ -34,7 +34,7 @@ app.post('/events', function (req, res) {
 
   producer.send(payloads).then(data => {
     res.set('Content-Type', 'application/json');
-    res.json({ message: 'event posted to ' + topic + ' topic'});
+    res.json({ message: 'event posted to ' + topic + ' topic' });
   });
 
 });

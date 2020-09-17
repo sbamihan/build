@@ -1,0 +1,24 @@
+server:
+  port: 1985
+spring:
+  application:
+    name: kafka-springboot-tutorial
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 172.18.13.12:19092,172.18.13.12:29092,172.18.13.12:39092
+      bindings:
+        processPassengerEvent-in-0:
+          destination: passenger
+          binder: kafka
+          group: passenger-processor-group
+        processPassengerEvent-out-0:
+          destination: covid-suspected-passenger
+          binder: kafka
+        processCovidSuspected-in-0:
+          destination: covid-suspected-passenger
+          binder: kafka
+          group: suspected-passenger-processor-group
+    function:
+      definition: processPassengerEvent;processCovidSuspected
