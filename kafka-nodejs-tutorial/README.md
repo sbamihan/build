@@ -23,7 +23,7 @@
   It listens to the Kafka queue, and process every message coming to the queue. 
   
   
-  * initialize a Kafa client and consumer instance
+  * initialize a Kafka client and consumer instance
   
   ```javascript
   const kafka = new Kafka({
@@ -58,8 +58,8 @@
     })
   
   ```
-  
-    Run the command below to start consumer.
+
+  Run the command below to start consumer.
   
   ```
   npm run consumer
@@ -75,7 +75,7 @@
   Here, we create `/events` endpoint where we can post data to be published in the queue.
 
 
-  * initialize a Kafa client and producer instance
+  * initialize a Kafka client and producer instance
   ```javascript
   const client = new Kafka({
     brokers: config.kafka.BROKERS,
