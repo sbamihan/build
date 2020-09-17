@@ -1,6 +1,6 @@
-## Steps to manually deploy an application
+## Commands to play around with Kafka
 
-Since we already have a `Kafka Cluster` running at 172.18.13.12, we'll just connect to that server and play around with it using the following commands.
+Since we already have a **Kafka Cluster** running at 172.18.13.12, we'll just connect to that server and play around with it using the following commands.
 
 First, cd to Kafka directory
 ```bash
