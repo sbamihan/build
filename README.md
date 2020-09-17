@@ -1,6 +1,6 @@
 # build
 
-Clone this repository
+Clone this repository.
   
 ```git
 git clone https://github.com/sbamihan/build.git
