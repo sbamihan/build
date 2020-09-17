@@ -9,7 +9,7 @@ Below is the folder structure:
 
   ### 1. config.js 
  
-   It constains all infrormation to initialise a new Kafka client instance. 
+   It constains all infrormation to initialize a new Kafka client instance. 
    
    ```javascript
    module.exports = {
@@ -29,7 +29,7 @@ Below is the folder structure:
   It listens to the Kafka queue, and process every message coming to the queue. 
   
   
-  * initialise a Kafa client and consumer instance
+  * initialize a Kafa client and consumer instance
   
   ```javascript
   const kafka = new Kafka({
@@ -70,7 +70,7 @@ Below is the folder structure:
   npm run consumer
   ```
   
- If event is published using `/events` POST endpoint, you will see message coming through, and I will print  message which meets conditions (has overseas travel history and temperature is great than or equal to 36.9)
+ If event is published using `/events` POST endpoint, you will see message coming through and will print message which meets conditions (has overseas travel history and temperature is great than or equal to 36.9)
   
   ![](screenshots/consumer.png "consumer")
   
@@ -80,7 +80,7 @@ Below is the folder structure:
   Here, we create `/events` endpoint where we can post data to be published in the queue.
 
 
-  * Initialise a Kafa client and producer instance
+  * initialize a Kafa client and producer instance
   ```javascript
   const client = new Kafka({
     brokers: config.kafka.BROKERS,
