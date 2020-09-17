@@ -70,7 +70,7 @@ Below is the folder structure:
   npm run consumer
   ```
   
- If the producer is running (step 3 below), you will see message coming through, and I will print  message which meets  conditions (has overseas travel history and temperature is great than or equal to 36.9)
+ If event is published using /events POST endpoint, you will see message coming through, and I will print  message which meets conditions (has overseas travel history and temperature is great than or equal to 36.9)
   
   ![](screenshots/consumer.png "consumer")
   
