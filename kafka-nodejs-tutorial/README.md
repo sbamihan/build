@@ -93,7 +93,7 @@ Below is the folder structure:
 
   ```
   
-  * I then loop through input.json file, send message every 5 second
+  * Publish message through /events POST endpoint
   
   ```javascript
     app.post('/events', function (req, res) {
