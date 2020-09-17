@@ -6,7 +6,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "jsonfile": "^6.0.0",
-    "kafkajs": "^1.13.0"
+    "kafkajs": "^1.13.0",
+    "express": "^4.16.1"
   },
   "devDependencies": {
     "file-loader": "^5.1.0",
