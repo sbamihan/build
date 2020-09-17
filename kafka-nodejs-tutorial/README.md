@@ -1,12 +1,6 @@
 # kafka-nodejs-tutorial
 # A sample application using Kafka and Node.js
 
-## Run the application
-
-Below is the folder structure:
-
-![](screenshots/folder-structure.png "folder structure")
-
   ### 1. config.js 
  
    It constains all infrormation to initialize a new Kafka client instance. 
