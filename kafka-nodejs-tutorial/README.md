@@ -58,6 +58,7 @@
     })
   
   ```
+  
     Run the command below to start consumer.
   
   ```
