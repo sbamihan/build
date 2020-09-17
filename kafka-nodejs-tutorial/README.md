@@ -70,14 +70,14 @@ Below is the folder structure:
   npm run consumer
   ```
   
- If event is published using /events POST endpoint, you will see message coming through, and I will print  message which meets conditions (has overseas travel history and temperature is great than or equal to 36.9)
+ If event is published using `/events` POST endpoint, you will see message coming through, and I will print  message which meets conditions (has overseas travel history and temperature is great than or equal to 36.9)
   
   ![](screenshots/consumer.png "consumer")
   
 
   ### 3. public.js
 
-  Here, we create /events endpoint where we can post data to be published in the queue.
+  Here, we create `/events` endpoint where we can post data to be published in the queue.
 
 
   * Initialise a Kafa client and producer instance
@@ -93,7 +93,7 @@ Below is the folder structure:
 
   ```
   
-  * Publish message through /events POST endpoint
+  * Publish message through `/events` POST endpoint
   
   ```javascript
     app.post('/events', function (req, res) {
@@ -124,7 +124,7 @@ Below is the folder structure:
   ```
   npm run public
   ```
-  Invoke the /events POST endpoint to publish message to the queue.
+  Invoke the `/events` POST endpoint to publish message to the queue.
   
   ![](screenshots/producer.png "producer")
   
