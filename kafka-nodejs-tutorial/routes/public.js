@@ -27,14 +27,14 @@ app.post('/events', function (req, res) {
   payloads = {
     topic: topic,
     messages: [
-      { key: 'devops-message', value: JSON.stringify(req.body) }
+      { key: 'coronavirus-alert', value: JSON.stringify(req.body) }
     ]
   }
   console.log('payloads=', payloads)
 
   producer.send(payloads).then(data => {
     res.set('Content-Type', 'application/json');
-    res.json({ message: 'event posted to ' + topic });
+    res.json({ message: 'event posted to ' + topic + ' topic'});
   });
 
 });

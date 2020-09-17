@@ -1,6 +1,8 @@
 # kafka-nodejs-tutorial
 # A sample application using Kafka and Node.js
 
+  Please make sure that your Node version is v10 or up. Upgrade if necessary.
+
   ### 1. config.js 
  
    It constains all infrormation to initialize a new Kafka client instance. 
@@ -59,6 +61,12 @@
   
   ```
 
+  Before running any of the applications, install first the dependencies.
+  
+  ```
+  npm install
+  ```
+
   Run the command below to start consumer.
   
   ```
@@ -97,7 +105,7 @@
     payloads = {
       topic: topic,
       messages: [
-        { key: 'devops-message', value: JSON.stringify(req.body) }
+        { key: 'coronavirus-alert', value: JSON.stringify(req.body) }
       ]
     }
     console.log('payloads=', payloads)
