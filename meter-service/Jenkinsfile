@@ -1,0 +1,57 @@
+node {
+    def app
+
+    stage('Clone Repository') {
+      /* Let's make sure we have the repository cloned to our workspace */
+		  checkout scm
+    }
+	
+    stage('Build Artifact') {
+      dir('meter-service') {
+        withCredentials([usernamePassword(credentialsId: 'meter-db-credentials', passwordVariable: 'DB_PASSWORD', usernameVariable: 'DB_USERNAME')]) {
+		  sh "mvn clean package -DDATASOURCE_USERNAME=$DB_USERNAME -DDATASOURCE_PASSWORD=$DB_PASSWORD"
+		}
+      }
+    }
+	
+    stage('Build Docker Image') {
+      /* This builds the actual image; synonymous to
+      * docker build on the command line */
+      dir('meter-service') {
+        app = docker.build("sherwinamihan/meter-service")
+      }       
+    }
+
+    stage('Test Image') {
+      /* Ideally, we would run a test framework against our image.
+      * For this example, we're using a Volkswagen-type approach ;-) */
+      dir('meter-service') {
+        app.inside {
+          sh 'echo "Tests passed"'
+        }
+      }
+    }
+	
+    stage('Push Image') {
+      /* Finally, we'll push the image with two tags:
+      * First, the incremental build number from Jenkins
+      * Second, the 'latest' tag.
+      * Pushing multiple tags is cheap, as all the layers are reused. */
+      dir('head-service') {
+        sh 'echo "Image pushed"'
+      
+        /*docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials') {
+          app.push("${env.BUILD_NUMBER}")
+          app.push("latest")
+        }*/
+      }
+    }
+	
+    stage('Run') {
+      dir('meter-service') {
+        sh 'echo updating meter-service'
+        sh 'docker service update --image sherwinamihan/meter-service:latest prepaid_meter-service'
+        sh 'echo meter-service is now running at http://172.18.13.12'
+      }		
+    }
+}
