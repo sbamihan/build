@@ -9,16 +9,47 @@ spring:
         binder:
           brokers: 172.18.13.12:19092,172.18.13.12:29092,172.18.13.12:39092
       bindings:
-        processPassengerEvent-in-0:
-          destination: passenger
+        processBillExtractedEvent-in-0:
+          destination: bill-extracted
           binder: kafka
-          group: passenger-processor-group
-        processPassengerEvent-out-0:
-          destination: covid-suspected-passenger
+          group: bill-stager-group
+        processBillExtractedEvent-out-0:
+          destination: bill-staged
           binder: kafka
-        processCovidSuspected-in-0:
-          destination: covid-suspected-passenger
+        processBillStagedEvent-in-0:
+          destination: bill-staged
           binder: kafka
-          group: suspected-passenger-processor-group
+          group: notifier-group
     function:
-      definition: processPassengerEvent;processCovidSuspected
+      definition: processBillExtractedEvent;processBillStagedEvent
+  datasource:
+    url: jdbc:oracle:thin:@//172.18.121.147:1521/inhousedblez_uat.apd.com.ph
+    username: bpx
+    password: bpx
+    driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+  jpa:
+    showSql: false
+    properties:
+      hibernate:
+        format_sql: false
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  file: /var/lib/app/java/ami/logs/meter.log
+  level:
+    org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl: ERROR
+    org.hibernate.type: trace
+    org.hibernate.SQL: DEBUG
+    com.zaxxer.hikari.HikariConfig: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+info:
+  app:
+    name: Bill Service - UAT
+    description: Application used to provide Bill Information coming from CC&B
+    version: 1

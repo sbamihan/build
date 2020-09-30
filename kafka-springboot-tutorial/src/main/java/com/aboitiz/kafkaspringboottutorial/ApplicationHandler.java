@@ -13,14 +13,14 @@ import lombok.extern.log4j.Log4j2;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Component
+//@Component
 @Log4j2
 public class ApplicationHandler {
 
 	public ApplicationHandler() {
 	}
 
-	@Bean
+//	@Bean
 	Function<Flux<Passenger>, Flux<SuspectedPassenger>> processPassengerEvent() {
 		return flux -> flux.filter(this::isSuspected).map(this::concealInfo);
 	}
@@ -34,7 +34,7 @@ public class ApplicationHandler {
 				passenger.getBodyTemperature());
 	}
 
-	@Bean
+//	@Bean
 	public Consumer<SuspectedPassenger> processCovidSuspected() {
 		return s -> Mono.just(s).map(m -> "M".equalsIgnoreCase(m.getGender()) ? "Male"
 				: "Female" + " passenger " + m.getUuId() + " suspected with COVID.").subscribe(log::info);

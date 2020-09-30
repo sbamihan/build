@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.aboitiz.billservice.model.Header;
 import com.aboitiz.billservice.repository.HeaderRepository;
 
+import reactor.core.publisher.Flux;
+
 @RestController
 @RequestMapping("/bills")
 public class HeaderController {
