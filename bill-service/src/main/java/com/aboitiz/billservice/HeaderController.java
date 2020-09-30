@@ -26,10 +26,27 @@ public class HeaderController {
 	List<Header> findByBillDate(@RequestParam("billDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date billDate) {
 		return this.headerRepository.findByBillDate(billDate);
 	}
-	
+
+	@GetMapping("/findByBillDateAndAcctNo")
+	List<Header> findByBillDateAndAcctNo(
+			@RequestParam("billDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date billDate,
+			@RequestParam("acctNo") String acctNo) {
+		return this.headerRepository.findByBillDateAndAcctNo(billDate, acctNo);
+	}
+
 	@GetMapping("/findByTranNo")
 	List<Header> findByTranNo(@RequestParam("tranNo") Long tranNo) {
 		return this.headerRepository.findByTranNo(tranNo);
 	}
-	
+
+	@GetMapping("/findByBatchNo")
+	List<Header> findByBatchNo(@RequestParam("batchNo") Long batchNo) {
+		return this.headerRepository.findByBatchNo(batchNo);
+	}
+
+	@GetMapping("/findByBatchNoAndAcctNo")
+	List<Header> findByBatchNoAndAcctNo(@RequestParam("batchNo") Long batchNo, @RequestParam("acctNo") String acctNo) {
+		return this.headerRepository.findByBatchNoAndAcctNo(batchNo, acctNo);
+	}
+
 }
