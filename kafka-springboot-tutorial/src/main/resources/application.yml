@@ -9,19 +9,19 @@ spring:
         binder:
           brokers: 172.18.13.12:19092,172.18.13.12:29092,172.18.13.12:39092
       bindings:
-        processBillExtractedEvent-in-0:
+        stageBill-in-0:
           destination: bill-extracted
           binder: kafka
           group: bill-stager-group
-        processBillExtractedEvent-out-0:
+        stageBill-out-0:
           destination: bill-staged
           binder: kafka
-        processBillStagedEvent-in-0:
+        displayStagedBill-in-0:
           destination: bill-staged
           binder: kafka
-          group: notifier-group
+          group: client-notifier-group
     function:
-      definition: processBillExtractedEvent;processBillStagedEvent
+      definition: stageBill;displayStagedBill
   datasource:
     url: jdbc:oracle:thin:@//172.18.121.147:1521/inhousedblez_uat.apd.com.ph
     username: bpx
@@ -40,14 +40,14 @@ management:
     web:
       exposure:
         include: '*'
-logging:
-  file: /var/lib/app/java/ami/logs/meter.log
-  level:
-    org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl: ERROR
-    org.hibernate.type: trace
-    org.hibernate.SQL: DEBUG
-    com.zaxxer.hikari.HikariConfig: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+#logging:
+#  file: /var/lib/app/java/ami/logs/meter.log
+#  level:
+#    org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl: ERROR
+#    org.hibernate.type: trace
+#    org.hibernate.SQL: DEBUG
+#    com.zaxxer.hikari.HikariConfig: DEBUG
+#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 info:
   app:
     name: Bill Service - UAT

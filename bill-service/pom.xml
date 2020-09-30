@@ -9,7 +9,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.aboitiz</groupId>
-	<artifactId>kafka-springboot-tutorial</artifactId>
+	<artifactId>bill-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>bill-service</name>
 	<description>Demo project for Spring Boot</description>

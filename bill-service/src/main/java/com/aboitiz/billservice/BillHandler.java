@@ -26,7 +26,7 @@ public class BillHandler {
 	}
 
 	@Bean
-	Function<Flux<BillSet>, Flux<String>> processBillExtractedEvent() {
+	Function<Flux<BillSet>, Flux<String>> stageBill() {
 		return flux -> flux.flatMap(bs -> {
 			List<Header> headerList = headerRepository.findByBatchNo(bs.getBatchNo());
 			Flux<Header> headerFlux = Mono.just(headerList).flatMapMany(Flux::fromIterable);
@@ -35,7 +35,7 @@ public class BillHandler {
 	}
 
 	@Bean
-	public Consumer<String> processBillStagedEvent() {
+	public Consumer<String> displayStagedBill() {
 		return s -> Flux.just(s).subscribe(log::info);
 	}
 
