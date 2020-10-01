@@ -1,4 +1,4 @@
-package com.aboitiz.billservice;
+package com.aboitiz.billservice.handler;
 
 import java.util.Date;
 import java.util.List;
@@ -12,15 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.aboitiz.billservice.model.Header;
 import com.aboitiz.billservice.repository.HeaderRepository;
 
-import reactor.core.publisher.Flux;
-
 @RestController
-@RequestMapping("/bills")
-public class HeaderController {
+@RequestMapping("/bills/search")
+public class HeaderSearchController {
 
 	HeaderRepository headerRepository;
 
-	public HeaderController(HeaderRepository headerRepository) {
+	public HeaderSearchController(HeaderRepository headerRepository) {
 		this.headerRepository = headerRepository;
 	}
 

@@ -8,12 +8,10 @@ package com.aboitiz.billservice.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -22,12 +20,8 @@ import javax.validation.constraints.NotNull;
 @Embeddable
 public class ConsumptionHistoryPK implements Serializable {
 
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "TRAN_NO")
     private long tranNo;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "RDG_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date rdgDate;

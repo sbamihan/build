@@ -1,4 +1,4 @@
-package com.aboitiz.billservice;
+package com.aboitiz.billservice.config;
 
 import java.time.format.DateTimeFormatter;
 
@@ -10,7 +10,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 @Configuration
-public class ContactAppConfig {
+public class AppConfig {
  
     private static final String dateFormat = "yyyy-MM-dd";
     private static final String dateTimeFormat = "yyyy-MM-dd HH:mm:ss";
