@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Header in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.aboitiz.billservice.model;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -23,29 +17,24 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @author SBAmihan
  */
 @Entity
-@Table(name = "BP_DETAILS")
-public class LineDetails implements Serializable {
+@Table(name = "BP_QUERY")
+public class LineDetails {
 
-	private static final long serialVersionUID = 1L;
 	@EmbeddedId
 	protected LineDetailsPK lineDetailsPK;
-	@Column(name = "LINE_RATE")
-	private String lineRate;
-	@Column(name = "LINE_AMOUNT")
-	private BigDecimal lineAmount;
+	@Column(name = "PRINT_PRIORITY")
+	private Long printPriority;
+	@Column(name = "DIS_DESCRIPTION")
+	private String description;
+	@Column(name = "DIS_LINE_RATE")
+	private String rate;
+	@Column(name = "DIS_LINE_AMOUNT")
+	private BigDecimal amount;
 	@JoinColumn(name = "TRAN_NO", referencedColumnName = "TRAN_NO", insertable = false, updatable = false)
 	@ManyToOne(optional = false)
 	private Header header;
 
 	public LineDetails() {
-	}
-
-	public LineDetails(LineDetailsPK lineDetailsPK) {
-		this.lineDetailsPK = lineDetailsPK;
-	}
-
-	public LineDetails(long tranNo, String lineCode) {
-		this.lineDetailsPK = new LineDetailsPK(tranNo, lineCode);
 	}
 
 	public LineDetailsPK getLineDetailsPK() {
@@ -56,56 +45,107 @@ public class LineDetails implements Serializable {
 		this.lineDetailsPK = lineDetailsPK;
 	}
 
-	public String getLineRate() {
-		return lineRate;
+	public Long getPrintPriority() {
+		return printPriority;
 	}
 
-	public void setLineRate(String lineRate) {
-		this.lineRate = lineRate;
+	public void setPrintPriority(Long printPriority) {
+		this.printPriority = printPriority;
 	}
 
-	public BigDecimal getLineAmount() {
-		return lineAmount;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setLineAmount(BigDecimal lineAmount) {
-		this.lineAmount = lineAmount;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getRate() {
+		return rate;
+	}
+
+	public void setRate(String rate) {
+		this.rate = rate;
+	}
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
 	}
 
 	@Transient
 	@JsonIgnore
-	public Header getHeaders() {
+	public Header getHeader() {
 		return header;
 	}
 
-	public void setHeaders(Header header) {
+	public void setHeader(Header header) {
 		this.header = header;
 	}
 
 	@Override
 	public int hashCode() {
-		int hash = 0;
-		hash += (lineDetailsPK != null ? lineDetailsPK.hashCode() : 0);
-		return hash;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((amount == null) ? 0 : amount.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((header == null) ? 0 : header.hashCode());
+		result = prime * result + ((lineDetailsPK == null) ? 0 : lineDetailsPK.hashCode());
+		result = prime * result + ((printPriority == null) ? 0 : printPriority.hashCode());
+		result = prime * result + ((rate == null) ? 0 : rate.hashCode());
+		return result;
 	}
 
 	@Override
-	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof LineDetails)) {
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
 			return false;
-		}
-		LineDetails other = (LineDetails) object;
-		if ((this.lineDetailsPK == null && other.lineDetailsPK != null)
-				|| (this.lineDetailsPK != null && !this.lineDetailsPK.equals(other.lineDetailsPK))) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
+		LineDetails other = (LineDetails) obj;
+		if (amount == null) {
+			if (other.amount != null)
+				return false;
+		} else if (!amount.equals(other.amount))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (header == null) {
+			if (other.header != null)
+				return false;
+		} else if (!header.equals(other.header))
+			return false;
+		if (lineDetailsPK == null) {
+			if (other.lineDetailsPK != null)
+				return false;
+		} else if (!lineDetailsPK.equals(other.lineDetailsPK))
+			return false;
+		if (printPriority == null) {
+			if (other.printPriority != null)
+				return false;
+		} else if (!printPriority.equals(other.printPriority))
+			return false;
+		if (rate == null) {
+			if (other.rate != null)
+				return false;
+		} else if (!rate.equals(other.rate))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "com.example.test.model.LineDetails[ lineDetailsPK=" + lineDetailsPK + " ]";
+		return "LineDetails [lineDetailsPK=" + lineDetailsPK + ", printPriority=" + printPriority + ", description="
+				+ description + ", rate=" + rate + ", amount=" + amount + ", header=" + header + "]";
 	}
 
 }

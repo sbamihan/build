@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Header in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.aboitiz.billservice.model;
 
 import java.io.Serializable;
@@ -17,24 +12,25 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class LineDetailsPK implements Serializable {
 
+	private static final long serialVersionUID = -6136714559873555944L;
 	@Column(name = "TRAN_NO")
-	private long tranNo;
+	private Long tranNo;
 	@Column(name = "LINE_CODE")
 	private String lineCode;
 
 	public LineDetailsPK() {
 	}
 
-	public LineDetailsPK(long tranNo, String lineCode) {
+	public LineDetailsPK(Long tranNo, String lineCode) {
 		this.tranNo = tranNo;
 		this.lineCode = lineCode;
 	}
 
-	public long getTranNo() {
+	public Long getTranNo() {
 		return tranNo;
 	}
 
-	public void setTranNo(long tranNo) {
+	public void setTranNo(Long tranNo) {
 		this.tranNo = tranNo;
 	}
 
@@ -48,32 +44,38 @@ public class LineDetailsPK implements Serializable {
 
 	@Override
 	public int hashCode() {
-		int hash = 0;
-		hash += (int) tranNo;
-		hash += (lineCode != null ? lineCode.hashCode() : 0);
-		return hash;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((lineCode == null) ? 0 : lineCode.hashCode());
+		result = prime * result + ((tranNo == null) ? 0 : tranNo.hashCode());
+		return result;
 	}
 
 	@Override
-	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof LineDetailsPK)) {
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
 			return false;
-		}
-		LineDetailsPK other = (LineDetailsPK) object;
-		if (this.tranNo != other.tranNo) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
-		if ((this.lineCode == null && other.lineCode != null)
-				|| (this.lineCode != null && !this.lineCode.equals(other.lineCode))) {
+		LineDetailsPK other = (LineDetailsPK) obj;
+		if (lineCode == null) {
+			if (other.lineCode != null)
+				return false;
+		} else if (!lineCode.equals(other.lineCode))
 			return false;
-		}
+		if (tranNo == null) {
+			if (other.tranNo != null)
+				return false;
+		} else if (!tranNo.equals(other.tranNo))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "com.example.test.model.LineDetailsPK[ tranNo=" + tranNo + ", lineCode=" + lineCode + " ]";
+		return "LineDetailsPK [tranNo=" + tranNo + ", lineCode=" + lineCode + "]";
 	}
 
 }

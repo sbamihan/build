@@ -5,9 +5,7 @@
  */
 package com.aboitiz.billservice.model;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -25,9 +23,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "BP_CONSUMPTION_HIST")
-public class ConsumptionHistory implements Serializable {
+public class ConsumptionHistory {
 
-	private static final long serialVersionUID = 1L;
 	@EmbeddedId
 	protected ConsumptionHistoryPK consumptionHistoryPK;
 	@Column(name = "CONSUMPTION")
@@ -37,14 +34,6 @@ public class ConsumptionHistory implements Serializable {
 	private Header header;
 
 	public ConsumptionHistory() {
-	}
-
-	public ConsumptionHistory(ConsumptionHistoryPK consumptionHistoryPK) {
-		this.consumptionHistoryPK = consumptionHistoryPK;
-	}
-
-	public ConsumptionHistory(long tranNo, Date rdgDate) {
-		this.consumptionHistoryPK = new ConsumptionHistoryPK(tranNo, rdgDate);
 	}
 
 	public ConsumptionHistoryPK getConsumptionHistoryPK() {
@@ -65,39 +54,55 @@ public class ConsumptionHistory implements Serializable {
 
 	@Transient
 	@JsonIgnore
-	public Header getHeaders() {
+	public Header getHeader() {
 		return header;
 	}
 
-	public void setHeaders(Header header) {
+	public void setHeader(Header header) {
 		this.header = header;
 	}
 
 	@Override
 	public int hashCode() {
-		int hash = 0;
-		hash += (consumptionHistoryPK != null ? consumptionHistoryPK.hashCode() : 0);
-		return hash;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((consumption == null) ? 0 : consumption.hashCode());
+		result = prime * result + ((consumptionHistoryPK == null) ? 0 : consumptionHistoryPK.hashCode());
+		result = prime * result + ((header == null) ? 0 : header.hashCode());
+		return result;
 	}
 
 	@Override
-	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof ConsumptionHistory)) {
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
 			return false;
-		}
-		ConsumptionHistory other = (ConsumptionHistory) object;
-		if ((this.consumptionHistoryPK == null && other.consumptionHistoryPK != null)
-				|| (this.consumptionHistoryPK != null
-						&& !this.consumptionHistoryPK.equals(other.consumptionHistoryPK))) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
+		ConsumptionHistory other = (ConsumptionHistory) obj;
+		if (consumption == null) {
+			if (other.consumption != null)
+				return false;
+		} else if (!consumption.equals(other.consumption))
+			return false;
+		if (consumptionHistoryPK == null) {
+			if (other.consumptionHistoryPK != null)
+				return false;
+		} else if (!consumptionHistoryPK.equals(other.consumptionHistoryPK))
+			return false;
+		if (header == null) {
+			if (other.header != null)
+				return false;
+		} else if (!header.equals(other.header))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "com.example.test.model.ConsumptionHistory[ consumptionHistoryPK=" + consumptionHistoryPK + " ]";
+		return "ConsumptionHistory [consumptionHistoryPK=" + consumptionHistoryPK + ", consumption=" + consumption
+				+ ", header=" + header + "]";
 	}
 
 }

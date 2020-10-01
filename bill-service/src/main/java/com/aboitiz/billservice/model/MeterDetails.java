@@ -5,7 +5,6 @@
  */
 package com.aboitiz.billservice.model;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -27,9 +26,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "BP_METER_DETAILS")
-public class MeterDetails implements Serializable {
+public class MeterDetails {
 
-	private static final long serialVersionUID = 1L;
 	@EmbeddedId
 	protected MeterDetailsPK meterDetailsPK;
 	@Column(name = "SERIAL_NO")
@@ -85,9 +83,9 @@ public class MeterDetails implements Serializable {
 		this.meterDetailsPK = meterDetailsPK;
 	}
 
-	public MeterDetails(long tranNo, short meterCount, String badgeNo) {
-		this.meterDetailsPK = new MeterDetailsPK(tranNo, meterCount, badgeNo);
-	}
+//	public MeterDetails(long tranNo, String badgeNo) {
+//		this.meterDetailsPK = new MeterDetailsPK(tranNo, badgeNo);
+//	}
 
 	public MeterDetailsPK getMeterDetailsPK() {
 		return meterDetailsPK;

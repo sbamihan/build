@@ -1,4 +1,4 @@
-package com.aboitiz.billservice.handler;
+package com.aboitiz.billservice.controller;
 
 import java.util.Date;
 import java.util.List;

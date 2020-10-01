@@ -5,7 +5,6 @@
  */
 package com.aboitiz.billservice.model;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Collection;
@@ -26,9 +25,8 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "BP_HEADERS")
-public class Header implements Serializable {
+public class Header {
 
-	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "TRAN_NO")
 	private Long tranNo;

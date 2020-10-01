@@ -20,63 +20,68 @@ import javax.persistence.TemporalType;
 @Embeddable
 public class ConsumptionHistoryPK implements Serializable {
 
-    @Column(name = "TRAN_NO")
-    private long tranNo;
-    @Column(name = "RDG_DATE")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date rdgDate;
+	private static final long serialVersionUID = 6828958188837938696L;
+	@Column(name = "TRAN_NO")
+	private Long tranNo;
+	@Column(name = "RDG_DATE")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date rdgDate;
 
-    public ConsumptionHistoryPK() {
-    }
+	public ConsumptionHistoryPK() {
+	}
 
-    public ConsumptionHistoryPK(long tranNo, Date rdgDate) {
-        this.tranNo = tranNo;
-        this.rdgDate = rdgDate;
-    }
+	public ConsumptionHistoryPK(Long tranNo, Date rdgDate) {
+		this.tranNo = tranNo;
+		this.rdgDate = rdgDate;
+	}
 
-    public long getTranNo() {
-        return tranNo;
-    }
+	public Long getTranNo() {
+		return tranNo;
+	}
 
-    public void setTranNo(long tranNo) {
-        this.tranNo = tranNo;
-    }
+	public void setTranNo(Long tranNo) {
+		this.tranNo = tranNo;
+	}
 
-    public Date getRdgDate() {
-        return rdgDate;
-    }
+	public Date getRdgDate() {
+		return rdgDate;
+	}
 
-    public void setRdgDate(Date rdgDate) {
-        this.rdgDate = rdgDate;
-    }
+	public void setRdgDate(Date rdgDate) {
+		this.rdgDate = rdgDate;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (int) tranNo;
-        hash += (rdgDate != null ? rdgDate.hashCode() : 0);
-        return hash;
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((rdgDate == null) ? 0 : rdgDate.hashCode());
+		result = prime * result + (int) (tranNo ^ (tranNo >>> 32));
+		return result;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ConsumptionHistoryPK)) {
-            return false;
-        }
-        ConsumptionHistoryPK other = (ConsumptionHistoryPK) object;
-        if (this.tranNo != other.tranNo) {
-            return false;
-        }
-        if ((this.rdgDate == null && other.rdgDate != null) || (this.rdgDate != null && !this.rdgDate.equals(other.rdgDate))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ConsumptionHistoryPK other = (ConsumptionHistoryPK) obj;
+		if (rdgDate == null) {
+			if (other.rdgDate != null)
+				return false;
+		} else if (!rdgDate.equals(other.rdgDate))
+			return false;
+		if (tranNo != other.tranNo)
+			return false;
+		return true;
+	}
 
-    @Override
-    public String toString() {
-        return "com.example.test.model.ConsumptionHistoryPK[ tranNo=" + tranNo + ", rdgDate=" + rdgDate + " ]";
-    }
-    
+	@Override
+	public String toString() {
+		return "ConsumptionHistoryPK [tranNo=" + tranNo + ", rdgDate=" + rdgDate + "]";
+	}
+
 }
