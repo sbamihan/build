@@ -1,0 +1,34 @@
+server:
+  port: 5648
+spring:
+  application:
+    name: bill-stager
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 172.18.13.12:19092,172.18.13.12:29092,172.18.13.12:39092
+      bindings:
+        stageBill-in-0:
+          destination: bill-extracted
+          binder: kafka
+          group: bill-stager-group
+        stageBill-out-0:
+          destination: bill-staged
+          binder: kafka
+        displayStagedBill-in-0:
+          destination: bill-staged
+          binder: kafka
+          group: client-notifier-group
+    function:
+      definition: stageBill;displayStagedBill
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+info:
+  app:
+    name: Bill Stager
+    description: Application used to project bill informtaion pulled from CC&B
+    version: 1

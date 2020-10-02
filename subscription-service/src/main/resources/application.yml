@@ -1,0 +1,15 @@
+server:
+  port: 5649
+spring:
+  application:
+    name: subscription-service
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+info:
+  app:
+    name: Subscription Service
+    description: Application used to manage customer's subscription
+    version: 1
