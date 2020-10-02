@@ -28,7 +28,7 @@ Procedures:
 This is the one responsible for preparing and finalizing the bill information of customers who signed up for eBill Service that are included in the extracted bills.
 
 Procedures:
-1.	Gets customer information (Account ID, email) from Subscription Service
+1.	Gets customer information (Account ID, email) from **Subscription Service**
 2.	Retrieves bill information of subscribed customers from CC&B through **Bill Retriever**
 3.	Projects the bill information then saves to persistence store
 4.	Publishes `BILL-STAGED` event to the event store
