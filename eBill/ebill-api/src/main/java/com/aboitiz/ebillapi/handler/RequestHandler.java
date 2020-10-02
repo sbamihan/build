@@ -36,7 +36,7 @@ public class RequestHandler {
 			event.setCreDttm(new Date());
 			processor.onNext(event);
 			return Mono.just(event);
-		}).flatMap(serverResponse -> created(create("/events" + serverResponse.getUuid()))
+		}).flatMap(serverResponse -> created(create("/events/" + serverResponse.getUuid()))
 				.contentType(APPLICATION_JSON).bodyValue(serverResponse))
 				.switchIfEmpty(ServerResponse.badRequest().build());
 	}
