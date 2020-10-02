@@ -4,9 +4,9 @@ spring:
   application:
     name: bill-service
   datasource:
-    url: jdbc:oracle:thin:@//172.18.121.147:1521/inhousedblez_uat.apd.com.ph
+    url: jdbc:oracle:thin:@//172.18.118.53:1521/duhol02.apd.com.ph
     username: bpx
-    password: bpx
+    password: bpx123
     driver-class-name: oracle.jdbc.OracleDriver
     hikari:
       connection-test-query: SELECT 1 FROM DUAL

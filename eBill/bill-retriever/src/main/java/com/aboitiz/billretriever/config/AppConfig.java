@@ -1,6 +1,7 @@
 package com.aboitiz.billretriever.config;
 
 import java.time.format.DateTimeFormatter;
+import java.util.TimeZone;
 
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
@@ -23,5 +24,10 @@ public class AppConfig {
             builder.serializers(new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(dateTimeFormat)));
         };
     }
+    
+    @Bean
+	public Jackson2ObjectMapperBuilderCustomizer jacksonObjectMapperCustomization() {
+		return jacksonObjectMapperBuilder -> jacksonObjectMapperBuilder.timeZone(TimeZone.getDefault());
+	}
  
 }

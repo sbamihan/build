@@ -34,12 +34,12 @@ class SampleDataCLR implements CommandLineRunner {
 	@Override
 	public void run(String... strings) throws Exception {
 		Collection<Account> accounts = new ArrayList<>();
-		accounts.add(new Account("2937265565", "Sherwin Amihan", "sherwin.amihan@aboitiz.com"));
-		accounts.add(new Account("6281258220", "Evelyn Amihan", "evelyn.amihan@gmail.com"));
-		accounts.add(new Account("1841058749", "Dianna Claire Marie Amihan", "diannaclairemarie.amihan@gmail.com"));
-		accounts.add(new Account("5951409201", "Elijah Raye Vel Amihan", "elijahrayevel.amihan@gmail.com"));
-		accounts.add(new Account("0263248034", "Brandon Boyd Amihan", "brandonboyd.amihan@gmail.com"));
-		accounts.add(new Account("0672255976", "Tabebe Stuffed Toy", "tabebe@gmail.com"));
+		accounts.add(new Account("0200401356", "Sherwin Amihan", "sherwin.amihan@aboitiz.com"));
+		accounts.add(new Account("1313000000", "Evelyn Amihan", "evelyn.amihan@gmail.com"));
+		accounts.add(new Account("0203621111", "Dianna Claire Marie Amihan", "diannaclairemarie.amihan@gmail.com"));
+		accounts.add(new Account("0203521111", "Elijah Raye Vel Amihan", "elijahrayevel.amihan@gmail.com"));
+		accounts.add(new Account("0202100000", "Brandon Boyd Amihan", "brandonboyd.amihan@gmail.com"));
+		accounts.add(new Account("0208720305", "Tabebe Stuffed Toy", "tabebe@gmail.com"));
 
 		accounts.stream().forEach(e -> accountRepository.save(e));
 		accountRepository.findAll().forEach(System.out::println);
