@@ -2,6 +2,11 @@
 
 This `eBill 2.0` is Aboitiz Power's pilot project for implementing [Microservices Architecture](https://martinfowler.com/articles/microservices.html) using [Event Sourcing Pattern](https://www.martinfowler.com/eaaDev/EventSourcing.html).
 
+Here is how looks in a high level.
+
+<img src="https://github.com/sbamihan/build/blob/master/eBill/diagrams/architecture.png" width="1020"></a>
+<br/>
+
 ## Table of Contents
 
 -   [eBill API](#ebill-api)
