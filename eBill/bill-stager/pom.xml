@@ -12,7 +12,7 @@
 	<groupId>com.aboitiz</groupId>
 	<artifactId>bill-stager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>kafka-springboot-tutorial</name>
+	<name>bill-stager</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

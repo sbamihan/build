@@ -1,0 +1,27 @@
+server:
+  port: 5650
+spring:
+  application:
+    name: bill-stager
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 172.18.13.12:19092,172.18.13.12:29092,172.18.13.12:39092
+      bindings:
+        publishExtractedBillEvent-out-0:
+          destination: bill-extracted
+          binder: kafka
+          group: extracted-bill-processor-group
+    function:
+      definition: publishExtractedBillEvent
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+info:
+  app:
+    name: eBill API
+    description: eBill Main Interface
+    version: 1
