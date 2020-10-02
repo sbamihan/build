@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.aboitiz.subscriptionservice.model.Account;
 import com.aboitiz.subscriptionservice.repository.AccountRepository;
 
+import lombok.extern.log4j.Log4j2;
+
 @RestController
 @RequestMapping("/accounts")
+@Log4j2
 public class AccountController {
 
 	AccountRepository accountRepository;
@@ -21,6 +24,7 @@ public class AccountController {
 
 	@GetMapping
 	List<Account> findAllAccounts() {
+		log.info("getting all accounts...");
 		return accountRepository.findAll();
 	}
 
