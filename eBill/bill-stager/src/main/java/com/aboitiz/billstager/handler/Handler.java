@@ -1,5 +1,6 @@
 package com.aboitiz.billstager.handler;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.function.Function;
 
@@ -31,7 +32,10 @@ public class Handler {
 		return flux -> flux.flatMap(m -> {
 			subscriptionService.getAccounts().flatMap(a -> {
 				return billService.saveAll(billService.getBill(m.getBatchNo(), a.getAcctId()));
-			}).subscribe(log::info);
+			}).subscribe(b -> {
+				SimpleDateFormat sdf = new SimpleDateFormat("MMM-yyyy");
+				log.info("Bill for [Batch:{}, Account:{}, Month:{}, Name:{}] saved!", b.getBatchNo(), b.getAcctNo(), sdf.format(b.getBillMonth()), b.getCustomerName());
+			});
 
 			StagedBillEvent staged = new StagedBillEvent();
 			staged.setUuid(m.getUuid());

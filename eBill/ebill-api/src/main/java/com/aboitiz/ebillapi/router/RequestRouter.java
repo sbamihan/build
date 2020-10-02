@@ -12,15 +12,11 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 
 import com.aboitiz.ebillapi.handler.RequestHandler;
 
-import lombok.extern.log4j.Log4j2;
-
 @Configuration
-@Log4j2
 public class RequestRouter {
 
 	@Bean
 	public RouterFunction<ServerResponse> requestReadRoute(RequestHandler requestHandler) {
-		log.info("posting event...");
 		return route(POST("/events").and(accept(APPLICATION_JSON)), requestHandler::createExtractedBillEvent);
 	}
 

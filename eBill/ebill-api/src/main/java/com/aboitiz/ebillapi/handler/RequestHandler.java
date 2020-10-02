@@ -28,7 +28,7 @@ public class RequestHandler {
 	EmitterProcessor<ExtractedBillEvent> processor = EmitterProcessor.create();
 
 	public Mono<ServerResponse> createExtractedBillEvent(ServerRequest serverRequest) {
-		log.info("creating event...");
+		log.info("publishing event...");
 		return serverRequest.bodyToMono(ExtractedBill.class).flatMap(m -> {
 			ExtractedBillEvent event = new ExtractedBillEvent();
 			event.setUuid(randomUUID().toString());
@@ -36,6 +36,8 @@ public class RequestHandler {
 			event.setCreDttm(new Date());
 			processor.onNext(event);
 			return Mono.just(event);
+		}).doOnSuccess(f -> {
+			log.info("event published!");
 		}).flatMap(serverResponse -> created(create("/events/" + serverResponse.getUuid()))
 				.contentType(APPLICATION_JSON).bodyValue(serverResponse))
 				.switchIfEmpty(ServerResponse.badRequest().build());
