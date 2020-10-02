@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Header in Project Properties.
+ * To change this license bill, choose License Bill in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -39,7 +39,7 @@ public class MeterDetails {
 	private String kwhrConsumSubFlg;
 	private String demandConsumSubFlg;
 	private String kvarConsumSubFlg;
-	private Header header;
+	private Bill bill;
 
 	public MeterDetails() {
 	}
@@ -216,12 +216,12 @@ public class MeterDetails {
 		this.kvarConsumSubFlg = kvarConsumSubFlg;
 	}
 
-	public Header getHeaders() {
-		return header;
+	public Bill getHeaders() {
+		return bill;
 	}
 
-	public void setHeaders(Header header) {
-		this.header = header;
+	public void setHeaders(Bill bill) {
+		this.bill = bill;
 	}
 
 	@Override
@@ -235,7 +235,7 @@ public class MeterDetails {
 		result = prime * result + ((currKwhrRdg == null) ? 0 : currKwhrRdg.hashCode());
 		result = prime * result + ((currReadingDate == null) ? 0 : currReadingDate.hashCode());
 		result = prime * result + ((demandConsumSubFlg == null) ? 0 : demandConsumSubFlg.hashCode());
-		result = prime * result + ((header == null) ? 0 : header.hashCode());
+		result = prime * result + ((bill == null) ? 0 : bill.hashCode());
 		result = prime * result + ((kvarConsumSubFlg == null) ? 0 : kvarConsumSubFlg.hashCode());
 		result = prime * result + ((kwhrConsumSubFlg == null) ? 0 : kwhrConsumSubFlg.hashCode());
 		result = prime * result + ((meterDetailsPK == null) ? 0 : meterDetailsPK.hashCode());
@@ -297,10 +297,10 @@ public class MeterDetails {
 				return false;
 		} else if (!demandConsumSubFlg.equals(other.demandConsumSubFlg))
 			return false;
-		if (header == null) {
-			if (other.header != null)
+		if (bill == null) {
+			if (other.bill != null)
 				return false;
-		} else if (!header.equals(other.header))
+		} else if (!bill.equals(other.bill))
 			return false;
 		if (kvarConsumSubFlg == null) {
 			if (other.kvarConsumSubFlg != null)
@@ -384,7 +384,7 @@ public class MeterDetails {
 				+ currDemandRdg + ", regDemandCons=" + regDemandCons + ", prevKvarRdg=" + prevKvarRdg + ", currKvarRdg="
 				+ currKvarRdg + ", regKvarCons=" + regKvarCons + ", meterType=" + meterType + ", consumSubFlg="
 				+ consumSubFlg + ", kwhrConsumSubFlg=" + kwhrConsumSubFlg + ", demandConsumSubFlg=" + demandConsumSubFlg
-				+ ", kvarConsumSubFlg=" + kvarConsumSubFlg + ", header=" + header + "]";
+				+ ", kvarConsumSubFlg=" + kvarConsumSubFlg + ", bill=" + bill + "]";
 	}
 
 }

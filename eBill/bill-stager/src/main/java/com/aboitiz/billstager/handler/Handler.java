@@ -30,7 +30,7 @@ public class Handler {
 	Function<Flux<ExtractedBillEvent>, Flux<StagedBillEvent>> stageBill() {
 		return flux -> flux.flatMap(m -> {
 			subscriptionService.getAccounts().flatMap(a -> {
-				return billService.getBill(m.getBatchNo(), a.getAcctId());
+				return billService.saveAll(billService.getBill(m.getBatchNo(), a.getAcctId()));
 			}).subscribe(log::info);
 
 			StagedBillEvent staged = new StagedBillEvent();

@@ -21,7 +21,12 @@ spring:
           binder: kafka
           group: client-notifier-group
     function:
-      definition: stageBill;displayStagedBill
+      definition: stageBill;displayStagedBill  data:    mongodb:      host: 172.18.13.12
+      port: 27017
+      authentication-database: admin
+      username: lorauser
+      password: 8ZL5#QjS
+      database: ebilldb
 management:
   endpoints:
     web:

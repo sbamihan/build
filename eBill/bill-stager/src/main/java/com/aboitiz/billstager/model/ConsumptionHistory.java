@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Header in Project Properties.
+ * To change this license bill, choose License Bill in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -15,7 +15,7 @@ public class ConsumptionHistory {
 
 	protected ConsumptionHistoryPK consumptionHistoryPK;
 	private BigDecimal consumption;
-	private Header header;
+	private Bill bill;
 
 	public ConsumptionHistory() {
 	}
@@ -36,12 +36,12 @@ public class ConsumptionHistory {
 		this.consumption = consumption;
 	}
 
-	public Header getHeader() {
-		return header;
+	public Bill getHeader() {
+		return bill;
 	}
 
-	public void setHeader(Header header) {
-		this.header = header;
+	public void setHeader(Bill bill) {
+		this.bill = bill;
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class ConsumptionHistory {
 		int result = 1;
 		result = prime * result + ((consumption == null) ? 0 : consumption.hashCode());
 		result = prime * result + ((consumptionHistoryPK == null) ? 0 : consumptionHistoryPK.hashCode());
-		result = prime * result + ((header == null) ? 0 : header.hashCode());
+		result = prime * result + ((bill == null) ? 0 : bill.hashCode());
 		return result;
 	}
 
@@ -73,10 +73,10 @@ public class ConsumptionHistory {
 				return false;
 		} else if (!consumptionHistoryPK.equals(other.consumptionHistoryPK))
 			return false;
-		if (header == null) {
-			if (other.header != null)
+		if (bill == null) {
+			if (other.bill != null)
 				return false;
-		} else if (!header.equals(other.header))
+		} else if (!bill.equals(other.bill))
 			return false;
 		return true;
 	}
@@ -84,7 +84,7 @@ public class ConsumptionHistory {
 	@Override
 	public String toString() {
 		return "ConsumptionHistory [consumptionHistoryPK=" + consumptionHistoryPK + ", consumption=" + consumption
-				+ ", header=" + header + "]";
+				+ ", bill=" + bill + "]";
 	}
 
 }

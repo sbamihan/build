@@ -13,7 +13,7 @@ public class LineDetails {
 	private String description;
 	private String rate;
 	private BigDecimal amount;
-	private Header header;
+	private Bill bill;
 
 	public LineDetails() {
 	}
@@ -58,12 +58,12 @@ public class LineDetails {
 		this.amount = amount;
 	}
 
-	public Header getHeader() {
-		return header;
+	public Bill getHeader() {
+		return bill;
 	}
 
-	public void setHeader(Header header) {
-		this.header = header;
+	public void setHeader(Bill bill) {
+		this.bill = bill;
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public class LineDetails {
 		int result = 1;
 		result = prime * result + ((amount == null) ? 0 : amount.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((header == null) ? 0 : header.hashCode());
+		result = prime * result + ((bill == null) ? 0 : bill.hashCode());
 		result = prime * result + ((lineDetailsPK == null) ? 0 : lineDetailsPK.hashCode());
 		result = prime * result + ((printPriority == null) ? 0 : printPriority.hashCode());
 		result = prime * result + ((rate == null) ? 0 : rate.hashCode());
@@ -98,10 +98,10 @@ public class LineDetails {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (header == null) {
-			if (other.header != null)
+		if (bill == null) {
+			if (other.bill != null)
 				return false;
-		} else if (!header.equals(other.header))
+		} else if (!bill.equals(other.bill))
 			return false;
 		if (lineDetailsPK == null) {
 			if (other.lineDetailsPK != null)
@@ -124,7 +124,7 @@ public class LineDetails {
 	@Override
 	public String toString() {
 		return "LineDetails [lineDetailsPK=" + lineDetailsPK + ", printPriority=" + printPriority + ", description="
-				+ description + ", rate=" + rate + ", amount=" + amount + ", header=" + header + "]";
+				+ description + ", rate=" + rate + ", amount=" + amount + ", bill=" + bill + "]";
 	}
 
 }
