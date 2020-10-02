@@ -27,34 +27,44 @@ public class HeaderSearchController {
 
 	@GetMapping("/findByBillDate")
 	List<Header> findByBillDate(@RequestParam("billDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date billDate) {
-		log.info("findByBillDate({})", billDate);
-		return this.headerRepository.findByBillDate(billDate);
+		List<Header> list = this.headerRepository.findByBillDate(billDate);
+		log.info("findByBillDate({}) - {}", billDate, list.isEmpty() ? "not found" : "found");
+
+		return list;
 	}
 
 	@GetMapping("/findByBillDateAndAcctNo")
 	List<Header> findByBillDateAndAcctNo(
 			@RequestParam("billDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date billDate,
 			@RequestParam("acctNo") String acctNo) {
-		log.info("findByBillDateAndAcctNo({},{})", billDate, acctNo);
-		return this.headerRepository.findByBillDateAndAcctNo(billDate, acctNo);
+		List<Header> list = this.headerRepository.findByBillDateAndAcctNo(billDate, acctNo);
+		log.info("findByBillDateAndAcctNo({},{}) - {}", billDate, acctNo, list.isEmpty() ? "not found" : "found");
+
+		return list;
 	}
 
 	@GetMapping("/findByTranNo")
 	List<Header> findByTranNo(@RequestParam("tranNo") Long tranNo) {
-		log.info("findByTranNo({})", tranNo);
-		return this.headerRepository.findByTranNo(tranNo);
+		List<Header> list = this.headerRepository.findByTranNo(tranNo);
+		log.info("findByTranNo({}) - {}", tranNo, list.isEmpty() ? "not found" : "found");
+
+		return list;
 	}
 
 	@GetMapping("/findByBatchNo")
 	List<Header> findByBatchNo(@RequestParam("batchNo") Long batchNo) {
-		log.info("findByBatchNo({})", batchNo);
-		return this.headerRepository.findByBatchNo(batchNo);
+		List<Header> list = this.headerRepository.findByBatchNo(batchNo);
+		log.info("findByBatchNo({}) - {}", batchNo, list.isEmpty() ? "not found" : "found");
+
+		return list;
 	}
 
 	@GetMapping("/findByBatchNoAndAcctNo")
 	List<Header> findByBatchNoAndAcctNo(@RequestParam("batchNo") Long batchNo, @RequestParam("acctNo") String acctNo) {
-		log.info("findByBatchNoAndAcctNo({},{})", batchNo, acctNo);
-		return this.headerRepository.findByBatchNoAndAcctNo(batchNo, acctNo);
+		List<Header> list = this.headerRepository.findByBatchNoAndAcctNo(batchNo, acctNo);
+		log.info("findByBatchNoAndAcctNo({},{}) - {}", batchNo, acctNo, list.isEmpty() ? "not found" : "found");
+
+		return list;
 	}
 
 }
