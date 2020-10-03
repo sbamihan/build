@@ -15,11 +15,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Document
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class MeterDetails {
 
 	protected MeterDetailsPK meterDetailsPK;

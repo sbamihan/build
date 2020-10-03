@@ -7,19 +7,19 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.aboitiz.billretriever.model.Header;
+import com.aboitiz.billretriever.model.Bill;
 
 @RepositoryRestResource(exported = true)
-public interface HeaderRepository extends JpaRepository<Header, Long> {
+public interface HeaderRepository extends JpaRepository<Bill, Long> {
 
-	List<Header> findByBillDate(@Param("billDate") Date billDate);
+	List<Bill> findByBillDate(@Param("billDate") Date billDate);
 
-	List<Header> findByBillDateAndAcctNo(@Param("billDate") Date billDate, @Param("acctNo") String acctNo);
+	List<Bill> findByBillDateAndAcctNo(@Param("billDate") Date billDate, @Param("acctNo") String acctNo);
 
-	List<Header> findByTranNo(@Param("tranNo") Long tranNo);
+	List<Bill> findByTranNo(@Param("tranNo") Long tranNo);
 
-	List<Header> findByBatchNo(@Param("batchNo") Long batchNo);
+	List<Bill> findByBatchNo(@Param("batchNo") Long batchNo);
 
-	List<Header> findByBatchNoAndAcctNo(@Param("batchNo") Long batchNo, @Param("acctNo") String acctNo);
+	List<Bill> findByBatchNoAndAcctNo(@Param("batchNo") Long batchNo, @Param("acctNo") String acctNo);
 
 }

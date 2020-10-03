@@ -17,11 +17,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Document
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Bill {
 
 	private Long tranNo;
@@ -93,5 +95,6 @@ public class Bill {
 	private Collection<MeterDetails> meterDetailsCollection;
 	private Collection<ConsumptionHistory> consumptionHistoryCollection;
 	private Collection<LineDetails> lineDetailsCollection;
+	private Collection<Contact> contactCollection;
 
 }
