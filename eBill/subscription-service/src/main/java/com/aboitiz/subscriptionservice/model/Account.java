@@ -1,14 +1,20 @@
 package com.aboitiz.subscriptionservice.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "ACCOUNT")
 public class Account {
 
 	@Id
+	@Column(name = "acct_id")
 	private String acctId;
+	@Column(name = "name")
 	private String accountName;
+	@Column(name = "email_address")
 	private String email;
 
 	public Account() {

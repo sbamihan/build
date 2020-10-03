@@ -2,7 +2,6 @@ package com.aboitiz.billstager.handler;
 
 import static reactor.core.publisher.Flux.just;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.function.Function;
@@ -34,23 +33,22 @@ public class Handler {
 
 	@Bean
 	Function<Flux<ExtractedBillEvent>, Flux<StagedBillEvent>> stageBill() {
+		log.info("staging bills...");
 		return flux -> flux.flatMap(event -> {
-			return just(new StagedBillEvent(event)).zipWith(subscriptionService.getAccounts().flatMap(a -> {
-				Flux<Bill> billFlux = billService.getBill(event.getBatchNo(), a.getAcctId()).map(m -> {
+			return just(new StagedBillEvent(event)).zipWith(subscriptionService.getAccounts().flatMap(acct -> {
+				Flux<Bill> billFlux = billService.getBill(event.getBatchNo(), acct.getAcctId()).map(bill -> {
 					Collection<Contact> contactCollection = new ArrayList<>();
-					contactCollection.add(new Contact(a.getAcctId(), "email", a.getEmail()));
-					m.setContactCollection(contactCollection);
-					return m;
-				});
+					contactCollection.add(new Contact(acct.getAcctId(), "email", acct.getEmail()));
+					bill.setContactCollection(contactCollection);
+					return bill;
+				}).onErrorResume(e -> Flux.empty());
 				return billService.saveAll(billFlux);
-			}).map(b -> {
-				SimpleDateFormat sdf = new SimpleDateFormat("MMM-yyyy");
-				log.info("Bill for [batchNo={}, acctNo={}, billMonth={}, customerName={}] saved!", b.getBatchNo(),
-						b.getAcctNo(), sdf.format(b.getBillMonth()), b.getCustomerName());
-				return b;
 			}).collectList()).map(tuple -> {
 				StagedBillEvent staged = tuple.getT1();
-				staged.setCount(tuple.getT2().size());
+				int size = tuple.getT2().size();
+				staged.setCount(size);
+
+				log.info("{} bills staged", size);
 				return staged;
 			});
 		});
