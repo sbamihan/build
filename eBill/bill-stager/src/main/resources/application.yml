@@ -16,12 +16,15 @@ spring:
         stageBill-out-0:
           destination: bill-staged
           binder: kafka
-        displayStagedBill-in-0:
-          destination: bill-staged
-          binder: kafka
-          group: client-notifier-group
     function:
-      definition: stageBill;displayStagedBill  data:    mongodb:      host: 172.18.13.12
+      definition: stageBill;displayStagedBill  data:#    mongodb:#      host: localhost
+#      port: 27017
+#      authentication-database: admin
+#      username:
+#      password:
+#      database: ebilldb
+    mongodb:
+      host: 172.18.13.12
       port: 27017
       authentication-database: admin
       username: lorauser

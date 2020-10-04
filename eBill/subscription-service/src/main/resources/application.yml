@@ -4,9 +4,9 @@ spring:
   application:
     name: subscription-service
   datasource:
-    url: jdbc:postgresql://172.18.13.12:5432/subscription
+    url: jdbc:postgresql://localhost:5432/ebill
     username: postgres
-    password: password
+    password: samihan123
     hikari:
       minimum-idle: 5
       maximum-pool-size: 10
@@ -15,12 +15,12 @@ spring:
       max-lifetime: 360000
       connection-timeout: 5000
     driver-class-name: org.postgresql.Driver
-    initialization-mode: never
+    initialization-mode: always
   jpa:
     showSql: false
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 management:

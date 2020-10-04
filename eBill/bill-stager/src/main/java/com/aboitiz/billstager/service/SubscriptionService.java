@@ -13,7 +13,7 @@ public class SubscriptionService {
 	private final WebClient client;
 
 	public SubscriptionService(WebClient.Builder webClientBuilder) {
-		this.client = webClientBuilder.baseUrl("http://172.18.13.12:25649").build();
+		this.client = webClientBuilder.baseUrl("http://localhost:25649").build();
 	}
 
 	public Flux<Account> getAccounts() {
