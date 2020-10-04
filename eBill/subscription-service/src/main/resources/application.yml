@@ -13,12 +13,12 @@ spring:
       pool-name: SubscriptionJPAHikariCP
       max-lifetime: 360000
       connection-timeout: 5000
-    driver-class-name: org.postgresql.Driver    initialization-mode: always
+    driver-class-name: org.postgresql.Driver    initialization-mode: never
   jpa:
     showSql: false
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: update      naming:        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImplmanagement:
+      ddl-auto: none      naming:        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImplmanagement:
   endpoints:
     web:
       exposure:
