@@ -2,6 +2,7 @@ package com.aboitiz.billstager.handler;
 
 import static reactor.core.publisher.Flux.just;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.function.Function;
@@ -33,25 +34,25 @@ public class Handler {
 
 	@Bean
 	Function<Flux<ExtractedBillEvent>, Flux<StagedBillEvent>> stageBill() {
-		log.info("staging bills...");
 		return flux -> flux.flatMap(event -> {
-			return just(new StagedBillEvent(event)).zipWith(subscriptionService.getAccounts().flatMap(acct -> {
-				Flux<Bill> billFlux = billService.getBill(event.getBatchNo(), acct.getAcctId()).map(bill -> {
-					Collection<Contact> contactCollection = new ArrayList<>();
-					contactCollection.add(new Contact(acct.getAcctId(), "email", acct.getEmail()));
-					bill.setContactCollection(contactCollection);
-					bill.setUuid(event.getUuid());
-					return bill;
-				}).onErrorResume(e -> Flux.empty());
-				return billService.saveAll(billFlux);
-			}).collectList()).map(tuple -> {
-				StagedBillEvent staged = tuple.getT1();
-				int size = tuple.getT2().size();
-				staged.setCount(size);
+			return just(new StagedBillEvent(event))
+					.zipWith(subscriptionService.getAccounts().delayElements(Duration.ofMillis(5)).flatMap(acct -> {
+						Flux<Bill> billFlux = billService.getBill(event.getBatchNo(), acct.getAccountId()).map(bill -> {
+							Collection<Contact> contactCollection = new ArrayList<>();
+							contactCollection.add(new Contact(acct.getAccountId(), "email", acct.getEmailAddress()));
+							bill.setContactCollection(contactCollection);
+							bill.setUuid(event.getUuid());
+							return bill;
+						}).onErrorResume(e -> Flux.empty());
+						return billService.saveAll(billFlux);
+					}).collectList()).map(tuple -> {
+						StagedBillEvent staged = tuple.getT1();
+						int size = tuple.getT2().size();
+						staged.setCount(size);
 
-				log.info("{} bills staged", size);
-				return staged;
-			});
+						log.info("{} bills staged", size);
+						return staged;
+					});
 		});
 	}
 

@@ -30,13 +30,13 @@ spring:
       username: lorauser
       password: 8ZL5#QjS
       database: ebilldb
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-info:
-  app:
-    name: Bill Stager
-    description: Application used to project bill informtaion pulled from CC&B
-    version: 1
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+#info:
+#  app:
+#    name: Bill Stager
+#    description: Application used to project bill informtaion pulled from CC&B
+#    version: 1

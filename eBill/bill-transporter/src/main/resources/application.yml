@@ -20,13 +20,13 @@ spring:
       username: lorauser
       password: 8ZL5#QjS
       database: ebilldb
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-info:
-  app:
-    name: Bill Trsporter
-    description: Application used to transport bill informtaion to client
-    version: 1
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+#info:
+#  app:
+#    name: Bill Trsporter
+#    description: Application used to transport bill informtaion to client
+#    version: 1

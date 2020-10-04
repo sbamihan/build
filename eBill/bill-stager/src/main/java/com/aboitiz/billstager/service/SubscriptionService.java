@@ -5,9 +5,11 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import com.aboitiz.billstager.model.Account;
 
+import lombok.extern.log4j.Log4j2;
 import reactor.core.publisher.Flux;
 
 @Service
+@Log4j2
 public class SubscriptionService {
 
 	private final WebClient client;
@@ -18,6 +20,7 @@ public class SubscriptionService {
 
 	public Flux<Account> getAccounts() {
 		String uri = "/accounts";
+		log.info("invoking {}", uri);
 		return this.client.get().uri(uri).retrieve().bodyToFlux(Account.class);
 	}
 

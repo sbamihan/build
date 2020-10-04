@@ -15,13 +15,13 @@ spring:
           group: extracted-bill-processor-group
     function:
       definition: publishExtractedBillEvent
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-info:
-  app:
-    name: eBill API
-    description: eBill Main Interface
-    version: 1
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+#info:
+#  app:
+#    name: eBill API
+#    description: eBill Main Interface
+#    version: 1

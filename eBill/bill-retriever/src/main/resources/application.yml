@@ -16,11 +16,11 @@ spring:
       hibernate:
         format_sql: false
     database-platform: org.hibernate.dialect.Oracle12cDialect
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
 #logging:
 #  file: /var/lib/app/java/ami/logs/meter.log
 #  level:
@@ -29,8 +29,8 @@ management:
 #    org.hibernate.SQL: DEBUG
 #    com.zaxxer.hikari.HikariConfig: DEBUG
 #    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-info:
-  app:
-    name: Bill Service - UAT
-    description: Application used to provide Bill Information coming from CC&B
-    version: 1
+#info:
+#  app:
+#    name: Bill Service - UAT
+#    description: Application used to provide Bill Information coming from CC&B
+#    version: 1
