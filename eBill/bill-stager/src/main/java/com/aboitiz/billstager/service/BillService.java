@@ -19,6 +19,11 @@ public class BillService {
 		this.billRepository = billRepository;
 	}
 
+	public Flux<Bill> getBill(Long batchNo) {
+		String uri = "/bills/search/findByBatchNo?batchNo=" + batchNo;
+		return this.client.get().uri(uri).retrieve().bodyToFlux(Bill.class);
+	}
+
 	public Flux<Bill> getBill(Long batchNo, String accountNo) {
 		String uri = "/bills/search/findByBatchNoAndAcctNo?batchNo=" + batchNo + "&acctNo=" + accountNo;
 		return this.client.get().uri(uri).retrieve().bodyToFlux(Bill.class);
