@@ -1,5 +1,5 @@
 server:
-  port: 5651
+  port: 25651
 spring:
   application:
     name: bill-transporter
@@ -9,12 +9,12 @@ spring:
         binder:
           brokers: 172.18.13.12:19092,172.18.13.12:29092,172.18.13.12:39092
       bindings:
-        trasportBill-in-0:
+        transportBill-in-0:
           destination: bill-staged
           binder: kafka
           group: bill-transporter-group
     function:
-      definition: trasportBill  data:    mongodb:      host: 172.18.13.12
+      definition: transportBill  data:    mongodb:      host: 172.18.13.12
       port: 27017
       authentication-database: admin
       username: lorauser

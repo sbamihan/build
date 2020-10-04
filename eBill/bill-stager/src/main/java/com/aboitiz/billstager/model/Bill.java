@@ -96,5 +96,6 @@ public class Bill {
 	private Collection<ConsumptionHistory> consumptionHistoryCollection;
 	private Collection<LineDetails> lineDetailsCollection;
 	private Collection<Contact> contactCollection;
+	private String uuid;
 
 }

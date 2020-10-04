@@ -40,6 +40,7 @@ public class Handler {
 					Collection<Contact> contactCollection = new ArrayList<>();
 					contactCollection.add(new Contact(acct.getAcctId(), "email", acct.getEmail()));
 					bill.setContactCollection(contactCollection);
+					bill.setUuid(event.getUuid());
 					return bill;
 				}).onErrorResume(e -> Flux.empty());
 				return billService.saveAll(billFlux);

@@ -1,8 +1,8 @@
 server:
-  port: 5650
+  port: 25650
 spring:
   application:
-    name: bill-stager
+    name: ebill-api
   cloud:
     stream:
       kafka:
