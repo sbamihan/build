@@ -15,7 +15,7 @@ public class BillService {
 	private final BillRepository billRepository;
 
 	public BillService(WebClient.Builder webClientBuilder, BillRepository billRepository) {
-		this.client = webClientBuilder.baseUrl("http://127.0.0.1:5647").build();
+		this.client = webClientBuilder.baseUrl("http://172.18.13.12:25647").build();
 		this.billRepository = billRepository;
 	}
 
