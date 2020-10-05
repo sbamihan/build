@@ -20,7 +20,7 @@ Here is how it looks in a high level.
 This is the main interface which serves as the entry point for all interactions from the client. External clients (like **Yondu**) and internal clients like (**CC&B**) can interact with this API thru **REST**.
 
 Procedures:
-1.	Receives data from CC&B through eBill API
+1.	Receives data from CC&B through eBill API.
 
     CC&B should be able to POST data through eBill API at `/events` endpoint containing a payload like this. 
 
@@ -51,14 +51,14 @@ Procedures:
 This is the one responsible for preparing and finalizing the bill information of customers who signed up for eBill Service that are included in the extracted bills.
 
 Procedures:
-1.  Bill Stager reacts to `BILL-EXTRACTED` event
-2.	Gets customer information (Account ID, email) from **Subscription Service**
-3.	Retrieves bill information of subscribed customers from CC&B through **Bill Retriever**
+1.  Bill Stager reacts to `BILL-EXTRACTED` event.
+2.	Gets customer information (Account ID, email) from **Subscription Service**.
+3.	Retrieves bill information of subscribed customers from CC&B through **Bill Retriever**.
     
-    Should call **Bill Stager** at endpoint GET `/findByBatchNoAndAcctNo?batchNo={{batchNo}}&acctNo={{acctNo}}`, where **batchNo** is a value from `BILL-EXTRACTED` event data and **acctNo** is a value from **Subscription Service**
+    Should call **Bill Retriever** at endpoint GET `/findByBatchNoAndAcctNo?batchNo={{batchNo}}&acctNo={{acctNo}}`, where **batchNo** is a value from `BILL-EXTRACTED` event data and **acctNo** is a value from **Subscription Service**.
 
-4.	Projects the bill information then saves to persistence store
-5.	Publishes `BILL-STAGED` event to the event store
+4.	Projects the bill information then saves to persistence store.
+5.	Publishes `BILL-STAGED` event to the event store.
 
     `BILL-STAGED` event data should be similar to this.
 
@@ -78,7 +78,7 @@ Procedures:
 This is the one responsible for fetching the extracted bills from CC&B for the consumption of **Bill Stager**.
 
 Procedures:
-1.	Fetches extracted bills from CC&B based on parameters provided by **Bill Stager**
+1.	Fetches extracted bills from CC&B based on parameters provided by **Bill Stager**.
 
 
 ## Bill Transporter
@@ -86,9 +86,9 @@ Procedures:
 This is the one responsible for transporting the staged bills to the 3rd party client over the internet by posting to the client’s API.
 
 Procedures:
-1.	Reacts to `BILL-STAGED` event published in the event store
-2.	Gets bill information from persistence store based on data published on `BILL-STAGED` topic from the event store
-3.	Sends fetched bill information to 3rd party client
+1.	Reacts to `BILL-STAGED` event published in the event store.
+2.	Gets bill information from persistence store based on data published on `BILL-STAGED` topic from the event store.
+3.	Sends fetched bill information to 3rd party client.
 
 
 ## Subscription Service
