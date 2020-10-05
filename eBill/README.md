@@ -22,7 +22,7 @@ This is the main interface which serves as the entry point for all interactions 
 Procedures:
 1.	Receives data from CC&B through eBill API
 
-    CC&B should be able to POST data through eBill API at `/events` endpoint containing a payload like this. [Reference](https://stackoverflow.com/questions/49769273/call-restful-api-through-oracle-query) for calling restful API through oracle query.
+    CC&B should be able to POST data through eBill API at `/events` endpoint containing a payload like this. 
 
     ```json
     {
@@ -30,6 +30,8 @@ Procedures:
         "batchNo": 3107
     }
     ```
+    [Reference](https://stackoverflow.com/questions/49769273/call-restful-api-through-oracle-query) for calling restful API through oracle query.
+    
 2.	Publishes `BILL-EXTRACTED` event to the event store based on data received from CC&B.
 
     Event data published in the event store should contain the original data posted from CC&B plus UUID and datetime it was created. The data should be similar to this.
