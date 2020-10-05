@@ -40,3 +40,9 @@ spring:
 #    name: Bill Stager
 #    description: Application used to project bill informtaion pulled from CC&B
 #    version: 1
+
+
+service:
+  bill:
+    url: 
+      base: http://localhost:5000/

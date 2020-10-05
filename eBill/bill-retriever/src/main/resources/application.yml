@@ -2,7 +2,7 @@ server:
   port: 25647  
 spring:
   application:
-    name: bill-service
+    name: ${SPRING_APPLICATION_NAME:dlpc-bill-service}
   datasource:
     url: jdbc:oracle:thin:@//172.18.118.53:1521/duhol02.apd.com.ph
     username: bpx
@@ -16,21 +16,10 @@ spring:
       hibernate:
         format_sql: false
     database-platform: org.hibernate.dialect.Oracle12cDialect
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: '*'
-#logging:
-#  file: /var/lib/app/java/ami/logs/meter.log
-#  level:
-#    org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl: ERROR
-#    org.hibernate.type: trace
-#    org.hibernate.SQL: DEBUG
-#    com.zaxxer.hikari.HikariConfig: DEBUG
-#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-#info:
-#  app:
-#    name: Bill Service - UAT
-#    description: Application used to provide Bill Information coming from CC&B
-#    version: 1
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+zuul:
+  host:
+    socket-timeout-millis: 91000

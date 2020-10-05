@@ -37,13 +37,15 @@ public class Handler {
 		return flux -> flux.flatMap(event -> {
 			return just(new StagedBillEvent(event))
 					.zipWith(subscriptionService.getAccounts().delayElements(Duration.ofMillis(7)).flatMap(acct -> {
-						Flux<Bill> billFlux = billService.getBill(event.getBatchNo(), acct.getAccountId()).map(bill -> {
-							Collection<Contact> contactCollection = new ArrayList<>();
-							contactCollection.add(new Contact(acct.getAccountId(), "email", acct.getEmailAddress()));
-							bill.setContactCollection(contactCollection);
-							bill.setUuid(event.getUuid());
-							return bill;
-						}).onErrorResume(e -> Flux.empty());
+						Flux<Bill> billFlux = billService
+								.getBill(event.getDuCode(), event.getBatchNo(), acct.getAccountId()).map(bill -> {
+									Collection<Contact> contactCollection = new ArrayList<>();
+									contactCollection
+											.add(new Contact(acct.getAccountId(), "email", acct.getEmailAddress()));
+									bill.setContactCollection(contactCollection);
+									bill.setUuid(event.getUuid());
+									return bill;
+								}).onErrorResume(e -> Flux.empty());
 						return billService.saveAll(billFlux);
 					}).collectList()).map(tuple -> {
 						StagedBillEvent staged = tuple.getT1();
