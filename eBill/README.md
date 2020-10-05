@@ -30,7 +30,17 @@ Procedures:
         "batchNo": 3107
     }
     ```
-2.	Publishes `BILL-EXTRACTED` event to the event store based on data received from CC&B
+2.	Publishes `BILL-EXTRACTED` event to the event store based on data received from CC&B. 
+
+    Event data published in the event store should contain the original data posted from CC&B plus UUID and datetime it was created. The data should be similar to this.
+
+    ```json
+    {
+        "uuid": "65a2b726-1441-498e-84ca-58e0e1c80631",
+        "batchNo": 3107,
+        "creDttm": "2020-10-05T05:46:14.144+00:00"
+    }
+    ```
 
 ## Bill Stager
 
