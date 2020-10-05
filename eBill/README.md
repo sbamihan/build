@@ -54,8 +54,23 @@ Procedures:
 1.  Bill Stager reacts to `BILL-EXTRACTED` event
 2.	Gets customer information (Account ID, email) from **Subscription Service**
 3.	Retrieves bill information of subscribed customers from CC&B through **Bill Retriever**
+    
+    Should call **Bill Stager** at endpoint GET `/findByBatchNoAndAcctNo?batchNo={{batchNo}}&acctNo={{acctNo}}`, where **batchNo** is a value from `BILL-EXTRACTED` event data and **acctNo** is a value from **Subscription Service**
+
 4.	Projects the bill information then saves to persistence store
 5.	Publishes `BILL-STAGED` event to the event store
+
+    `BILL-STAGED` event data should be similar to this.
+
+    ```json
+    {
+        "uuid": "abc085d9-23ca-4183-8d08-86103fcd7532",
+        "batchNo": 3107,
+        "duCode": "dlpc",
+        "creDttm": "2020-10-05T10:43:42.306+00:00",
+        "count": 15
+    }
+    ```
 
 
 ## Bill Retriever
