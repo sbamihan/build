@@ -30,8 +30,9 @@ Procedures:
         "batchNo": 3107
     }
     ```
+
     [Reference](https://stackoverflow.com/questions/49769273/call-restful-api-through-oracle-query) for calling restful API through oracle query.
-    
+
 2.	Publishes `BILL-EXTRACTED` event to the event store based on data received from CC&B.
 
     Event data published in the event store should contain the original data posted from CC&B plus UUID and datetime it was created. The data should be similar to this.
@@ -50,11 +51,11 @@ Procedures:
 This is the one responsible for preparing and finalizing the bill information of customers who signed up for eBill Service that are included in the extracted bills.
 
 Procedures:
-3.  Bill Stager reacts to `BILL-EXTRACTED` event
-4.	Gets customer information (Account ID, email) from **Subscription Service**
-5.	Retrieves bill information of subscribed customers from CC&B through **Bill Retriever**
-3.	Projects the bill information then saves to persistence store
-4.	Publishes `BILL-STAGED` event to the event store
+1.  Bill Stager reacts to `BILL-EXTRACTED` event
+2.	Gets customer information (Account ID, email) from **Subscription Service**
+3.	Retrieves bill information of subscribed customers from CC&B through **Bill Retriever**
+4.	Projects the bill information then saves to persistence store
+5.	Publishes `BILL-STAGED` event to the event store
 
 
 ## Bill Retriever
