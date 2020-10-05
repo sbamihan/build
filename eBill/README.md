@@ -20,7 +20,16 @@ Here is how it looks in a high level.
 This is the main interface which serves as the entry point for all interactions from the client. External clients (like **Yondu**) and internal clients like (**CC&B**) can interact with this API thru **REST**.
 
 Procedures:
-1.	Receives data from CC&B thru POST `/events` endpoint
+1.	Receives data from CC&B through eBill API
+
+    CC&B should be able to POST data through eBill API at `/events` endpoint containing a payload like this.
+
+    ```json
+    {
+        "duCode": "dlpc",
+        "batchNo": 3107
+    }
+    ```
 2.	Publishes `BILL-EXTRACTED` event to the event store based on data received from CC&B
 
 ## Bill Stager
