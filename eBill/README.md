@@ -80,7 +80,7 @@ This is the one responsible for fetching the extracted bills from CC&B for the c
 Procedures:
 1.	Fetches extracted bills from CC&B based on parameters provided by **Bill Stager**.
 
-    Should accept REST call at POST `/findByBatchNoAndAcctNo?batchNo={{batchNo}}&acctNo={{acctNo}}` and return bill information similar to this.
+    Should accept REST call at POST `/findByBatchNoAndAcctNo?batchNo={{batchNo}}&acctNo={{acctNo}}` endpoint and return bill information similar to this.
 
     <details>
     <summary>Click to expand!</summary>
