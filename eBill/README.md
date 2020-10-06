@@ -35,7 +35,7 @@ Procedures:
 
 2.	Publishes `BILL-EXTRACTED` event to the event store based on data received from CC&B.
 
-    Event data published in the event store should contain the original data posted from CC&B plus UUID and datetime it was created. The data should be similar to this.
+    Event data published in the event store should contain the original data posted from CC&B plus **UUID** and datetime it was created. The data should be similar to this.
 
     ```json
     {
@@ -59,7 +59,7 @@ Procedures:
 
 4.	Projects the bill information then saves to persistence store.
 
-    The projected data should contain the UUID from `BILL-EXTRACTED` event data, datetime it was created, and bill information of all accounts who signed up for eBill service that belong on that batch. The data should be similar to this.
+    The projected data should contain the **UUID** from `BILL-EXTRACTED` event data, datetime it was created, and bill information of all accounts who signed up for eBill service that belong on that batch including its contact information taken from **Subscription Service**. The data should be similar to this.
 
     <details>
     <summary>Click to expand!</summary>
