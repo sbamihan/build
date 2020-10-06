@@ -55,7 +55,7 @@ Procedures:
 2.	Gets customer information (Account ID, email) from **Subscription Service**.
 3.	Retrieves bill information of subscribed customers from CC&B through **Bill Retriever**.
     
-    Should call **Bill Retriever** at endpoint GET `/findByBatchNoAndAcctNo?batchNo={{batchNo}}&acctNo={{acctNo}}`, where **batchNo** is a value from `BILL-EXTRACTED` event data and **acctNo** is a value from **Subscription Service**.
+    Should call **Bill Retriever** at endpoint GET `/{{duCode}}/findByBatchNoAndAcctNo?batchNo={{batchNo}}&acctNo={{acctNo}}`, where **duCode** and **batchNo** are values from `BILL-EXTRACTED` event data and **acctNo** is a value from **Subscription Service**.
 
 4.	Projects the bill information then saves to persistence store.
 5.	Publishes `BILL-STAGED` event to the event store.
