@@ -1,34 +1,32 @@
 package com.aboitiz.subscriptionservice.controller;
 
-import java.util.List;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aboitiz.subscriptionservice.model.Account;
 import com.aboitiz.subscriptionservice.repository.AccountRepository;
 
 import lombok.extern.log4j.Log4j2;
+import reactor.core.publisher.Flux;
 
 @RestController
-@RequestMapping("/accounts")
 @Log4j2
-public class AccountController {
+@RequestMapping("/accounts/search")
+public class AccountSearchController {
 
 	AccountRepository accountRepository;
 
-	public AccountController(AccountRepository accountRepository) {
+	public AccountSearchController(AccountRepository accountRepository) {
 		this.accountRepository = accountRepository;
 	}
 
-	@GetMapping
-	List<Account> findAllAccounts() {
-		log.info("getting all accounts...");
-		List<Account> list = accountRepository.findAll();
-		log.info("found {}", list.size());
-		
-		return list;
+	@GetMapping("/findByTypeCode")
+	Flux<Account> findByTypeCode(@RequestParam("typeCode") String typeCode) {
+		log.info("invoking /search/findByTypeCode?typeCode={}", typeCode);
+
+		return Flux.fromIterable(accountRepository.findByAccountSubscriptions_subscriptionType_typeCode(typeCode));
 	}
 
 }

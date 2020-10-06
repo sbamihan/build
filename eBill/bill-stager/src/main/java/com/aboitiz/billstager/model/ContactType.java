@@ -16,12 +16,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Account {
+public class ContactType {
 
-	private String accountId;
-	private String accountName;
+	private String typeCode;
+	private String description;
 	@JsonIgnore
-	private Collection<AccountSubscription> accountSubscriptions;
-	private Collection<AccountContact> accountContacts;
+	private Collection<AccountContact> accountContactCollection;
 
 }

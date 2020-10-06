@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aboitiz.billstager.model;
-
-import java.util.Collection;
+package com.aboitiz.billtransporter.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,12 +14,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Account {
+public class AccountSubscription {
 
-	private String accountId;
-	private String accountName;
 	@JsonIgnore
-	private Collection<AccountSubscription> accountSubscriptions;
-	private Collection<AccountContact> accountContacts;
+	private String id;
+	private Character subscribe;
+	@JsonIgnore
+	private Account accountId;
+	private SubscriptionType subscriptionType;
 
 }

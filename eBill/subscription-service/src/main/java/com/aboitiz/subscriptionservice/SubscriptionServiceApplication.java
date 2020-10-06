@@ -1,16 +1,7 @@
 package com.aboitiz.subscriptionservice;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Component;
-
-import com.aboitiz.subscriptionservice.model.Account;
-import com.aboitiz.subscriptionservice.repository.AccountRepository;
 
 @SpringBootApplication
 public class SubscriptionServiceApplication {

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aboitiz.billstager.model;
+package com.aboitiz.billtransporter.model;
 
 import java.util.Collection;
 

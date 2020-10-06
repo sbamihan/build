@@ -5,8 +5,6 @@
  */
 package com.aboitiz.billstager.model;
 
-import java.util.Collection;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -16,12 +14,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Account {
+public class AccountContact {
 
-	private String accountId;
-	private String accountName;
 	@JsonIgnore
-	private Collection<AccountSubscription> accountSubscriptions;
-	private Collection<AccountContact> accountContacts;
+	private String id;
+	private String value;
+	@JsonIgnore
+	private Account accountId;
+	private ContactType contactType;
 
 }

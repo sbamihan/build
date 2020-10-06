@@ -7,11 +7,9 @@ import com.aboitiz.billstager.config.ClientConfig;
 import com.aboitiz.billstager.model.Bill;
 import com.aboitiz.billstager.repository.BillRepository;
 
-import lombok.extern.log4j.Log4j2;
 import reactor.core.publisher.Flux;
 
 @Service
-@Log4j2
 public class BillService {
 
 	private final ClientConfig config;
@@ -31,7 +29,6 @@ public class BillService {
 
 	public Flux<Bill> getBill(String duCode, Long batchNo, String accountNo) {
 		String uri = "/" + duCode + "/bills/search/findByBatchNoAndAcctNo?batchNo=" + batchNo + "&acctNo=" + accountNo;
-		log.info("invoking {}", uri);
 		return this.client.get().uri(uri).retrieve().bodyToFlux(Bill.class);
 	}
 
