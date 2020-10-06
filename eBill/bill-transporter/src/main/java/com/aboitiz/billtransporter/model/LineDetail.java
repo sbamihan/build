@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +23,7 @@ public class LineDetail {
 	private String description;
 	private String rate;
 	private BigDecimal amount;
+	@JsonIgnore
 	private Bill bill;
 
 }

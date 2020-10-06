@@ -17,13 +17,7 @@ spring:
           destination: bill-staged
           binder: kafka
     function:
-      definition: stageBill;displayStagedBill  data:#    mongodb:#      host: localhost
-#      port: 27017
-#      authentication-database: admin
-#      username:
-#      password:
-#      database: ebilldb
-    mongodb:
+      definition: stageBill;displayStagedBill  data:    mongodb:
       host: 172.18.13.12
       port: 27017
       authentication-database: admin

@@ -11,6 +11,7 @@ import java.util.Date;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -47,6 +48,7 @@ public class MeterDetail {
 	private String kwhrConsumSubFlg;
 	private String demandConsumSubFlg;
 	private String kvarConsumSubFlg;
+	@JsonIgnore
 	private Bill bill;
 
 }

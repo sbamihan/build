@@ -25,8 +25,8 @@ public class BillController {
 		return billRepository.findAll();
 	}
 
-	@GetMapping("/findByBatchNo")
-	public Flux<Bill> findByBatchNo(@RequestParam("batchNo") Long batchNo) {
-		return billRepository.findByBatchNo(batchNo);
+	@GetMapping("/findByUuid")
+	public Flux<Bill> findByUuid(@RequestParam("uuid") String uuid) {
+		return billRepository.findByUuid(uuid);
 	}
 }
