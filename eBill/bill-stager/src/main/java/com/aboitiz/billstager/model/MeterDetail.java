@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aboitiz.billtransporter.model;
+package com.aboitiz.billstager.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -22,9 +22,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class MeterDetails {
+public class MeterDetail {
 
-	protected MeterDetailsPK meterDetailsPK;
+	protected MeterDetailPK meterDetailPK;
 	private String serialNo;
 	private String poleNo;
 	private BigDecimal multiplier;

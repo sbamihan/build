@@ -33,10 +33,10 @@ public class Handler {
 			return Flux.just(new Payload(event)).zipWith(billService.getBill(event.getUuid()).collectList())
 					.map(tuple -> {
 						Payload payload = tuple.getT1();
-						payload.setBillCollection(tuple.getT2());
+						payload.setBills(tuple.getT2());
 						return payload;
 					}).flatMap(p -> {
-						log.info("sending payload containing {} bills...", p.getBillCollection().size());
+						log.info("sending payload containing {} bills...", p.getBills().size());
 						return transportService.sendBill(p);
 					});
 		}).onErrorResume(e -> just("ERROR: " + e.getMessage())).subscribe(log::info);

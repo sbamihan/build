@@ -14,7 +14,7 @@ public class Payload {
 
 	private String uuid;
 	private Date creDttm;
-	private Collection<Bill> billCollection;
+	private Collection<Bill> bills;
 	
 	public Payload(StagedBillEvent event) {
 		this.uuid = event.getUuid();

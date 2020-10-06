@@ -28,10 +28,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MeterDetails {
+public class MeterDetail {
 
 	@EmbeddedId
-	protected MeterDetailsPK meterDetailsPK;
+	protected MeterDetailPK meterDetailPK;
 	@Column(name = "SERIAL_NO")
 	private String serialNo;
 	@Column(name = "POLE_NO")

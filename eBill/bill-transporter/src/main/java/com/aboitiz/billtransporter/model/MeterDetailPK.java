@@ -17,7 +17,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class MeterDetailsPK {
+public class MeterDetailPK {
 
 	private long tranNo;
 	private String badgeNo;

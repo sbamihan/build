@@ -14,9 +14,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class LineDetails {
+public class LineDetail {
 
-	protected LineDetailsPK lineDetailsPK;
+	protected LineDetailPK lineDetailPK;
 	private Long printPriority;
 	private String description;
 	private String rate;

@@ -1,5 +1,7 @@
 package com.aboitiz.billstager.model;
 
+import java.math.BigDecimal;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -12,9 +14,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class LineDetailsPK {
+public class LineDetail {
 
-	private Long tranNo;
-	private String lineCode;
+	protected LineDetailPK lineDetailPK;
+	private Long printPriority;
+	private String description;
+	private String rate;
+	private BigDecimal amount;
+	private Bill bill;
 
 }

@@ -39,10 +39,9 @@ public class Handler {
 					.zipWith(subscriptionService.getAccounts().delayElements(Duration.ofMillis(7)).flatMap(acct -> {
 						Flux<Bill> billFlux = billService
 								.getBill(event.getDuCode(), event.getBatchNo(), acct.getAccountId()).map(bill -> {
-									Collection<Contact> contactCollection = new ArrayList<>();
-									contactCollection
-											.add(new Contact(acct.getAccountId(), "email", acct.getEmailAddress()));
-									bill.setContactCollection(contactCollection);
+									Collection<Contact> contacts = new ArrayList<>();
+									contacts.add(new Contact(acct.getAccountId(), "email", acct.getEmailAddress()));
+									bill.setContacts(contacts);
 									bill.setUuid(event.getUuid());
 									return bill;
 								}).onErrorResume(e -> Flux.empty());

@@ -92,10 +92,10 @@ public class Bill {
 	private String busAdd3;
 	private String busAdd4;
 	private String busAdd5;
-	private Collection<MeterDetails> meterDetailsCollection;
+	private Collection<MeterDetail> meterDetails;
 	private Collection<ConsumptionHistory> consumptionHistoryCollection;
-	private Collection<LineDetails> lineDetailsCollection;
-	private Collection<Contact> contactCollection;
+	private Collection<LineDetail> lineDetails;
+	private Collection<Contact> contacts;
 	private String uuid;
 
 }

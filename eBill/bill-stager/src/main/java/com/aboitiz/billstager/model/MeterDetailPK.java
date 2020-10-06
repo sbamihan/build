@@ -1,6 +1,9 @@
+/*
+ * To change this license header, choose License Bill in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.aboitiz.billstager.model;
-
-import java.math.BigDecimal;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,13 +17,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class LineDetails {
+public class MeterDetailPK {
 
-	protected LineDetailsPK lineDetailsPK;
-	private Long printPriority;
-	private String description;
-	private String rate;
-	private BigDecimal amount;
-	private Bill bill;
+	private long tranNo;
+	private String badgeNo;
 
 }

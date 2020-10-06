@@ -12,7 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class LineDetailsPK {
+public class LineDetailPK {
 
 	private Long tranNo;
 	private String lineCode;

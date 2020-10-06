@@ -157,10 +157,10 @@ public class Bill {
 	@Column(name = "BUS_ADD5")
 	private String busAdd5;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "bill")
-	private Collection<MeterDetails> meterDetailsCollection;
+	private Collection<MeterDetail> meterDetails;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "bill")
-	private Collection<ConsumptionHistory> consumptionHistoryCollection;
+	private Collection<ConsumptionHistory> consumptionHistory;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "bill")
-	private Collection<LineDetails> lineDetailsCollection;
+	private Collection<LineDetail> lineDetails;
 
 }

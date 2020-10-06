@@ -20,10 +20,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LineDetails {
+public class LineDetail {
 
 	@EmbeddedId
-	protected LineDetailsPK lineDetailsPK;
+	protected LineDetailPK lineDetailPK;
 	@Column(name = "PRINT_PRIORITY")
 	private Long printPriority;
 	@Column(name = "DIS_DESCRIPTION")

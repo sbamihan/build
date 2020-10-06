@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LineDetailsPK implements Serializable {
+public class LineDetailPK implements Serializable {
 
 	private static final long serialVersionUID = -6136714559873555944L;
 	@Column(name = "TRAN_NO")
