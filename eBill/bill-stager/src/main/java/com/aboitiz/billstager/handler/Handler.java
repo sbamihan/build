@@ -34,24 +34,14 @@ public class Handler {
 	@Bean
 	Function<Flux<ExtractedBillEvent>, Flux<StagedBillEvent>> stageBill() {
 		return flux -> flux.flatMap(event -> {
-//			Flux<Bill> allBillFlux = billService.getBill(event.getDuCode(), event.getBatchNo());
-//			Flux<Account> accountFlux = subscriptionService.findByTypeCode(SUBSCRIPTION_TYPE);
-//
-//			Mono<Set<Account>> cachedAccountFlux = accountFlux.collect(Collectors.toSet()).cache();
-//			allBillFlux.filterWhen(v -> cachedAccountFlux.map(s -> !s.contains(v.getAcctNo()))).map(m -> {
-//				return m;
-//			});
-
 			return just(new StagedBillEvent(event)).zipWith(subscriptionService.findByTypeCode(SUBSCRIPTION_TYPE)
-					.delayElements(Duration.ofMillis(3))
-					.flatMap(acct -> {
+					.delayElements(Duration.ofMillis(3)).flatMap(acct -> {
 						Flux<Bill> billFlux = billService
 								.getBill(event.getDuCode(), event.getBatchNo(), acct.getAccountId()).map(bill -> {
 									bill.setContacts(acct.getAccountContacts());
 									bill.setUuid(event.getUuid());
-
 									return bill;
-								}).timeout(Duration.ofSeconds(15)).onErrorResume(e -> Flux.empty());
+								});
 						return billService.saveAll(billFlux);
 					}).collectList()).map(tuple -> {
 						StagedBillEvent staged = tuple.getT1();

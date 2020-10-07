@@ -20,9 +20,6 @@ public class EdgeServiceApplication {
 	public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
 		return builder.routes().route("head-service", r -> r.path("/api/v1/head/**").uri("lb://HEAD-SERVICE"))
 				.route("rewrite-head-service",
-						r -> r.path("/dlpc/bills/**").filters(f -> f.rewritePath("/dlpc/bills", "/bills"))
-								.uri("lb://DLPC-BILL-SERVICE"))
-				.route("rewrite-head-service",
 						r -> r.path("/requests/**")
 								.filters(f -> f.rewritePath("/requests", "/api/v1/head/requests")
 										.addRequestHeader("X-first-Header", "first-service-header")

@@ -10,6 +10,13 @@ spring:
     driver-class-name: oracle.jdbc.OracleDriver
     hikari:
       connection-test-query: SELECT 1 FROM DUAL
+      minimum-idle: 5
+      maximum-pool-size: 150
+      idle-timeout: 600000
+      pool-name: PrepaidReaderJPAHikariCP
+      max-lifetime: 360000
+      connection-timeout: 120000
+      leak-detection-threshold: 300000
   jpa:
     showSql: false
     properties:

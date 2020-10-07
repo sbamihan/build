@@ -1,5 +1,18 @@
 spring:
   application:
     name: api-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: rewrite-dlpc-bill-service
+        uri: lb://DLPC-BILL-SERVICE
+        predicates:
+        - Path=/dlpc/bills/**
+        filters:
+        - name: Hystrix
+          args:
+            name: fetchBills
+            fallbackUri: forward:/hystrixfallback
+        - RewritePath=/dlpc/bills, /bills
 server:
   port: 5000
