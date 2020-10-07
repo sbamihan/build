@@ -64,6 +64,15 @@ Procedures:
         {
             "accountId": "0002709352",
             "accountName": "MARYANNSACAY2014",
+            "accountSubscriptions": [
+                {
+                    "subscribe": "Y",
+                    "subscriptionType": {
+                        "typeCode": "EBIL",
+                        "description": "Electronic sending of bill"
+                    }
+                }
+            ],
             "accountContacts": [
                 {
                     "value": "maryannsacay2014@gmail.com",
@@ -77,6 +86,22 @@ Procedures:
         {
             "accountId": "0599421111",
             "accountName": "Test Account",
+            "accountSubscriptions": [
+                {
+                    "subscribe": "Y",
+                    "subscriptionType": {
+                        "typeCode": "EBIL",
+                        "description": "Electronic sending of bill"
+                    }
+                },
+                {
+                    "subscribe": "Y",
+                    "subscriptionType": {
+                        "typeCode": "OUTN",
+                        "description": "Outage notification"
+                    }
+                }
+            ],
             "accountContacts": [
                 {
                     "value": "sherwinamihan@gmail.com",
