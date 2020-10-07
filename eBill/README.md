@@ -53,6 +53,51 @@ This is the one responsible for preparing and finalizing the bill information of
 Procedures:
 1.  Bill Stager reacts to `BILL-EXTRACTED` event.
 2.	Gets customer information (Account ID, email) from **Subscription Service**.
+
+    Should call **Subscription Service** at GET `/search/findByTypeCode?typeCode={{typeCode}}` endpoint, where **typeCode** is the code for the type of subscription such as **EBIL** (for eBill), **OUTN** (for Outage Notification), or **NEWS** (for News). The data should be similar to this.
+
+    <details>
+    <summary>Click to expand!</summary>
+    
+    ```json
+    [
+        {
+            "accountId": "0002709352",
+            "accountName": "MARYANNSACAY2014",
+            "accountContacts": [
+                {
+                    "value": "maryannsacay2014@gmail.com",
+                    "contactType": {
+                        "typeCode": "EADD",
+                        "description": "Email Address"
+                    }
+                }
+            ]
+        },
+        {
+            "accountId": "0599421111",
+            "accountName": "Test Account",
+            "accountContacts": [
+                {
+                    "value": "sherwinamihan@gmail.com",
+                    "contactType": {
+                        "typeCode": "EADD",
+                        "description": "Email Address"
+                    }
+                },
+                {
+                    "value": "sherwin.amihan@aboitiz.com",
+                    "contactType": {
+                        "typeCode": "EADD",
+                        "description": "Email Address"
+                    }
+                }
+            ]
+        }
+    ]
+    ```
+    </details>
+
 3.	Retrieves bill information of subscribed customers from CC&B through **Bill Retriever**.
     
     Should call **Bill Retriever** at GET `/{{duCode}}/findByBatchNoAndAcctNo?batchNo={{batchNo}}&acctNo={{acctNo}}` endpoint, where **duCode** and **batchNo** are values from `BILL-EXTRACTED` event data and **acctNo** is a value from **Subscription Service**.
