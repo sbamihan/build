@@ -33,7 +33,7 @@ public class Account {
 	@Column(name = "account_name")
 	private String accountName;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "accountId")
-//	@JsonIgnore
+	@JsonIgnore
 	private Collection<AccountSubscription> accountSubscriptions;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "accountId")
 	private Collection<AccountContact> accountContacts;

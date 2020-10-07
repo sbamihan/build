@@ -1,4 +1,4 @@
-package com.amihan.edgeservice;
+package com.amihan.apigateway;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

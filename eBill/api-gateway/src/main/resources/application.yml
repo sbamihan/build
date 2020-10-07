@@ -1,5 +1,5 @@
 spring:
   application:
-    name: edge-service
+    name: api-gateway
 server:
   port: 5000
