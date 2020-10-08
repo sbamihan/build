@@ -39,4 +39,4 @@ spring:
 service:
   bill:
     url: 
-      base: http://localhost:5000/
+      base: ${BILL_SERVICE_BASEURL:http://localhost:5000/}

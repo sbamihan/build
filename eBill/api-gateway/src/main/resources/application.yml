@@ -8,11 +8,16 @@ spring:
         uri: lb://DLPC-BILL-SERVICE
         predicates:
         - Path=/dlpc/bills/**
+        metadata:
+          response-timeout: 20000
+          connect-timeout: 20000
         filters:
         - name: Hystrix
           args:
-            name: fetchBills
+            name: fallbackcmd
             fallbackUri: forward:/hystrixfallback
         - RewritePath=/dlpc/bills, /bills
 server:
   port: 5000
+  
+hystrix.command.fallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 20000  
