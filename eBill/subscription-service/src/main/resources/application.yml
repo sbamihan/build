@@ -4,9 +4,9 @@ spring:
   application:
     name: subscription-service
   datasource:
-    url: 'jdbc:postgresql://postgresql:5432/ebill'
-    username: 'ebilluser01'
-    password: 'ebilluser123'
+    url: '${DATASOURCE_URL:jdbc:postgresql://postgresql:5432/ebill}'
+    username: '${DATASOURCE_USERNAME:ebilluser01}'
+    password: '${DATASOURCE_PASSWORD:ebilluser123}'
     hikari:
       minimum-idle: 5
       maximum-pool-size: 10
