@@ -19,5 +19,9 @@ spring:
         - RewritePath=/dlpc/bills, /bills
 server:
   port: 5000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-service:8761/eureka/    
   
 hystrix.command.fallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 20000  
