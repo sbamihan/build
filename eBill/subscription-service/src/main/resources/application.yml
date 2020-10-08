@@ -4,7 +4,7 @@ spring:
   application:
     name: subscription-service
   datasource:
-    url: jdbc:postgresql://172.18.13.12:5432/ebill
+    url: jdbc:postgresql://postgresql:5432/ebill
     username: ebilluser01
     password: ebilluser123
     hikari:
