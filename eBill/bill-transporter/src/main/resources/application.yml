@@ -1,26 +1,0 @@
-server:
-  port: ${SERVER_PORT:25651}
-spring:
-  application:
-    name: bill-transporter
-  cloud:
-    stream:
-      kafka:
-        binder:
-          brokers: 172.18.13.12:19092,172.18.13.12:29092,172.18.13.12:39092
-      bindings:
-        transportBill-in-0:
-          destination: bill-staged
-          binder: kafka
-          group: bill-transporter-group
-    function:
-      definition: transportBill  data:    mongodb:      host: 172.18.13.12
-      port: 27017
-      authentication-database: admin
-      username: lorauser
-      password: 8ZL5#QjS
-      database: ebilldb
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_DEFAULT_ZONE_URL:http://eureka-service:8761/eureka/}
