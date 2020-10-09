@@ -29,9 +29,15 @@ public class RequestHandler {
 
 	public Mono<ServerResponse> createExtractedBillEvent(ServerRequest serverRequest) {
 		log.info("publishing event...");
-		return serverRequest.bodyToMono(ExtractedBill.class).flatMap(m -> {
-			ExtractedBillEvent event = new ExtractedBillEvent(randomUUID().toString(), m.getBatchNo(), m.getDuCode(),
-					new Date());
+		return serverRequest.bodyToMono(ExtractedBill.class).flatMap(body -> {
+			ExtractedBillEvent event = new ExtractedBillEvent();
+			event.setUuid(randomUUID().toString());
+			event.setDuCode(body.getDuCode());
+			event.setBatchNo(body.getBatchNo());
+			event.setAccountId(body.getAccountId());
+			event.setCreDttm(new Date());
+			
+			log.info("event {}", event);
 			processor.onNext(event);
 			return Mono.just(event);
 		}).doOnSuccess(f -> {

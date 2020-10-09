@@ -14,6 +14,8 @@ import com.aboitiz.billretriever.model.Bill;
 @Transactional
 public interface HeaderRepository extends JpaRepository<Bill, Long> {
 
+	List<Bill> findTop12ByAcctNoOrderByBillDateDesc(@Param("acctNo") String acctNo);
+
 	List<Bill> findByBillDate(@Param("billDate") Date billDate);
 
 	List<Bill> findByBillDateAndAcctNo(@Param("billDate") Date billDate, @Param("acctNo") String acctNo);

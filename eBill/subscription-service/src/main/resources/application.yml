@@ -1,12 +1,12 @@
 server:
-  port: 25649
+  port: ${SERVER_PORT:25649}
 spring:
   application:
-    name: subscription-service
+    name: ${SPRING_APPLICATION_NAME:subscription-service}
   datasource:
-    url: '${DATASOURCE_URL:jdbc:postgresql://postgresql:5432/ebill}'
-    username: '${DATASOURCE_USERNAME:ebilluser01}'
-    password: '${DATASOURCE_PASSWORD:ebilluser123}'
+    url: '${DATASOURCE_URL:jdbc:postgresql://postgresql:5432/customer}'
+    username: '${DATASOURCE_USERNAME:customer_user01}'
+    password: '${DATASOURCE_PASSWORD:customer_user01}'
     hikari:
       minimum-idle: 5
       maximum-pool-size: 10
@@ -15,7 +15,7 @@ spring:
       max-lifetime: 360000
       connection-timeout: 5000
     driver-class-name: org.postgresql.Driver
-    initialization-mode: always
+    initialization-mode: never
   jpa:
     showSql: false
     database-platform: org.hibernate.dialect.PostgreSQLDialect
@@ -26,4 +26,4 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eureka-service:8761/eureka/          
+      defaultZone: ${EUREKA_DEFAULT_ZONE_URL:http://eureka-service:8761/eureka/}          

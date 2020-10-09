@@ -24,6 +24,17 @@ public class HeaderSearchController {
 	public HeaderSearchController(HeaderRepository headerRepository) {
 		this.headerRepository = headerRepository;
 	}
+	
+	@GetMapping("/findTop12ByAcctNo")
+	List<Bill> findTop12ByAcctNo(@RequestParam("acctNo") String acctNo) {
+		List<Bill> list = this.headerRepository.findTop12ByAcctNoOrderByBillDateDesc(acctNo);
+
+		if (!list.isEmpty()) {
+			log.info("findTop12ByAcctNo({}) - found {}", acctNo, list.size());
+		}
+
+		return list;
+	}
 
 	@GetMapping("/findByBillDate")
 	List<Bill> findByBillDate(@RequestParam("billDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date billDate) {

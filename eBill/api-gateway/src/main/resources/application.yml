@@ -4,8 +4,12 @@ spring:
   cloud:
     gateway:
       routes:
-      - id: rewrite-dlpc-bill-service
-        uri: lb://DLPC-BILL-SERVICE
+      - id: ebill-api
+        uri: lb://EBILL-API
+        predicates:
+        - Path=/events/**
+      - id: rewrite-dlpc-bill-retriever
+        uri: lb://DLPC-BILL-RETRIEVER
         predicates:
         - Path=/dlpc/bills/**
         metadata:
@@ -17,11 +21,37 @@ spring:
             name: fallbackcmd
             fallbackUri: forward:/hystrixfallback
         - RewritePath=/dlpc/bills, /bills
+      - id: rewrite-veco-bill-retriever
+        uri: lb://DLPC-VECO-RETRIEVER
+        predicates:
+        - Path=/veco/bills/**
+        metadata:
+          response-timeout: 20000
+          connect-timeout: 20000
+        filters:
+        - name: Hystrix
+          args:
+            name: fallbackcmd
+            fallbackUri: forward:/hystrixfallback
+        - RewritePath=/veco/bills, /bills     
+      - id: rewrite-dlpc-subscription-service
+        uri: lb://DLPC-SUBSCRIPTION-SERVICE
+        predicates:
+        - Path=/dlpc/accounts/**
+        metadata:
+          response-timeout: 20000
+          connect-timeout: 20000
+        filters:
+        - name: Hystrix
+          args:
+            name: fallbackcmd
+            fallbackUri: forward:/hystrixfallback
+        - RewritePath=/dlpc/accounts, /accounts           
 server:
   port: 5000
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eureka-service:8761/eureka/    
+      defaultZone: ${EUREKA_DEFAULT_ZONE_URL:http://eureka-service:8761/eureka/}
   
 hystrix.command.fallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 20000  

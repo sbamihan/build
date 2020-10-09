@@ -1,5 +1,5 @@
 server:
-  port: 25651
+  port: ${SERVER_PORT:25651}
 spring:
   application:
     name: bill-transporter
@@ -23,4 +23,4 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eureka-service:8761/eureka/  
+      defaultZone: ${EUREKA_DEFAULT_ZONE_URL:http://eureka-service:8761/eureka/}

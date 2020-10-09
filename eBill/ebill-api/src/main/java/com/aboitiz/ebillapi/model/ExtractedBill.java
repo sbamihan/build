@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ExtractedBill {
 
-	private Long batchNo;
 	private String duCode;
+	private Long batchNo;
+	private String accountId;
 
 }

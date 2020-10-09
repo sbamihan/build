@@ -21,8 +21,6 @@ import reactor.core.publisher.Flux;
 @Log4j2
 public class Handler {
 
-	private static final String SUBSCRIPTION_TYPE = "EBIL";
-
 	private final BillService billService;
 	private final SubscriptionService subscriptionService;
 
@@ -34,8 +32,8 @@ public class Handler {
 	@Bean
 	Function<Flux<ExtractedBillEvent>, Flux<StagedBillEvent>> stageBill() {
 		return flux -> flux.flatMap(event -> {
-			return just(new StagedBillEvent(event)).zipWith(subscriptionService.findByTypeCode(SUBSCRIPTION_TYPE)
-					.delayElements(Duration.ofMillis(3)).flatMap(acct -> {
+			return just(new StagedBillEvent(event)).zipWith(
+					subscriptionService.getAccounts(event).delayElements(Duration.ofMillis(3)).flatMap(acct -> {
 						Flux<Bill> billFlux = billService
 								.getBill(event.getDuCode(), event.getBatchNo(), acct.getAccountId()).map(bill -> {
 									bill.setContacts(acct.getAccountContacts());

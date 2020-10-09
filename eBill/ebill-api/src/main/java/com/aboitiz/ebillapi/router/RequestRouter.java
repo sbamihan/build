@@ -17,7 +17,8 @@ public class RequestRouter {
 
 	@Bean
 	public RouterFunction<ServerResponse> requestReadRoute(RequestHandler requestHandler) {
-		return route(POST("/events").and(accept(APPLICATION_JSON)), requestHandler::createExtractedBillEvent);
+		return route(POST("/events/billExtracted").and(accept(APPLICATION_JSON)),
+				requestHandler::createExtractedBillEvent);
 	}
 
 }

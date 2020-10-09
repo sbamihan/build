@@ -1,8 +1,8 @@
 server:
-  port: ${SERVER_PORT:25647}  
+  port: ${SERVER_PORT:25647}
 spring:
   application:
-    name: ${SPRING_APPLICATION_NAME:dlpc-bill-service}
+    name: ${SPRING_APPLICATION_NAME:dlpc-bill-retriever}
   datasource:
     url: ${DATASOURCE_URL:jdbc:oracle:thin:@//172.18.118.53:1521/duhol02.apd.com.ph}
     username: ${DATASOURCE_USERNAME:bpx}
@@ -26,4 +26,4 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eureka-service:8761/eureka/      
+      defaultZone: ${EUREKA_DEFAULT_ZONE_URL:http://eureka-service:8761/eureka/}   

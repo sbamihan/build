@@ -12,8 +12,9 @@ import lombok.NoArgsConstructor;
 public class ExtractedBillEvent {
 
 	private String uuid;
-	private Long batchNo;
 	private String duCode;
+	private Long batchNo;
+	private String accountId;
 	private Date creDttm;
 
 }

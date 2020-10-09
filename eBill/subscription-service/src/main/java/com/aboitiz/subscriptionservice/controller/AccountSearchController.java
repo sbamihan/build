@@ -29,4 +29,13 @@ public class AccountSearchController {
 		return Flux.fromIterable(accountRepository.findByAccountSubscriptions_subscriptionType_typeCode(typeCode));
 	}
 
+	@GetMapping("/findByAccountIdAndTypeCode")
+	Flux<Account> findByAccountAndTypeCode(@RequestParam("accountId") String accountId,
+			@RequestParam("typeCode") String typeCode) {
+		log.info("invoking /search/findByAccountIdAndTypeCode?accountId={}&typeCode={}", accountId, typeCode);
+
+		return Flux.fromIterable(accountRepository
+				.findByAccountIdAndAccountSubscriptions_subscriptionType_typeCode(accountId, typeCode));
+	}
+
 }
