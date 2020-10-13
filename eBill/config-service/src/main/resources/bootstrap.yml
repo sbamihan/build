@@ -6,32 +6,11 @@ spring:
       enabled: true
       server:
         git:
-          username: samihan
-          password: 'S$gjs1J7'
+          username: '${CONFIG_GIT_REPO_USERNAME:samihan}'
+          password: '${CONFIG_GIT_REPO_PASSWORD:S$gjs1J7}'
           uri: https://github.com/samihan/ebill-config.git
 management:
   endpoints:
     web:
       exposure:
-      
-      
-      
-      
-      
-#server:
-#  port: '${SERVER_PORT:8888}'
-#spring:
-#  cloud:
-#    config:
-#      enabled: true
-#      server:
-#        git:
-#          username: '${CONFIG_GIT_REPO_USERNAME:samihan}'
-#          password: '${CONFIG_GIT_REPO_PASSWORD:S$gjs1J7}'
-#          uri: https://github.com/samihan/ebill-config.git
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: "*"      
         include: "*"
