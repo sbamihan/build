@@ -30,7 +30,7 @@ public class AccountSearchController {
 	}
 
 	@GetMapping("/findByAccountIdAndTypeCode")
-	Flux<Account> findByAccountAndTypeCode(@RequestParam("accountId") String accountId,
+	Flux<Account> findByAccountIdAndTypeCode(@RequestParam("accountId") String accountId,
 			@RequestParam("typeCode") String typeCode) {
 		log.info("invoking /search/findByAccountIdAndTypeCode?accountId={}&typeCode={}", accountId, typeCode);
 

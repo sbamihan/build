@@ -3,6 +3,7 @@ spring:
     name: ${SPRING_APPLICATION_NAME:subscription-service}
   cloud:
     config:
+      label: main
       uri: ${CONFIG_SERVER_URI:http://config-service:8888}
       failFast: true
       retry:
@@ -10,3 +11,10 @@ spring:
         multiplier: 1.3
         maxInterval: 5000
         maxAttempts: 20
+        
+logging:
+  level:
+    root: INFO
+    org:
+      apache:
+        kafka: WARN        

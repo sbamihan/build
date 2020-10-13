@@ -1,14 +1,11 @@
 package com.aboitiz.billstager.handler;
 
-import static reactor.core.publisher.Flux.just;
-
 import java.time.Duration;
 import java.util.function.Function;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-import com.aboitiz.billstager.model.Bill;
 import com.aboitiz.billstager.model.ExtractedBillEvent;
 import com.aboitiz.billstager.model.StagedBillEvent;
 import com.aboitiz.billstager.service.BillService;
@@ -29,18 +26,34 @@ public class Handler {
 		this.subscriptionService = subscriptionService;
 	}
 
+//	@Bean
+//	Function<Flux<ExtractedBillEvent>, Flux<StagedBillEvent>> stageBill() {
+//		return flux -> flux.flatMap(event -> {
+//			StagedBillEvent staged = new StagedBillEvent();
+//			staged.setDuCode(event.getDuCode());
+//			staged.setBatchNo(event.getBatchNo());
+//			staged.setCreDttm(new Date());
+//			staged.setCount(0);
+//			
+//			log.info("publishing event {}", staged);
+//			return Flux.just(staged);
+//		});
+//	}
+
 	@Bean
 	Function<Flux<ExtractedBillEvent>, Flux<StagedBillEvent>> stageBill() {
 		return flux -> flux.flatMap(event -> {
-			return just(new StagedBillEvent(event)).zipWith(
-					subscriptionService.getAccounts(event).delayElements(Duration.ofMillis(3)).flatMap(acct -> {
-						Flux<Bill> billFlux = billService
-								.getBill(event.getDuCode(), event.getBatchNo(), acct.getAccountId()).map(bill -> {
+			return Flux.just(new StagedBillEvent(event)).zipWith(
+					subscriptionService.getAccounts(event).delayElements(Duration.ofMillis(100)).flatMap(acct -> {
+						return billService.saveAll(billService
+								.getBills(event.getDuCode(), event.getBatchNo(), acct.getAccountId()).map(bill -> {
 									bill.setContacts(acct.getAccountContacts());
 									bill.setUuid(event.getUuid());
 									return bill;
-								});
-						return billService.saveAll(billFlux);
+								}).map(b -> {
+									log.info("saving bill {} to DB...", b.getBillNo());
+									return b;
+								}).onErrorResume(e -> Flux.empty()));
 					}).collectList()).map(tuple -> {
 						StagedBillEvent staged = tuple.getT1();
 						int size = tuple.getT2().size();
@@ -51,28 +64,5 @@ public class Handler {
 					});
 		});
 	}
-
-//	@Bean
-//	Function<Flux<ExtractedBillEvent>, Flux<StagedBillEvent>> stageBill() {
-//		return flux -> flux.flatMap(event -> {
-//			return just(new StagedBillEvent(event)).zipWith(subscriptionService.findByTypeCode(SUBSCRIPTION_TYPE)
-//					.delayElements(Duration.ofMillis(7)).flatMap(acct -> {
-//						Flux<Bill> billFlux = billService
-//								.getBill(event.getDuCode(), event.getBatchNo(), acct.getAccountId()).map(bill -> {
-//									bill.setContacts(acct.getAccountContacts());
-//									bill.setUuid(event.getUuid());
-//									return bill;
-//								}).onErrorResume(e -> Flux.empty());
-//						return billService.saveAll(billFlux);
-//					}).collectList()).map(tuple -> {
-//						StagedBillEvent staged = tuple.getT1();
-//						int size = tuple.getT2().size();
-//						staged.setCount(size);
-//
-//						log.info("{} bills staged", size);
-//						return staged;
-//					});
-//		});
-//	}
 
 }
