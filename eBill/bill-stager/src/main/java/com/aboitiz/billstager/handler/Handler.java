@@ -44,7 +44,9 @@ public class Handler {
 	Function<Flux<ExtractedBillEvent>, Flux<StagedBillEvent>> stageBill() {
 		return flux -> flux.flatMap(event -> {
 			return Flux.just(new StagedBillEvent(event)).zipWith(
-					subscriptionService.getAccounts(event).delayElements(Duration.ofMillis(5)).flatMap(acct -> {
+					subscriptionService.getAccounts(event)
+//					.delayElements(Duration.ofMillis(5))
+					.flatMap(acct -> {
 						return billService.saveAll(billService
 								.getBills(event.getDuCode(), event.getBatchNo(), acct.getAccountId()).map(bill -> {
 									bill.setContacts(acct.getAccountContacts());
