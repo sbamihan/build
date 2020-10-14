@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
  * @author SBAmihan
  */
 @Entity
-@Table(name = "contact_type")
+@Table(name = "contact_type", schema = "customer")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -19,7 +19,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "account_subscription")
+@Table(name = "account_subscription", schema = "customer")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
