@@ -119,10 +119,10 @@ public class Bill {
 	private String messengerCode;
 	@Column(name = "ALT_BILL_ID")
 	private String altBillId;
-	@Column(name = "LOCATION_CODE")
-	private String locationCode;
-	@Column(name = "LAST_BILL_FLG")
-	private Character lastBillFlg;
+//	@Column(name = "LOCATION_CODE")
+//	private String locationCode;
+//	@Column(name = "LAST_BILL_FLG")
+//	private Character lastBillFlg;
 	@Column(name = "PAR_MONTH")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date parMonth;
@@ -131,10 +131,10 @@ public class Bill {
 	@Column(name = "COMPLETE_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date completeDate;
-	@Column(name = "FLT_CONNECTION")
-	private BigInteger fltConnection;
-	@Column(name = "FLT_WATTAGE")
-	private BigInteger fltWattage;
+//	@Column(name = "FLT_CONNECTION")
+//	private BigInteger fltConnection;
+//	@Column(name = "FLT_WATTAGE")
+//	private BigInteger fltWattage;
 	@Column(name = "NO_BATCH_PRT_SW")
 	private Character noBatchPrtSw;
 	@Column(name = "EBILL_ONLY_SW")

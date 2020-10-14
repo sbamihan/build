@@ -72,15 +72,15 @@ public class Bill {
 	private String mainSaId;
 	private String messengerCode;
 	private String altBillId;
-	private String locationCode;
-	private Character lastBillFlg;
+//	private String locationCode;
+//	private Character lastBillFlg;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
 	private Date parMonth;
 	private BigDecimal parKwhr;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
 	private Date completeDate;
-	private BigInteger fltConnection;
-	private BigInteger fltWattage;
+//	private BigInteger fltConnection;
+//	private BigInteger fltWattage;
 	private Character noBatchPrtSw;
 	private Character ebillOnlySw;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)

@@ -43,10 +43,10 @@ public class MeterDetail {
 	private BigDecimal currKvarRdg;
 	private BigDecimal regKvarCons;
 	private String meterType;
-	private String consumSubFlg;
-	private String kwhrConsumSubFlg;
-	private String demandConsumSubFlg;
-	private String kvarConsumSubFlg;
+//	private String consumSubFlg;
+//	private String kwhrConsumSubFlg;
+//	private String demandConsumSubFlg;
+//	private String kvarConsumSubFlg;
 	private Bill bill;
 
 }
