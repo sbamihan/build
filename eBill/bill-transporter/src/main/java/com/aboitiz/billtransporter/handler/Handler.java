@@ -30,8 +30,8 @@ public class Handler {
 	@Bean
 	Consumer<Flux<StagedBillEvent>> transportBill() {
 		return flux -> flux.map(m -> {
-			String message = "Received event " + m + " in transportBill()";
-			
+			String message = "Received event " + m;
+
 			return message;
 		}).subscribe(log::info);
 	}

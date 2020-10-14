@@ -13,11 +13,13 @@ import lombok.NoArgsConstructor;
 public class Payload {
 
 	private String uuid;
+	private String duCode;
 	private Date creDttm;
 	private Collection<Bill> bills;
 	
 	public Payload(StagedBillEvent event) {
 		this.uuid = event.getUuid();
+		this.duCode = event.getDuCode();
 		this.creDttm = new Date();
 	}
 }

@@ -15,13 +15,8 @@ public class StagedBillEvent {
 
 	private String uuid;
 	private Long batchNo;
+	private String duCode;
 	private Date creDttm;
 	private int count;
-
-	public StagedBillEvent(ExtractedBillEvent extractedBillEvent) {
-		this.uuid = extractedBillEvent.getUuid();
-		this.batchNo = extractedBillEvent.getBatchNo();
-		this.creDttm = extractedBillEvent.getCreDttm();
-	}
 
 }
