@@ -1,0 +1,95 @@
+Publishing to Kafka
+
+Steps
+----------------------------
+
+> cd C:\workspace\git\build\nodejs\demo
+> cp -r demo3/ demo4
+> cd demo4
+> npm install cors kafkajs
+> touch src/config.js
+*************************************************************************
+module.exports = {
+  kafka: {
+    TOPIC: 'bill-extracted',
+    BROKERS: ['172.18.13.12:19092','172.18.13.12:29092','172.18.13.12:39092'],
+    GROUPID: 'bill-extracted-publisher-group',
+    CLIENTID: 'ebill-api'
+  }
+}
+*************************************************************************
+
+test.js
+*************************************************************************
+
+const express = require('express')
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+const app = express()
+const port = 3000
+
+var uuid = require('uuid');
+
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+const { Kafka } = require('kafkajs')
+const config = require('./config')
+
+const client = new Kafka({
+  brokers: config.kafka.BROKERS,
+  clientId: config.kafka.CLIENTID
+})
+
+const topic = config.kafka.TOPIC
+const producer = client.producer()
+
+app.get('/', function (req, res) {
+  res.send('Hello World!')
+})
+
+app.post('/events', function (req, res) {
+  billExtractedEvent = {
+    uuid: uuid.v1(),
+    duCode: req.body.duCode,
+    batchNo: req.body.batchNo,
+    creDttm: new Date()
+  }
+
+  var sendMessage = async () => {
+    await producer.connect()
+    await producer.send({
+      topic: topic,
+      messages: [
+        { key: 'ebill-event', value: JSON.stringify(billExtractedEvent) }
+      ],
+    })
+    await producer.disconnect()
+  }
+  
+  sendMessage();
+  console.log('published event ', billExtractedEvent)
+
+  res.set('Content-Type', 'application/json');
+  res.status(202);
+  res.json(billExtractedEvent);
+
+})
+
+app.put('/user', function (req, res) {
+  res.send('Got a PUT request at /user')
+})
+
+app.delete('/user', function (req, res) {
+  res.send('Got a DELETE request at /user')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
+*************************************************************************
+
+
+> cd demo3

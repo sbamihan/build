@@ -1,0 +1,12 @@
+Express application generator
+
+Steps
+----------------------------
+https://expressjs.com/en/starter/generator.html
+
+> cd C:\workspace\git\build\nodejs\demo
+> mkdir demo2
+> cd demo2
+> npx express-generator
+> npm install
+> SET DEBUG=demo2:* & npm start

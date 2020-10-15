@@ -1,0 +1,29 @@
+Simple Hello World
+
+Steps
+----------------------------
+
+> cd C:\workspace\git\build\nodejs\demo
+> mkdir demo1
+> cd demo1
+> npm init
+	node ./src/test.js
+> npm install express	
+> mkdir src
+> cd src
+> touch test.js
+
+	const express = require('express')
+	const app = express()
+	const port = 3000
+
+	app.get('/', (req, res) => {
+	  res.send('Hello World!')
+	})
+
+	app.listen(port, () => {
+	  console.log(`Example app listening at http://localhost:${port}`)
+	})
+
+> cd ..
+> npm test
