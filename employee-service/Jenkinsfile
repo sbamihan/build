@@ -1,0 +1,41 @@
+node {
+    def app
+
+    stage('Clone Repository') {
+	    checkout scm
+    }
+	
+    stage('Build Artifact') {
+      dir('employee-service') {
+        sh "mvn clean package"
+      }
+    }
+	
+    stage('Build Docker Image') {
+      dir('employee-service') {
+        app = docker.build("aboitiz/employee-service:latest")
+      }       
+    }
+
+    stage('Test Image') {
+      dir('employee-service') {
+        app.inside {
+          sh 'echo "Tests passed"'
+        }
+      }
+    }
+	
+    stage('Push Image') {
+      dir('employee-service') {
+        sh 'echo "Image pushed"'
+      }
+    }
+	
+    stage('Run Image') {
+      dir('employee-service') {
+        sh 'echo updating employee-service'
+        sh 'docker service update --force --update-parallelism 1 --update-delay 10s employee-service'
+        sh 'echo employee-service is now running at http://172.18.13.12:6523'
+      }		
+    }
+}

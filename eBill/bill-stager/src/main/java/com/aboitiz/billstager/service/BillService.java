@@ -15,6 +15,7 @@ import com.aboitiz.billstager.repository.BillRepository;
 
 import lombok.extern.log4j.Log4j2;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 @Log4j2
@@ -28,6 +29,11 @@ public class BillService {
 		this.config = config;
 		this.billRepository = billRepository;
 		this.client = webClientBuilder.baseUrl(this.config.getBillServiceUrl()).build();
+	}
+
+	public Mono<Long> countBills(String duCode, Long batchNo) {
+		String uri = "/" + duCode + "/bills/countByBatchNo?batchNo=" + batchNo;
+		return this.client.get().uri(uri).retrieve().bodyToMono(Long.class);
 	}
 
 	public Flux<Bill> getBills(String duCode, Long batchNo) {

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ${SPRING_APPLICATION_NAME:subscription-service}
+    name: ${SPRING_APPLICATION_NAME:dlpc-subscription-service}
   cloud:
     config:
       label: main

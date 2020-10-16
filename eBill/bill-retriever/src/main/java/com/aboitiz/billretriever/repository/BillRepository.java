@@ -12,7 +12,9 @@ import com.aboitiz.billretriever.model.Bill;
 
 @RepositoryRestResource(exported = true)
 @Transactional
-public interface HeaderRepository extends JpaRepository<Bill, Long> {
+public interface BillRepository extends JpaRepository<Bill, Long> {
+	
+	Long countByBatchNo(@Param("batchNo") Long batchNo);
 
 	List<Bill> findTop12ByAcctNoOrderByBillDateDesc(@Param("acctNo") String acctNo);
 

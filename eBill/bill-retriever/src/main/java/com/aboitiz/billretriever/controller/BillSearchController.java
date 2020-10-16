@@ -10,24 +10,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aboitiz.billretriever.model.Bill;
-import com.aboitiz.billretriever.repository.HeaderRepository;
+import com.aboitiz.billretriever.repository.BillRepository;
 
 import lombok.extern.log4j.Log4j2;
 
 @RestController
 @RequestMapping("/bills/search")
 @Log4j2
-public class HeaderSearchController {
+public class BillSearchController {
 
-	HeaderRepository headerRepository;
+	BillRepository billRepository;
 
-	public HeaderSearchController(HeaderRepository headerRepository) {
-		this.headerRepository = headerRepository;
+	public BillSearchController(BillRepository billRepository) {
+		this.billRepository = billRepository;
 	}
 	
 	@GetMapping("/findTop12ByAcctNo")
 	List<Bill> findTop12ByAcctNo(@RequestParam("acctNo") String acctNo) {
-		List<Bill> list = this.headerRepository.findTop12ByAcctNoOrderByBillDateDesc(acctNo);
+		List<Bill> list = this.billRepository.findTop12ByAcctNoOrderByBillDateDesc(acctNo);
 
 		if (!list.isEmpty()) {
 			log.info("findTop12ByAcctNo({}) - found {}", acctNo, list.size());
@@ -38,7 +38,7 @@ public class HeaderSearchController {
 
 	@GetMapping("/findByBillDate")
 	List<Bill> findByBillDate(@RequestParam("billDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date billDate) {
-		List<Bill> list = this.headerRepository.findByBillDate(billDate);
+		List<Bill> list = this.billRepository.findByBillDate(billDate);
 
 		if (!list.isEmpty()) {
 			log.info("findByBillDate({}) - found", billDate);
@@ -50,7 +50,7 @@ public class HeaderSearchController {
 	@GetMapping("/findByBillDateAndAcctNo")
 	List<Bill> findByBillDateAndAcctNo(@RequestParam("billDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date billDate,
 			@RequestParam("acctNo") String acctNo) {
-		List<Bill> list = this.headerRepository.findByBillDateAndAcctNo(billDate, acctNo);
+		List<Bill> list = this.billRepository.findByBillDateAndAcctNo(billDate, acctNo);
 
 		if (!list.isEmpty()) {
 			log.info("findByBillDateAndAcctNo({},{}) - found", billDate, acctNo);
@@ -61,7 +61,7 @@ public class HeaderSearchController {
 
 	@GetMapping("/findByTranNo")
 	List<Bill> findByTranNo(@RequestParam("tranNo") Long tranNo) {
-		List<Bill> list = this.headerRepository.findByTranNo(tranNo);
+		List<Bill> list = this.billRepository.findByTranNo(tranNo);
 
 		if (!list.isEmpty()) {
 			log.info("findByTranNo({}) - found", tranNo);
@@ -72,7 +72,7 @@ public class HeaderSearchController {
 
 	@GetMapping("/findByBatchNo")
 	List<Bill> findByBatchNo(@RequestParam("batchNo") Long batchNo) {
-		List<Bill> list = this.headerRepository.findByBatchNo(batchNo);
+		List<Bill> list = this.billRepository.findByBatchNo(batchNo);
 
 		if (!list.isEmpty()) {
 			log.info("findByBatchNo({}) - found", batchNo);
@@ -83,7 +83,7 @@ public class HeaderSearchController {
 
 	@GetMapping("/findByBatchNoAndAcctNo")
 	List<Bill> findByBatchNoAndAcctNo(@RequestParam("batchNo") Long batchNo, @RequestParam("acctNo") String acctNo) {
-		List<Bill> list = this.headerRepository.findByBatchNoAndAcctNo(batchNo, acctNo);
+		List<Bill> list = this.billRepository.findByBatchNoAndAcctNo(batchNo, acctNo);
 
 		if (!list.isEmpty()) {
 			log.info("findByBatchNoAndAcctNo({},{}) - found", batchNo, acctNo);
