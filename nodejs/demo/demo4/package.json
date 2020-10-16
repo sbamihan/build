@@ -1,0 +1,20 @@
+{
+  "name": "demo1",
+  "version": "1.0.0",
+  "description": "demo1 app",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./src/test.js"
+  },
+  "keywords": [
+    "demo1"
+  ],
+  "author": "sherwin",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "kafkajs": "^1.14.0",
+    "uuid": "^8.3.1"
+  }
+}

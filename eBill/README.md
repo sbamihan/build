@@ -54,7 +54,7 @@ Procedures:
 1.  Bill Stager reacts to `BILL-EXTRACTED` event.
 2.	Gets customer information (Account ID, email) from **Subscription Service**.
 
-    Should call **Subscription Service** at GET `/search/findByTypeCode?typeCode={{typeCode}}` endpoint, where **typeCode** is the code for the type of subscription such as **EBIL** (for eBill), **OUTN** (for Outage Notification), or **NEWS** (for News). The data should be similar to this.
+    Should call **Subscription Service** at GET `/{{duCode}}/accounts/search/findByTypeCode?typeCode={{typeCode}}` endpoint, where **duCode** is a value taken from the `BILL-EXTRACTED` event data and **typeCode** is the code for the type of subscription such as **EBIL** (for eBill), **OUTN** (for Outage Notification), or **NEWS** (for News). The data should be similar to this.
 
     <details>
     <summary>Click to expand!</summary>
@@ -125,7 +125,7 @@ Procedures:
 
 3.	Retrieves bill information of subscribed customers from CC&B through **Bill Retriever**.
     
-    Should call **Bill Retriever** at GET `/{{duCode}}/findByBatchNoAndAcctNo?batchNo={{batchNo}}&acctNo={{acctNo}}` endpoint, where **duCode** and **batchNo** are values from `BILL-EXTRACTED` event data and **acctNo** is a value from **Subscription Service**.
+    Should call **Bill Retriever** at GET `/{{duCode}}/bills/findByBatchNoAndAcctNo?batchNo={{batchNo}}&acctNo={{acctNo}}` endpoint, where **duCode** and **batchNo** are values from `BILL-EXTRACTED` event data and **acctNo** is a value from **Subscription Service**.
 
 4.	Projects the bill information then saves to persistence store.
 
@@ -720,7 +720,7 @@ This is the one responsible for fetching the extracted bills from CC&B for the c
 Procedures:
 1.	Fetches extracted bills from CC&B based on parameters provided by **Bill Stager**.
 
-    Should accept REST call at POST `/findByBatchNoAndAcctNo?batchNo={{batchNo}}&acctNo={{acctNo}}` endpoint and return bill information similar to this.
+    Should accept REST call at POST `/bills/search/findByBatchNoAndAcctNo?batchNo={{batchNo}}&acctNo={{acctNo}}` endpoint and return bill information similar to this.
 
     <details>
     <summary>Click to expand!</summary>
