@@ -56,6 +56,10 @@ public class BillService {
 					return Flux.empty();
 				});
 	}
+	
+	public Mono<Bill> save(Bill bill) {
+		return billRepository.save(bill);
+	}
 
 	public Flux<Bill> saveAll(Flux<Bill> billFlux) {
 		return billRepository.saveAll(billFlux);
