@@ -20,10 +20,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- *
- * @author SBAmihan
- */
 @Entity
 @Table(name = "contact_type", schema = "customer")
 @Data
