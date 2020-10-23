@@ -14,10 +14,10 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 
 @SpringBootApplication
-public class SubscriptionServiceApplication {
+public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SubscriptionServiceApplication.class, args);
+		SpringApplication.run(DemoApplication.class, args);
 	}
 
 	@Bean
@@ -31,9 +31,9 @@ public class SubscriptionServiceApplication {
 //				.components(new Components().addSecuritySchemes("bearerScheme",
 //						new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")
 //								.description("JWT Authorization")))
-				.info(new Info().title("Subscription Service").description("Application used for managing subscriptions").version("v0.0.1")
+				.info(new Info().title("Demo Application").description("Application used for Demo").version("v0.0.1")
 						.license(new License().name("Apache 2.0").url("http://springdoc.org")))
-				.externalDocs(new ExternalDocumentation().description("Subscription Service Wiki Documentation")
+				.externalDocs(new ExternalDocumentation().description("Demo Documentation")
 						.url("https://springshop.wiki.github.org/docs"));
 	}
 
@@ -45,14 +45,8 @@ public class SubscriptionServiceApplication {
 
 	@Bean
 	public GroupedOpenApi contactOpenApi() {
-		String[] paths = { "/contacts/**", "/contactTypes/**" };
+		String[] paths = { "/contacts/**" };
 		return GroupedOpenApi.builder().group("contacts").pathsToMatch(paths).build();
-	}
-	
-	@Bean
-	public GroupedOpenApi subscriptionOpenApi() {
-		String[] paths = { "/subscriptions/**", "/subscriptionTypes/**" };
-		return GroupedOpenApi.builder().group("subscriptions").pathsToMatch(paths).build();
 	}
 
 }

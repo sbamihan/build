@@ -11,9 +11,8 @@ import com.aboitiz.subscriptionservice.model.Account;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, String> {
 
-	List<Account> findByAccountSubscriptions_subscriptionType_typeCode(@Param("typeCode") String typeCode);
+	List<Account> findBySubscriptionList_subscriptionType_typeCode(@Param("typeCode") String typeCode);
 
-	List<Account> findByAccountIdAndAccountSubscriptions_subscriptionType_typeCode(@Param("accountId") String accountId,
-			@Param("typeCode") String typeCode);
+	List<Account> findByContactList_value(@Param("value") String value);
 
 }
