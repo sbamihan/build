@@ -18,7 +18,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "subscription_type")
+@Table(name = "subscription_type", schema = "customer")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,11 +31,11 @@ public class SubscriptionType {
 	@Schema(description = "The code for the type of subscription.", example = "EBIL", allowableValues = { "EBIL",
 			"MOAP", "OUTN" }, required = true, readOnly = false)
 	private String typeCode;
-	
+
 	@Column(name = "description")
-	@Schema(description = "Short descriptin of the subscription.", example = "Electronic sending of bill.", required = false, readOnly = true)
+	@Schema(description = "Short description of the type of subscription.", example = "Electronic sending of bill.", required = false, readOnly = true)
 	private String description;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "subscriptionType")
 	@JsonIgnore
 	private List<Subscription> subscriptionList;

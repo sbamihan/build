@@ -19,7 +19,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "subscription")
+@Table(name = "subscription", schema = "customer")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -51,7 +51,6 @@ public class Subscription {
 
 	@JoinColumn(name = "subscription_type", referencedColumnName = "type_code")
 	@ManyToOne(optional = false)
-//	@Schema(description = "The type of subscription.", example = "EBILL", required = true, readOnly = false)
 	private SubscriptionType subscriptionType;
 
 }

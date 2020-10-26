@@ -27,11 +27,17 @@ app.get('/', function (req, res) {
 })
 
 app.post('/events', function (req, res) {
+  newObject = {
+    name: "name",
+    test: "test"
+  }
+
   billExtractedEvent = {
     uuid: uuid.v1(),
     duCode: req.body.duCode,
     batchNo: req.body.batchNo,
-    creDttm: new Date()
+    creDttm: new Date(),
+    newItem: newObject
   }
 
   var sendMessage = async () => {

@@ -15,4 +15,7 @@ public interface AccountRepository extends JpaRepository<Account, String> {
 
 	List<Account> findByContactList_value(@Param("value") String value);
 
+	List<Account> findByAccountIdAndSubscriptionList_subscriptionType_typeCode(@Param("accountId") String accountId,
+			@Param("typeCode") String typeCode);
+
 }
