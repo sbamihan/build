@@ -63,7 +63,7 @@ public class Handler {
 
 	private Bill projectBill(ExtractedBillEvent event, Account account, Bill bill) {
 		bill.setUuid(event.getUuid());
-		bill.setContacts(account.getAccountContacts());
+		bill.setContacts(account.getContactList());
 
 		return bill;
 	}

@@ -6,7 +6,6 @@
 package com.aboitiz.billstager.model;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Date;
 
@@ -95,7 +94,7 @@ public class Bill {
 	private Collection<MeterDetail> meterDetails;
 	private Collection<ConsumptionHistory> consumptionHistoryCollection;
 	private Collection<LineDetail> lineDetails;
-	private Collection<AccountContact> contacts;
+	private Collection<Contact> contacts;
 	private String uuid;
 
 }

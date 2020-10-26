@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.aboitiz.billstager.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,13 +9,20 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountContact {
+public class Contact {
 
 	@JsonIgnore
-	private String id;
+	private Integer id;
+
 	private String value;
+
+	private String statFlg;
+
+	private Character primSw;
+
 	@JsonIgnore
-	private Account accountId;
+	private Account account;
+
 	private ContactType contactType;
 
 }

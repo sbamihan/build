@@ -6,7 +6,6 @@
 package com.aboitiz.billretriever.model;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Date;
 
