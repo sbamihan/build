@@ -42,12 +42,11 @@ public class AccountHandler {
 		return serverRequest.bodyToMono(Account.class).flatMap(accountService::save)
 				.flatMap(serverResponse -> created(create("/accounts/" + serverResponse.getAccountId()))
 						.contentType(APPLICATION_JSON).bodyValue(serverResponse))
-				.switchIfEmpty(ServerResponse.badRequest().build())
-				.onErrorResume(fallback -> ServerResponse.badRequest().contentType(MediaType.TEXT_PLAIN)
-						.bodyValue(fallback.getLocalizedMessage()));
+				.switchIfEmpty(ServerResponse.badRequest().build()).onErrorResume(fallback -> ServerResponse
+						.badRequest().contentType(MediaType.TEXT_PLAIN).bodyValue(fallback.getLocalizedMessage()));
 	}
 
-	public Mono<ServerResponse> findByContactValue(ServerRequest serverRequest) {
+	public Mono<ServerResponse> findAccountByContactValue(ServerRequest serverRequest) {
 		return Mono.just(serverRequest.queryParam("value"))
 				.map(monoValue -> monoValue.orElseThrow(() -> new RuntimeException("Invalid Parameter!")))
 				.flatMap(value -> ok().contentType(APPLICATION_JSON).body(accountService.findByContactValue(value),
@@ -56,7 +55,7 @@ public class AccountHandler {
 						.bodyValue(fallback.getLocalizedMessage()));
 	}
 
-	public Mono<ServerResponse> findBySubscriptionType(ServerRequest serverRequest) {
+	public Mono<ServerResponse> findAccountBySubscriptionType(ServerRequest serverRequest) {
 		return Mono.just(serverRequest.queryParam("subscriptionTypeCode"))
 				.map(monoTypeCode -> monoTypeCode.orElseThrow(() -> new RuntimeException("Invalid Parameter!")))
 				.map(typeCode -> accountService.findBySubscription(typeCode))
@@ -65,7 +64,7 @@ public class AccountHandler {
 						.bodyValue(fallback.getLocalizedMessage()));
 	}
 
-	public Mono<ServerResponse> getAccountByAccountIdAndFindByAndSubscription(ServerRequest serverRequest) {
+	public Mono<ServerResponse> getAccountByAccountIdAndFindBySubscription(ServerRequest serverRequest) {
 		String accountId = serverRequest.pathVariable("accountId");
 
 		return Mono.just(serverRequest.queryParam("subscriptionTypeCode"))

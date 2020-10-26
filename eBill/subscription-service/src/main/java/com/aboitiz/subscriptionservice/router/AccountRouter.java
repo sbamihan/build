@@ -46,7 +46,7 @@ public class AccountRouter {
 							@ApiResponse(responseCode = "200", description = "Ok", content = @Content(schema = @Schema(implementation = Account.class))),
 							@ApiResponse(responseCode = "401", description = "Unauthorized"),
 							@ApiResponse(responseCode = "404", description = "Not Found") }))
-	public RouterFunction<ServerResponse> getAccountById(AccountHandler accountHandler) {
+	public RouterFunction<ServerResponse> getAccountByIdRoute(AccountHandler accountHandler) {
 		return route(GET("/accounts/{accountId}").and(accept(APPLICATION_JSON)), accountHandler::getAccountById);
 	}
 
@@ -69,9 +69,9 @@ public class AccountRouter {
 							@ApiResponse(responseCode = "401", description = "Unauthorized"),
 							@ApiResponse(responseCode = "403", description = "Forbidden"),
 							@ApiResponse(responseCode = "404", description = "Not Found") }))
-	public RouterFunction<ServerResponse> findByContactValueRoute(AccountHandler accountHandler) {
+	public RouterFunction<ServerResponse> findAccountByContactValueRoute(AccountHandler accountHandler) {
 		return route(GET("/accounts/search/findByContactValue").and(accept(APPLICATION_JSON)),
-				accountHandler::findByContactValue);
+				accountHandler::findAccountByContactValue);
 	}
 
 	@Bean
@@ -83,13 +83,13 @@ public class AccountRouter {
 									@ApiResponse(responseCode = "401", description = "Unauthorized"),
 									@ApiResponse(responseCode = "403", description = "Forbidden"),
 									@ApiResponse(responseCode = "404", description = "Not Found") }))
-	public RouterFunction<ServerResponse> findBySubscriptionTypeRoute(AccountHandler accountHandler) {
+	public RouterFunction<ServerResponse> findAccountBySubscriptionTypeRoute(AccountHandler accountHandler) {
 		return route(GET("/accounts/search/findBySubscriptionType").and(accept(APPLICATION_JSON)),
-				accountHandler::findBySubscriptionType);
+				accountHandler::findAccountBySubscriptionType);
 	}
 
 	@Bean
-	@RouterOperation(operation = @Operation(operationId = "findByAccountAndSubscription", description = "Find by Account ID and Subscription.", summary = "Find by Account and Subscription.", security = {
+	@RouterOperation(operation = @Operation(operationId = "getAccountByAccountIdAndFindBySubscription", description = "Find by Account ID and Subscription.", summary = "Find by Account and Subscription.", security = {
 			@SecurityRequirement(name = "bearerScheme") }, tags = { "Account" }, parameters = {
 					@Parameter(in = ParameterIn.PATH, required = true, name = "accountId", description = "Unique identifier of the account."),
 					@Parameter(in = ParameterIn.QUERY, required = true, name = "subscriptionTypeCode", description = "The code for the type of service the Account is subscribed to.", schema = @Schema(required = true, allowableValues = {
@@ -98,10 +98,11 @@ public class AccountRouter {
 									@ApiResponse(responseCode = "401", description = "Unauthorized"),
 									@ApiResponse(responseCode = "403", description = "Forbidden"),
 									@ApiResponse(responseCode = "404", description = "Not Found") }))
-	public RouterFunction<ServerResponse> findByAccountAndSubscriptionRoute(AccountHandler accountHandler) {
+	public RouterFunction<ServerResponse> getAccountByAccountIdAndFindBySubscriptionRoute(
+			AccountHandler accountHandler) {
 		return route(
 				GET("/accounts/{accountId}/subscriptions/search/findBySubscriptionType").and(accept(APPLICATION_JSON)),
-				accountHandler::getAccountByAccountIdAndFindByAndSubscription);
+				accountHandler::getAccountByAccountIdAndFindBySubscription);
 	}
 
 	@Bean
@@ -111,7 +112,7 @@ public class AccountRouter {
 							@ApiResponse(responseCode = "200", description = "Ok", content = @Content(schema = @Schema(implementation = Account.class))),
 							@ApiResponse(responseCode = "401", description = "Unauthorized"),
 							@ApiResponse(responseCode = "404", description = "Not Found") }))
-	public RouterFunction<ServerResponse> getContactsByAccountId(AccountHandler accountHandler) {
+	public RouterFunction<ServerResponse> getContactsByAccountIdRoute(AccountHandler accountHandler) {
 		return route(GET("/accounts/{accountId}/contacts").and(accept(APPLICATION_JSON)),
 				accountHandler::getContactsByAccountId);
 	}
@@ -123,7 +124,7 @@ public class AccountRouter {
 							@ApiResponse(responseCode = "200", description = "Ok", content = @Content(schema = @Schema(implementation = Account.class))),
 							@ApiResponse(responseCode = "401", description = "Unauthorized"),
 							@ApiResponse(responseCode = "404", description = "Not Found") }))
-	public RouterFunction<ServerResponse> getSubscriptionsByAccountId(AccountHandler accountHandler) {
+	public RouterFunction<ServerResponse> getSubscriptionsByAccountIdRoute(AccountHandler accountHandler) {
 		return route(GET("/accounts/{accountId}/subscriptions").and(accept(APPLICATION_JSON)),
 				accountHandler::getSubscriptionsByAccountId);
 	}
@@ -136,7 +137,7 @@ public class AccountRouter {
 							@ApiResponse(responseCode = "401", description = "Unauthorized"),
 							@ApiResponse(responseCode = "403", description = "Forbidden"),
 							@ApiResponse(responseCode = "404", description = "Not Found") }))
-	public RouterFunction<ServerResponse> createContactByAccountId(AccountHandler accountHandler) {
+	public RouterFunction<ServerResponse> createContactByAccountIdRoute(AccountHandler accountHandler) {
 		return route(POST("/accounts/{accountId}/contacts").and(accept(APPLICATION_JSON)),
 				accountHandler::createContactByAccountId);
 	}
@@ -149,7 +150,7 @@ public class AccountRouter {
 							@ApiResponse(responseCode = "401", description = "Unauthorized"),
 							@ApiResponse(responseCode = "403", description = "Forbidden"),
 							@ApiResponse(responseCode = "404", description = "Not Found") }))
-	public RouterFunction<ServerResponse> createSubscriptionByAccountId(AccountHandler accountHandler) {
+	public RouterFunction<ServerResponse> createSubscriptionByAccountIdRoute(AccountHandler accountHandler) {
 		return route(POST("/accounts/{accountId}/subscriptions").and(accept(APPLICATION_JSON)),
 				accountHandler::createSubscriptionByAccountId);
 	}
