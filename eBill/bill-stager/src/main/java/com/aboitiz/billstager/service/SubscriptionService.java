@@ -30,7 +30,7 @@ public class SubscriptionService {
 			uri = uri + "/" + event.getAccountId() + "/subscriptions/search/findBySubscriptionType?subscriptionTypeCode="
 					+ SUBSCRIPTION_TYPE;
 		} else {
-			uri = uri + "/search/findBySubscription?subscriptionTypeCode=" + SUBSCRIPTION_TYPE;
+			uri = uri + "/search/findBySubscriptionType?subscriptionTypeCode=" + SUBSCRIPTION_TYPE;
 		}
 
 		log.info("uri {}", uri);
