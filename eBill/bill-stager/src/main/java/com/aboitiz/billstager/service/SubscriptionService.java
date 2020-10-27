@@ -27,7 +27,7 @@ public class SubscriptionService {
 	public Flux<Account> getAccounts(ExtractedBillEvent event) {
 		String uri = "/" + event.getDuCode() + "/accounts";
 		if (event.getAccountId() != null) {
-			uri = uri + "/" + event.getAccountId() + "/search/findBySubscriptionType?subscriptionTypeCode="
+			uri = uri + "/" + event.getAccountId() + "/subscriptions/search/findBySubscriptionType?subscriptionTypeCode="
 					+ SUBSCRIPTION_TYPE;
 		} else {
 			uri = uri + "/search/findBySubscription?subscriptionTypeCode=" + SUBSCRIPTION_TYPE;
