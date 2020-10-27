@@ -1,0 +1,23 @@
+{
+  "name": "demo-app",
+  "version": "0.0.1",
+  "description": "This is a demo application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "author": "Aboitiz Power <admin@aboitiz.com.ph>",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^3.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "knex": "^0.20.8",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

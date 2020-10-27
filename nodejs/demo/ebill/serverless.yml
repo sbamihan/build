@@ -1,0 +1,20 @@
+ 
+service: prepaidsms
+ 
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+# you can overwrite defaults here
+  stage: dev
+  region: ap-southeast-1
+ 
+ 
+functions:
+  app-api:
+    handler: app.handler
+    events:
+      - http:
+          path: /
+          method: get
+          cors: true
