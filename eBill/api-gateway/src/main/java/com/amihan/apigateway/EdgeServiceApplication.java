@@ -16,17 +16,17 @@ public class EdgeServiceApplication {
 		SpringApplication.run(EdgeServiceApplication.class, args);
 	}
 
-	@Bean
-	public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
-		return builder.routes().route("head-service", r -> r.path("/api/v1/head/**").uri("lb://HEAD-SERVICE"))
-				.route("rewrite-head-service",
-						r -> r.path("/requests/**")
-								.filters(f -> f.rewritePath("/requests", "/api/v1/head/requests")
-										.addRequestHeader("X-first-Header", "first-service-header")
-										.hystrix(c -> c.setName("hystrix").setFallbackUri("forward:/hystrixfallback")))
-								.uri("lb://HEAD-SERVICE"))
-				.build();
-	}
+//	@Bean
+//	public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
+//		return builder.routes().route("head-service", r -> r.path("/api/v1/head/**").uri("lb://HEAD-SERVICE"))
+//				.route("rewrite-head-service",
+//						r -> r.path("/requests/**")
+//								.filters(f -> f.rewritePath("/requests", "/api/v1/head/requests")
+//										.addRequestHeader("X-first-Header", "first-service-header")
+//										.hystrix(c -> c.setName("hystrix").setFallbackUri("forward:/hystrixfallback")))
+//								.uri("lb://HEAD-SERVICE"))
+//				.build();
+//	}
 
 	@RequestMapping("/hystrixfallback")
 	public String hystrixfallback() {
