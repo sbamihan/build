@@ -15,22 +15,22 @@ class EdgeServiceApplicationTests {
 	int port;
 	private WebTestClient client;
 
-	@BeforeEach
-	public void setup() {
-		client = WebTestClient.bindToServer().baseUrl("http://localhost:" + port).build();
-	}
-
-	@Test
-	public void headServiceRouteWorks() {
-		client.get()
-			.uri("/api/v1/head/requests")
-			.exchange()
-			.expectStatus()
-			.isOk()
-			.expectBody()
-			.consumeWith(result -> {
-				assertThat(result.getResponseBody()).isNotEmpty();
-			});
-	}
+//	@BeforeEach
+//	public void setup() {
+//		client = WebTestClient.bindToServer().baseUrl("http://localhost:" + port).build();
+//	}
+//
+//	@Test
+//	public void headServiceRouteWorks() {
+//		client.get()
+//			.uri("/api/v1/head/requests")
+//			.exchange()
+//			.expectStatus()
+//			.isOk()
+//			.expectBody()
+//			.consumeWith(result -> {
+//				assertThat(result.getResponseBody()).isNotEmpty();
+//			});
+//	}
 
 }
