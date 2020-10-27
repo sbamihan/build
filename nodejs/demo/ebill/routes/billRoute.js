@@ -15,7 +15,7 @@ router.get('/accounts/:accountId', function (req, res) {
             resolve(data);
           })
           .catch(error => {
-            console.log("ERROR: " + error.toString())
+            console.log("ERROR => " + error.toString())
             resolve([]);
           });
       });
@@ -31,7 +31,7 @@ router.get('/accounts/:accountId', function (req, res) {
             resolve(data);
           })
           .catch(error => {
-            console.log("ERROR: " + error.toString())
+            console.log("ERROR => " + error.toString())
             resolve([]);
           });
       });
@@ -47,7 +47,7 @@ router.get('/accounts/:accountId', function (req, res) {
             resolve(data);
           })
           .catch(error => {
-            console.log("ERROR: " + error.toString())
+            console.log("ERROR => " + error.toString())
             resolve([]);
           });
       });
@@ -57,7 +57,6 @@ router.get('/accounts/:accountId', function (req, res) {
     var account = await getAccount();
     var contacts = await getContacts();
 
-    console.log(account);
     if (account.length > 0) {
       var subscriptions = await getSubscriptions(account[0].account_id);
 
