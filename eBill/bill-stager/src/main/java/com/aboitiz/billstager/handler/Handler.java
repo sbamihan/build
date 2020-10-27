@@ -42,7 +42,7 @@ public class Handler {
 					.delayElements(ofMillis(5))
 					.flatMap(account -> this.getBills(event, account))
 					.flatMap(billService::save)
-					.doOnNext(log::info)
+					.doOnNext(savedBill -> log.info("Bill [{}, {}] saved", event.getDuCode(), savedBill.getAltBillId()))
 					.collectList();
 
 			return just(new StagedBillEvent(event))
