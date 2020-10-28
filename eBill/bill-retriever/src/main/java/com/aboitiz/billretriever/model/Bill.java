@@ -13,6 +13,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -89,8 +91,8 @@ public class Bill {
 	private String billingAdd2;
 	@Column(name = "BILLING_ADD3")
 	private String billingAdd3;
-	@Column(name = "MESSAGE_CODE")
-	private String messageCode;
+//	@Column(name = "MESSAGE_CODE")
+//	private String messageCode;
 	@Column(name = "POWER_FACTOR_VALUE")
 	private BigDecimal powerFactorValue;
 	@Column(name = "BILLED_KWHR_CONS")
@@ -114,8 +116,8 @@ public class Bill {
 	private BigDecimal lastPaymentAmount;
 	@Column(name = "MAIN_SA_ID")
 	private String mainSaId;
-	@Column(name = "MESSENGER_CODE")
-	private String messengerCode;
+//	@Column(name = "MESSENGER_CODE")
+//	private String messengerCode;
 	@Column(name = "ALT_BILL_ID")
 	private String altBillId;
 //	@Column(name = "LOCATION_CODE")
@@ -155,6 +157,9 @@ public class Bill {
 	private String busAdd4;
 	@Column(name = "BUS_ADD5")
 	private String busAdd5;
+	@JoinColumn(name = "MESSAGE_CODE", referencedColumnName = "MESSAGE_CODE", insertable = false, updatable = false)
+	@ManyToOne(optional = false)
+	private BillMessage billMessage;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "bill")
 	private Collection<MeterDetail> meterDetails;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "bill")
