@@ -27,28 +27,28 @@ public class Handler {
 		this.billService = billService;
 	}
 
-	@Bean
-	Consumer<Flux<StagedBillEvent>> transportBill() {
-		return flux -> flux.map(m -> {
-			String message = "Received event " + m;
-
-			return message;
-		}).subscribe(log::info);
-	}
-
 //	@Bean
 //	Consumer<Flux<StagedBillEvent>> transportBill() {
-//		return flux -> flux.flatMap(event -> {
-//			return Flux.just(new Payload(event)).zipWith(billService.getBill(event.getUuid()).collectList())
-//					.map(tuple -> {
-//						Payload payload = tuple.getT1();
-//						payload.setBills(tuple.getT2());
-//						return payload;
-//					}).flatMap(p -> {
-//						log.info("sending payload containing {} bills...", p.getBills().size());
-//						return transportService.sendBill(p);
-//					});
-//		}).onErrorResume(e -> just("ERROR: " + e.getMessage())).subscribe(log::info);
+//		return flux -> flux.map(m -> {
+//			String message = "Received event " + m;
+//
+//			return message;
+//		}).subscribe(log::info);
 //	}
+
+	@Bean
+	Consumer<Flux<StagedBillEvent>> transportBill() {
+		return flux -> flux.flatMap(event -> {
+			return Flux.just(new Payload(event)).zipWith(billService.getBill(event.getUuid()).collectList())
+					.map(tuple -> {
+						Payload payload = tuple.getT1();
+						payload.setBills(tuple.getT2());
+						return payload;
+					}).flatMap(p -> {
+						log.info("sending payload containing {} bills...", p.getBills().size());
+						return transportService.sendBill(p);
+					});
+		}).onErrorResume(e -> just("ERROR: " + e.getMessage())).subscribe(log::info);
+	}
 
 }

@@ -66,14 +66,6 @@ public class MeterDetail {
 	private BigDecimal regKvarCons;
 	@Column(name = "METER_TYPE")
 	private String meterType;
-//	@Column(name = "CONSUM_SUB_FLG")
-//	private String consumSubFlg;
-//	@Column(name = "KWHR_CONSUM_SUB_FLG")
-//	private String kwhrConsumSubFlg;
-//	@Column(name = "DEMAND_CONSUM_SUB_FLG")
-//	private String demandConsumSubFlg;
-//	@Column(name = "KVAR_CONSUM_SUB_FLG")
-//	private String kvarConsumSubFlg;
 	@JoinColumn(name = "TRAN_NO", referencedColumnName = "TRAN_NO", insertable = false, updatable = false)
 	@ManyToOne(optional = false)
 	@JsonIgnore
