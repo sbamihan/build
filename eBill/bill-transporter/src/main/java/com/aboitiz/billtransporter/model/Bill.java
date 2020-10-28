@@ -6,24 +6,18 @@
 package com.aboitiz.billtransporter.model;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Date;
-
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-@Document
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Bill {
 
 	private Long tranNo;
@@ -57,7 +51,6 @@ public class Bill {
 	private String billingAdd1;
 	private String billingAdd2;
 	private String billingAdd3;
-	private String messageCode;
 	private BigDecimal powerFactorValue;
 	private BigDecimal billedKwhrCons;
 	private BigDecimal billedDemandCons;
@@ -70,17 +63,12 @@ public class Bill {
 	private Date lastPaymentDate;
 	private BigDecimal lastPaymentAmount;
 	private String mainSaId;
-	private String messengerCode;
 	private String altBillId;
-//	private String locationCode;
-//	private Character lastBillFlg;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
 	private Date parMonth;
 	private BigDecimal parKwhr;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
 	private Date completeDate;
-//	private BigInteger fltConnection;
-//	private BigInteger fltWattage;
 	private Character noBatchPrtSw;
 	private Character ebillOnlySw;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
@@ -92,10 +80,11 @@ public class Bill {
 	private String busAdd3;
 	private String busAdd4;
 	private String busAdd5;
+	private BillMessage billMessage;
 	private Collection<MeterDetail> meterDetails;
 	private Collection<ConsumptionHistory> consumptionHistory;
 	private Collection<LineDetail> lineDetails;
-	private Collection<AccountContact> contacts;
+	private Collection<Contact> contacts;
 	private String uuid;
 
 }

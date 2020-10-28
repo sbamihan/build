@@ -1,7 +1,5 @@
 package com.aboitiz.billtransporter.model;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -11,13 +9,20 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContactType {
-
-	private String typeCode;
-
-	private String description;
+public class Contact {
 
 	@JsonIgnore
-	private List<Contact> contactList;
+	private Integer id;
+
+	private String value;
+
+	private String statFlg;
+
+	private Character primSw;
+
+	@JsonIgnore
+	private Account account;
+
+	private ContactType contactType;
 
 }

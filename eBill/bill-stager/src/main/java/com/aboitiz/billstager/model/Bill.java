@@ -11,6 +11,8 @@ import java.util.Date;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,8 +33,11 @@ public class Bill {
 	private String billColor;
 	private String courierCode;
 	private String billType;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
 	private Date billMonth;
+	@JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
 	private Date billDate;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
 	private Date dueDate;
 	private String billNo;
 	private String areaCode;
@@ -59,15 +64,19 @@ public class Bill {
 	private Short overdueBillCount;
 	private BigDecimal billAmt;
 	private BigDecimal totalAmtDue;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
 	private Date lastPaymentDate;
 	private BigDecimal lastPaymentAmount;
 	private String mainSaId;
 	private String altBillId;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
 	private Date parMonth;
 	private BigDecimal parKwhr;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
 	private Date completeDate;
 	private Character noBatchPrtSw;
 	private Character ebillOnlySw;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
 	private Date extractedOn;
 	private String tin;
 	private String busActivity;
