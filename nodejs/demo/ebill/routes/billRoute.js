@@ -23,7 +23,7 @@ router.get('/accounts/:accountId', function (req, res) {
 
     async function getContacts() {
       return new Promise((resolve, reject) => {
-        db.column('account_id', 'contact_type', 'value')
+        db.column('contact_type', 'stat_flg', 'prim_sw', 'value')
           .select()
           .from('contact')
           .where('account_id', accountId)
@@ -39,7 +39,7 @@ router.get('/accounts/:accountId', function (req, res) {
 
     async function getSubscriptions(acct_id) {
       return new Promise((resolve, reject) => {
-        db.column('account_id', 'subscription_type', 'subscribe')
+        db.column('subscription_type', 'stat_flg', 'subscribe')
           .select()
           .from('subscription')
           .where('account_id', acct_id)
