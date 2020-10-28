@@ -25,10 +25,13 @@ public class TransportService {
 	}
 
 	public Mono<String> sendBill(Payload payload) {
-		log.info("sending bills for {}", payload.getUuid());
-		return this.client.post().uri(clientConfig.getPrimaryClientCallbackEndpoint())
-				.contentType(MediaType.APPLICATION_JSON).body(Mono.just(payload), Payload.class).retrieve()
-				.bodyToMono(String.class).timeout(Duration.ofMinutes(1));
+		log.info("sending bills for {}", payload.toString());
+		
+		return Mono.just("data posted");
+		
+//		return this.client.post().uri(clientConfig.getPrimaryClientCallbackEndpoint())
+//				.contentType(MediaType.APPLICATION_JSON).body(Mono.just(payload), Payload.class).retrieve()
+//				.bodyToMono(String.class).timeout(Duration.ofMinutes(1));
 	}
 
 }
