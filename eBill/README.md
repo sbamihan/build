@@ -726,191 +726,229 @@ Procedures:
     <summary>Click to expand!</summary>
     
     ```json
-    [
+        [
         {
-            "tranNo": 43771140,
+            "tranNo": 43829514,
             "batchCd": "CMBPEXTG",
-            "batchNo": 3138,
-            "duSetId": 18889,
-            "billingBatchNo": "BC22",
+            "batchNo": 3142,
+            "duSetId": 18897,
+            "billingBatchNo": "BC03",
             "billColor": "GREEN",
             "courierCode": "33",
             "billType": "R",
-            "billMonth": "2020-09-01 00:00:00",
-            "billDate": "2020-10-01",
-            "dueDate": "2020-10-13 00:00:00",
-            "billNo": "096464289996",
+            "billMonth": "2020-10-01 00:00:00",
+            "billDate": "2020-10-05",
+            "dueDate": "2020-10-17 00:00:00",
+            "billNo": "038234325419",
             "areaCode": "10",
             "readingBatchNo": null,
-            "bookNo": 1323,
+            "bookNo": 524,
             "oldSeqNo": 0,
-            "newSeqNo": 62801,
-            "crc": "0943717255",
-            "acctNo": "0969431381",
+            "newSeqNo": 114802,
+            "crc": "0943148315",
+            "acctNo": "0381503733",
             "rateSchedule": "02-R-21",
             "rateScheduleDesc": "Residential 1.1: Rate Schedule Code 21",
-            "customerName": "EMPIT,JORITO JR. GUILON",
-            "premiseAdd1": "PRK 2 SITIO SAN MIGUEL",
-            "premiseAdd2": " ",
-            "premiseAdd3": "CAWAYAN, CALINAN",
-            "billingAdd1": "PRK 2 SITIO SAN MIGUEL",
-            "billingAdd2": " ",
-            "billingAdd3": "CAWAYAN, CALINAN NR BRGY. HALL",
-            "messageCode": "2047",
+            "customerName": "SASIN,ANTHONY BARLIS",
+            "premiseAdd1": "B6 L31",
+            "premiseAdd2": "FAIRLANES",
+            "premiseAdd3": "ANGLIONGTO",
+            "billingAdd1": "B6 L31",
+            "billingAdd2": "FAIRLANES",
+            "billingAdd3": "ANGLIONGTO  ",
             "powerFactorValue": null,
-            "billedKwhrCons": 22,
-            "billedDemandCons": null,
+            "billedKwhrCons": 1393,
+            "billedDemandCons": 8.563,
             "billedKvarCons": null,
-            "overdueAmt": -895.75,
+            "overdueAmt": -0.52,
             "overdueBillCount": null,
-            "billAmt": 107.94,
-            "totalAmtDue": -787.81,
-            "lastPaymentDate": "2020-09-24 00:00:00",
-            "lastPaymentAmount": 1000,
-            "mainSaId": "0965370468",
-            "messengerCode": "0002",
-            "altBillId": "1020530390",
-            "locationCode": "176-Y30",
-            "lastBillFlg": "N",
-            "parMonth": "2020-05-01 00:00:00",
-            "parKwhr": 22,
-            "completeDate": "2020-10-01 18:45:55",
-            "fltConnection": null,
-            "fltWattage": null,
+            "billAmt": 13281.75,
+            "totalAmtDue": 13276.42,
+            "lastPaymentDate": "2020-09-19 00:00:00",
+            "lastPaymentAmount": 12712.01,
+            "mainSaId": "0385664312",
+            "altBillId": "1020575318",
+            "parMonth": "2020-08-01 00:00:00",
+            "parKwhr": 1228,
+            "completeDate": "2020-10-05 21:06:01",
             "noBatchPrtSw": "N",
             "ebillOnlySw": "N",
-            "extractedOn": "2020-10-01 18:47:23",
-            "tin": "711-884-236-000",
+            "extractedOn": "2020-10-06 03:04:29",
+            "tin": null,
             "busActivity": " ",
             "busAdd1": " ",
             "busAdd2": " ",
             "busAdd3": " ",
             "busAdd4": " ",
             "busAdd5": " ",
+            "billMessage": {
+                "messageCode": "2047",
+                "description": "ECQ Online Payment",
+                "messageText": "Check your monthly electric bill in just a few taps with Davao Light's mobile application, mobileAP.\n\nmobileAP allows you to:\n- check your monthly electricity bill\n- view your payment history\n- see list of payment options\n\nmobileAP is available for download in the App Store and Google Play Store. Just key in mobileAP or Davao Light in the search tab.\n\nDownload mobileAP now!"
+            },
             "meterDetails": [
                 {
                     "meterDetailPK": {
-                        "tranNo": 43771140,
-                        "badgeNo": "783057"
+                        "tranNo": 43829514,
+                        "badgeNo": "2SL2019094239"
                     },
-                    "serialNo": "85145094",
-                    "poleNo": "0345255",
+                    "serialNo": "154106076",
+                    "poleNo": "1435921",
                     "multiplier": 1,
-                    "prevReadingDate": "2020-08-25 08:58:00",
-                    "currReadingDate": "2020-09-24 09:04:00",
-                    "connLoad": 18,
-                    "prevKwhrRdg": 1128,
-                    "currKwhrRdg": 1150,
-                    "regKwhrCons": 22,
+                    "prevReadingDate": "2020-09-17 11:00:00",
+                    "currReadingDate": "2020-10-05 12:27:00",
+                    "connLoad": 8000,
+                    "prevKwhrRdg": 0,
+                    "currKwhrRdg": 789,
+                    "regKwhrCons": 789,
+                    "prevDemandRdg": 0,
+                    "currDemandRdg": 8.563,
+                    "regDemandCons": 8.563,
+                    "prevKvarRdg": null,
+                    "currKvarRdg": null,
+                    "regKvarCons": null,
+                    "meterType": null
+                },
+                {
+                    "meterDetailPK": {
+                        "tranNo": 43829514,
+                        "badgeNo": "746658"
+                    },
+                    "serialNo": "85102878",
+                    "poleNo": "1435921",
+                    "multiplier": 1,
+                    "prevReadingDate": "2020-09-04 14:21:00",
+                    "currReadingDate": "2020-09-17 10:45:00",
+                    "connLoad": 8000,
+                    "prevKwhrRdg": 60271,
+                    "currKwhrRdg": 60875,
+                    "regKwhrCons": 604,
                     "prevDemandRdg": null,
                     "currDemandRdg": null,
                     "regDemandCons": null,
                     "prevKvarRdg": null,
                     "currKvarRdg": null,
                     "regKvarCons": null,
-                    "meterType": null,
-                    "consumSubFlg": null,
-                    "kwhrConsumSubFlg": null,
-                    "demandConsumSubFlg": null,
-                    "kvarConsumSubFlg": null
+                    "meterType": null
                 }
             ],
             "consumptionHistory": [
                 {
                     "consumptionHistoryPK": {
-                        "tranNo": 43771140,
-                        "rdgDate": "2020-02-25 00:00:00"
+                        "tranNo": 43829514,
+                        "rdgDate": "2020-09-04 00:00:00"
                     },
-                    "consumption": 41
+                    "consumption": 1342
                 },
                 {
                     "consumptionHistoryPK": {
-                        "tranNo": 43771140,
-                        "rdgDate": "2020-03-25 00:00:00"
+                        "tranNo": 43829514,
+                        "rdgDate": "2020-05-05 00:00:00"
                     },
-                    "consumption": 33
+                    "consumption": 1419
                 },
                 {
                     "consumptionHistoryPK": {
-                        "tranNo": 43771140,
-                        "rdgDate": "2020-01-24 00:00:00"
+                        "tranNo": 43829514,
+                        "rdgDate": "2020-02-04 00:00:00"
                     },
-                    "consumption": 69
+                    "consumption": 1203
                 },
                 {
                     "consumptionHistoryPK": {
-                        "tranNo": 43771140,
-                        "rdgDate": "2019-10-25 00:00:00"
+                        "tranNo": 43829514,
+                        "rdgDate": "2019-10-04 00:00:00"
                     },
-                    "consumption": 70
+                    "consumption": 1498
                 },
                 {
                     "consumptionHistoryPK": {
-                        "tranNo": 43771140,
-                        "rdgDate": "2020-09-24 00:00:00"
+                        "tranNo": 43829514,
+                        "rdgDate": "2020-06-04 00:00:00"
                     },
-                    "consumption": 22
+                    "consumption": 1505
                 },
                 {
                     "consumptionHistoryPK": {
-                        "tranNo": 43771140,
-                        "rdgDate": "2020-08-25 00:00:00"
+                        "tranNo": 43829514,
+                        "rdgDate": "2019-12-04 00:00:00"
                     },
-                    "consumption": 37
+                    "consumption": 1298
                 },
                 {
                     "consumptionHistoryPK": {
-                        "tranNo": 43771140,
-                        "rdgDate": "2020-06-25 00:00:00"
+                        "tranNo": 43829514,
+                        "rdgDate": "2019-11-04 00:00:00"
                     },
-                    "consumption": 22
+                    "consumption": 1391
                 },
                 {
                     "consumptionHistoryPK": {
-                        "tranNo": 43771140,
-                        "rdgDate": "2020-05-27 00:00:00"
+                        "tranNo": 43829514,
+                        "rdgDate": "2020-10-05 00:00:00"
                     },
-                    "consumption": 30
+                    "consumption": 1393
                 },
                 {
                     "consumptionHistoryPK": {
-                        "tranNo": 43771140,
-                        "rdgDate": "2020-04-27 00:00:00"
+                        "tranNo": 43829514,
+                        "rdgDate": "2020-01-04 00:00:00"
                     },
-                    "consumption": 38
+                    "consumption": 1222
                 },
                 {
                     "consumptionHistoryPK": {
-                        "tranNo": 43771140,
-                        "rdgDate": "2019-11-25 00:00:00"
+                        "tranNo": 43829514,
+                        "rdgDate": "2020-07-04 00:00:00"
                     },
-                    "consumption": 40
+                    "consumption": 1316
+                },
+                {
+                    "consumptionHistoryPK": {
+                        "tranNo": 43829514,
+                        "rdgDate": "2020-03-04 00:00:00"
+                    },
+                    "consumption": 1036
+                },
+                {
+                    "consumptionHistoryPK": {
+                        "tranNo": 43829514,
+                        "rdgDate": "2020-04-04 00:00:00"
+                    },
+                    "consumption": 1280
+                },
+                {
+                    "consumptionHistoryPK": {
+                        "tranNo": 43829514,
+                        "rdgDate": "2020-08-04 00:00:00"
+                    },
+                    "consumption": 1228
                 }
             ],
             "lineDetails": [
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "FITA-KWH2"
                     },
                     "printPriority": 1127,
                     "description": "     Feed In Tariff Allowance - FIT-All",
                     "rate": "0.0495/kWh",
-                    "amount": 1.09
+                    "amount": 68.95
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
-                        "lineCode": "LFL-D-F"
+                        "tranNo": 43829514,
+                        "lineCode": "R-SLF"
                     },
-                    "printPriority": 476,
-                    "description": "     Lifeline Discount",
-                    "rate": "50% x 5.00/month",
-                    "amount": -2.5
+                    "printPriority": 485,
+                    "description": "     Senior Citizen Subsidy",
+                    "rate": "0.00003/kWh",
+                    "amount": 0.04
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "UEC"
                     },
                     "printPriority": 1110,
@@ -920,17 +958,17 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "vGOVTOT"
                     },
                     "printPriority": 1130,
                     "description": "Sub-Total",
                     "rate": null,
-                    "amount": 15.2
+                    "amount": 1657.79
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "NETSPACER"
                     },
                     "printPriority": 1430,
@@ -940,27 +978,27 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "OVERDUE"
                     },
                     "printPriority": 5,
                     "description": "PREVIOUS BALANCE",
                     "rate": null,
-                    "amount": -895.75
+                    "amount": -0.52
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "SVR"
                     },
                     "printPriority": 275,
                     "description": "     Supply Charge",
                     "rate": "0.2367/kWh",
-                    "amount": 5.21
+                    "amount": 329.72
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "PREVAMTSPACER"
                     },
                     "printPriority": 6,
@@ -970,7 +1008,7 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "CURCHARGES"
                     },
                     "printPriority": 105,
@@ -980,37 +1018,37 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "ADJLPC"
                     },
                     "printPriority": 540,
                     "description": "     Surcharge",
-                    "rate": "2% of 104.25",
-                    "amount": 2.09
+                    "rate": "2% of 12,711.49",
+                    "amount": 254.23
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "CCBNOTICE"
                     },
                     "printPriority": 1460,
-                    "description": "Please pay by due date - 10/13/2020",
+                    "description": "Please pay by due date - 10/17/2020",
                     "rate": null,
                     "amount": null
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "CCBNOTICE1"
                     },
                     "printPriority": 1461,
-                    "description": "LAST PAYMENT  -  SEPTEMBER 24, 2020  -  1,000.00",
+                    "description": "LAST PAYMENT  -  SEPTEMBER 19, 2020  -  12,712.01",
                     "rate": null,
                     "amount": null
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "vGENCHGHDR"
                     },
                     "printPriority": 110,
@@ -1020,57 +1058,57 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "GEN"
                     },
                     "printPriority": 120,
                     "description": "     Generation Charge",
                     "rate": "4.9223/kWh",
-                    "amount": 108.29
+                    "amount": 6856.76
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "PAR"
                     },
                     "printPriority": 130,
                     "description": "     Power Act Reduction*",
                     "rate": "24.72% x 0.30/kWh",
-                    "amount": -1.63
+                    "amount": -91.06
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "TRX-KWH"
                     },
                     "printPriority": 140,
                     "description": "     Transmission Charge",
                     "rate": "0.4454/kWh",
-                    "amount": 9.8
+                    "amount": 620.44
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "SYS"
                     },
                     "printPriority": 150,
                     "description": "     System Loss Charge",
                     "rate": "0.4392/kWh",
-                    "amount": 9.66
+                    "amount": 611.81
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "vGENTRANSTOT"
                     },
                     "printPriority": 190,
                     "description": "Sub-Total",
                     "rate": null,
-                    "amount": 126.12
+                    "amount": 7997.95
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "vDISTREVHDR"
                     },
                     "printPriority": 200,
@@ -1080,17 +1118,17 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "DIST"
                     },
                     "printPriority": 210,
                     "description": "     Distribution Charge",
                     "rate": "1.9371/kWh",
-                    "amount": 42.62
+                    "amount": 2698.38
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "vUNIVCHGHDR"
                     },
                     "printPriority": 1060,
@@ -1100,7 +1138,7 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "vVATHDR"
                     },
                     "printPriority": 990,
@@ -1110,17 +1148,17 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "MVR"
                     },
                     "printPriority": 280,
                     "description": "     Metering Charge",
                     "rate": "0.1814/kWh",
-                    "amount": 3.99
+                    "amount": 252.69
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "MFX"
                     },
                     "printPriority": 290,
@@ -1130,17 +1168,17 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "vDISTREVTOT"
                     },
                     "printPriority": 310,
                     "description": "Sub-Total",
                     "rate": null,
-                    "amount": 56.82
+                    "amount": 3285.79
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "vOTHHDR"
                     },
                     "printPriority": 460,
@@ -1150,17 +1188,27 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
+                        "lineCode": "SLF-C"
+                    },
+                    "printPriority": 470,
+                    "description": "     Lifeline Rate Subsidy",
+                    "rate": "0.0617/kWh",
+                    "amount": 85.95
+                },
+                {
+                    "lineDetailPK": {
+                        "tranNo": 43829514,
                         "lineCode": "vOTHTOT"
                     },
                     "printPriority": 590,
                     "description": "Sub-Total",
                     "rate": null,
-                    "amount": -90.2
+                    "amount": 340.22
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "vGOVREVHDR"
                     },
                     "printPriority": 840,
@@ -1170,77 +1218,77 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "FCT"
                     },
                     "printPriority": 920,
                     "description": "     Franchise Tax - Local",
                     "rate": null,
-                    "amount": 0.76
+                    "amount": 95.32
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "VAT-GEN"
                     },
                     "printPriority": 1000,
                     "description": "          Generation",
                     "rate": null,
-                    "amount": 4.34
+                    "amount": 549.81
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "VAT-TRX"
                     },
                     "printPriority": 1010,
                     "description": "          Transmission",
                     "rate": null,
-                    "amount": 0.47
+                    "amount": 61.16
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "VAT-SYS"
                     },
                     "printPriority": 1020,
                     "description": "          System Loss",
                     "rate": null,
-                    "amount": 0.41
+                    "amount": 54.33
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "VAT-DIS"
                     },
                     "printPriority": 1030,
                     "description": "          Distribution",
                     "rate": null,
-                    "amount": 3.41
+                    "amount": 394.29
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "VAT-OTH"
                     },
                     "printPriority": 1040,
                     "description": "          Others",
                     "rate": null,
-                    "amount": 0.34
+                    "amount": 52.26
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "vVATTOT"
                     },
                     "printPriority": 1050,
                     "description": "     Total VAT",
                     "rate": null,
-                    "amount": 8.97
+                    "amount": 1111.85
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "RESETCOST-KWH"
                     },
                     "printPriority": 307,
@@ -1250,27 +1298,37 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
+                        "lineCode": "NET-E"
+                    },
+                    "printPriority": 1300,
+                    "description": "Credit Adjustment",
+                    "rate": null,
+                    "amount": -4.81
+                },
+                {
+                    "lineDetailPK": {
+                        "tranNo": 43829514,
                         "lineCode": "UC-ME-SPUG"
                     },
                     "printPriority": 1105,
                     "description": "          Missionary Electrification NPC-SPUG",
                     "rate": "0.1544/kWh",
-                    "amount": 3.4
+                    "amount": 215.08
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "UC-ME-RED"
                     },
                     "printPriority": 1106,
                     "description": "          Missionary Electrification RE Developer",
                     "rate": "0.0017/kWh",
-                    "amount": 0.04
+                    "amount": 2.37
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "LFTRKWH"
                     },
                     "printPriority": 921,
@@ -1280,27 +1338,27 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
-                        "lineCode": "LFL-D"
+                        "tranNo": 43829514,
+                        "lineCode": "ENT"
                     },
-                    "printPriority": 475,
-                    "description": "     Lifeline Discount",
-                    "rate": "50% x 8.1621/kWh",
-                    "amount": -89.79
+                    "printPriority": 930,
+                    "description": "     Energy Tax",
+                    "rate": null,
+                    "amount": 104.6
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "USD"
                     },
                     "printPriority": 1120,
                     "description": "          NPC Stranded Debts",
                     "rate": "0.0428/kWh",
-                    "amount": 0.94
+                    "amount": 59.62
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "USC"
                     },
                     "printPriority": 1122,
@@ -1310,7 +1368,7 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "UDSC"
                     },
                     "printPriority": 1124,
@@ -1320,7 +1378,7 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "UETR"
                     },
                     "printPriority": 1126,
@@ -1330,23 +1388,23 @@ Procedures:
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "GREEN_OUTAMT"
                     },
                     "printPriority": 1459,
                     "description": "TOTAL BILL",
                     "rate": null,
-                    "amount": -787.81
+                    "amount": 13276.42
                 },
                 {
                     "lineDetailPK": {
-                        "tranNo": 43771140,
+                        "tranNo": 43829514,
                         "lineCode": "CURBIL"
                     },
                     "printPriority": 1250,
-                    "description": "CURRENT BILL - SEPTEMBER 2020",
+                    "description": "CURRENT BILL - OCTOBER 2020",
                     "rate": null,
-                    "amount": 107.94
+                    "amount": 13281.75
                 }
             ]
         }
