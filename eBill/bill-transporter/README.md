@@ -681,6 +681,17 @@ The data to be transported to the client should be similar to this.
                     "rate": null,
                     "amount": 22860.28
                 }
+            ],
+            "contacts": [
+                {
+                    "value": "nxsqunoproperties@gmail.com",
+                    "statFlg": "20",
+                    "primSw": "Y",
+                    "contactType": {
+                        "typeCode": "EADD",
+                        "description": "Email Address"
+                    }
+                }
             ]
         }
     ]
