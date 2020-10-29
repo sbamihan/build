@@ -29,4 +29,9 @@ public class EmployeeController {
 		return service.greetHi();
 	}
 	
+	@GetMapping
+	public String welcome() {
+		return "Welcome!";
+	}
+	
 }

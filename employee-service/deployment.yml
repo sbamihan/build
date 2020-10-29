@@ -2,15 +2,16 @@ kind: Service
 apiVersion: v1
 metadata:
   name: employee-service
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb-ip
 spec:
   type: LoadBalancer
   selector:
     app: employee-service
   ports:
-    - name: http
+    - port: 8081
+      targetPort: 8081
       protocol: TCP
-      # ELB's port
-      port: 8081
 ---
 apiVersion: apps/v1
 kind: Deployment
