@@ -62,7 +62,7 @@ Procedures:
 
 4.	Projects the bill information then saves to persistence store.
 
-    The projected data should contain the **UUID** from `BILL-EXTRACTED` event data, datetime it was created, and bill information of all accounts who signed up for eBill service that belong on that batch including its contact information taken from **Subscription Service**. A sample data structure for this can be found at [Bill Stager](https://github.com/sbamihan/build/tree/master/eBill/bill-stager).
+    The projected data should contain the **UUID** from `BILL-EXTRACTED` event data, datetime it was created, and bill information of all accounts who signed up for eBill service that belong on that batch including its contact information taken from **Subscription Service**. A sample structure for the projected data can be found at [Bill Stager](https://github.com/sbamihan/build/tree/master/eBill/bill-stager).
 
 5.	Publishes `BILL-STAGED` event to the event store.
 
