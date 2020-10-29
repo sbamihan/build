@@ -1,5 +1,9 @@
 package com.aboitiz.billtransporter.service;
 
+import static java.time.Duration.ofMinutes;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static reactor.core.publisher.Mono.just;
+
 import java.time.Duration;
 
 import org.springframework.http.MediaType;
@@ -26,12 +30,11 @@ public class TransportService {
 
 	public Mono<String> sendBill(Payload payload) {
 		log.info("sending bills for {}", payload.toString());
-		
-		return Mono.just("data posted");
-		
-//		return this.client.post().uri(clientConfig.getPrimaryClientCallbackEndpoint())
-//				.contentType(MediaType.APPLICATION_JSON).body(Mono.just(payload), Payload.class).retrieve()
-//				.bodyToMono(String.class).timeout(Duration.ofMinutes(1));
+
+		return this.client.post().uri(clientConfig.getPrimaryClientCallbackEndpoint())
+				.contentType(APPLICATION_JSON).body(just(payload), Payload.class)
+				.retrieve()
+				.bodyToMono(String.class).timeout(ofMinutes(1));
 	}
 
 }
