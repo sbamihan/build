@@ -2,8 +2,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: employee-service
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: nlb-ip
 spec:
   type: LoadBalancer
   selector:
