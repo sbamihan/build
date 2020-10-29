@@ -54,74 +54,7 @@ Procedures:
 1.  Bill Stager reacts to `BILL-EXTRACTED` event.
 2.	Gets customer information (Account ID, email) from **Subscription Service**.
 
-    Should call **Subscription Service** at GET `/{{duCode}}/accounts/search/findByTypeCode?typeCode={{typeCode}}` endpoint, where **duCode** is a value taken from the `BILL-EXTRACTED` event data and **typeCode** is the code for the type of subscription such as **EBIL** (for eBill), **OUTN** (for Outage Notification), or **NEWS** (for News). The data should be similar to this.
-
-    <details>
-    <summary>Click to expand!</summary>
-    
-    ```json
-    [
-        {
-            "accountId": "0002709352",
-            "accountName": "MARYANNSACAY2014",
-            "accountSubscriptions": [
-                {
-                    "subscribe": "Y",
-                    "subscriptionType": {
-                        "typeCode": "EBIL",
-                        "description": "Electronic sending of bill"
-                    }
-                }
-            ],
-            "accountContacts": [
-                {
-                    "value": "maryannsacay2014@gmail.com",
-                    "contactType": {
-                        "typeCode": "EADD",
-                        "description": "Email Address"
-                    }
-                }
-            ]
-        },
-        {
-            "accountId": "0599421111",
-            "accountName": "Test Account",
-            "accountSubscriptions": [
-                {
-                    "subscribe": "Y",
-                    "subscriptionType": {
-                        "typeCode": "EBIL",
-                        "description": "Electronic sending of bill"
-                    }
-                },
-                {
-                    "subscribe": "Y",
-                    "subscriptionType": {
-                        "typeCode": "OUTN",
-                        "description": "Outage notification"
-                    }
-                }
-            ],
-            "accountContacts": [
-                {
-                    "value": "sherwinamihan@gmail.com",
-                    "contactType": {
-                        "typeCode": "EADD",
-                        "description": "Email Address"
-                    }
-                },
-                {
-                    "value": "sherwin.amihan@aboitiz.com",
-                    "contactType": {
-                        "typeCode": "EADD",
-                        "description": "Email Address"
-                    }
-                }
-            ]
-        }
-    ]
-    ```
-    </details>
+    Should call **Subscription Service** at GET `/{{duCode}}/accounts/search/findByTypeCode?typeCode={{typeCode}}` endpoint, where **duCode** is a value taken from the `BILL-EXTRACTED` event data and **typeCode** is the code for the type of subscription such as **EBIL** (for eBill), **OUTN** (for Outage Notification), or **NEWS** (for News). A sample data structure that this service provides can be found at [Subscription Service](https://github.com/sbamihan/build/tree/master/eBill/subscription-service).
 
 3.	Retrieves bill information of subscribed customers from CC&B through **Bill Retriever**.
     
@@ -129,7 +62,7 @@ Procedures:
 
 4.	Projects the bill information then saves to persistence store.
 
-    The projected data should contain the **UUID** from `BILL-EXTRACTED` event data, datetime it was created, and bill information of all accounts who signed up for eBill service that belong on that batch including its contact information taken from **Subscription Service**. The data should be similar to this.
+    The projected data should contain the **UUID** from `BILL-EXTRACTED` event data, datetime it was created, and bill information of all accounts who signed up for eBill service that belong on that batch including its contact information taken from **Subscription Service**. A sample data structure for this can be found at [Bill Stager](https://github.com/sbamihan/build/tree/master/eBill/bill-stager).
 
     <details>
     <summary>Click to expand!</summary>
