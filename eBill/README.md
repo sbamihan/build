@@ -9,11 +9,30 @@ Here is how it looks in a high level.
 
 ## Table of Contents
 
+-   [Flow](#flow-of-interactions-between-components)
 -   [eBill API](#ebill-api)
 -   [Bill Stager](#bill-stager)
 -   [Bill Retriever](#bill-retriever)
 -   [Bill Transporter](#bill-transporter)
 -   [**Subscription Service**](#subscription-service)
+
+## Flow of Interactions between Components
+
+1. CC&B posts data to eBill API after BPX
+2. eBill API publishes Bill Extracted event to Kafka
+3. Bill Stager reacts to Bill Extracted event
+4. Bill Stager gets subscribed customers' contact info from Subscription Service
+5. Bill Stager calls Bill Retriever to retrieve Bill Info from BPX (expects result coming from step 6)
+6. Bill Retriever fetches Bill Info from BPX (result will be sent back to Bill Stager for finishing touches)
+7. Bill Stager combines Bill Info (result from step 6) and Account's Contact Info (result from step 4) then saves it to MongoDB
+8. After saving to MongoDB, Bill Stager publishes Bill Staged event to Kafka
+9. Bill Transporter reacts to Bill Staged event
+10. Bill Transporter gets staged bills from MongoDb
+11. Bill Transporter sends staged bills to 3rd party client
+12. eBill API receives delivery status of sent bills from 3rd party client
+13. eBill API publishes Bill Delivery Status event to Kafka
+14. Bill Transporter reacts to Bill Delivery Status event, then probably update it's own persistence store
+14. Another application could also probably react to Bill Delivery Status event to update CC&B
 	
 ## eBill API
 
