@@ -33,7 +33,7 @@ Here is how it looks in a high level.
 13. **eBill API** publishes Bill Delivery Status event to Kafka
 14. **Bill Transporter** reacts to Bill Delivery Status event, then probably update it's own persistence store
 
-14. Another application could also probably react to Bill Delivery Status event to update CC&B
+..14. Another application could also probably react to Bill Delivery Status event to update CC&B
 	
 ## eBill API
 
