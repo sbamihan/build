@@ -32,22 +32,22 @@ public class Handler {
 
 	@Bean
 	Function<Flux<ExtractedBillEvent>, Flux<StagedBillEvent>> stageBill() {
-		return flux -> flux.flatMap(e -> billService.countBills(e)
-					.doOnNext(c -> log.info("{} accounts", c))
-					.filter(c -> c.longValue() > 0)
-					.thenMany(subscriptionService.getAccounts(e))
+		return flux -> flux.flatMap(extractedBillEvent -> billService.countBills(extractedBillEvent)
+					.doOnNext(count -> log.info("{} accounts", count))
+					.filter(count -> count.longValue() > 0)
+					.thenMany(subscriptionService.getAccounts(extractedBillEvent))
 					.delayElements(ofMillis(5))
-					.flatMap(a -> this.getBills(e, a))
+					.flatMap(account -> this.getBills(extractedBillEvent, account))
 					.flatMap(billService::save)
-					.doOnNext(b -> log.info("Bill [{}, {}] saved", e.getDuCode(), b.getAltBillId()))
+					.doOnNext(bill -> log.info("Bill [{}, {}] saved", extractedBillEvent.getDuCode(), bill.getBillNo()))
 					.collectList()
 					.zipWith(just(new StagedBillEvent()))
 					.map(tuple -> {
-						StagedBillEvent sbe = tuple.getT2();
+						StagedBillEvent staged = tuple.getT2();
 						int size = tuple.getT1().size();
-						sbe.setCount(size);
-						return sbe;
-					}).doOnNext(sbe -> log.info("{} bills staged", sbe.getCount()))
+						staged.setCount(size);
+						return staged;
+					}).doOnNext(stagedBillEvent -> log.info("{} bills staged", stagedBillEvent.getCount()))
 		);
 	}
 	
