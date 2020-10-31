@@ -17,6 +17,5 @@ public class BillMessage {
 	private String messageCode;
 	private String description;
 	private String messageText;
-	private Bill bill;
 
 }

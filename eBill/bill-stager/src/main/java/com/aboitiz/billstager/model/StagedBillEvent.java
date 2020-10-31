@@ -20,7 +20,6 @@ public class StagedBillEvent {
 	private int count;
 
 	public StagedBillEvent(ExtractedBillEvent extractedBillEvent) {
-		this.uuid = extractedBillEvent.getUuid();
 		this.batchNo = extractedBillEvent.getBatchNo();
 		this.duCode = extractedBillEvent.getDuCode();
 		this.creDttm = extractedBillEvent.getCreDttm();

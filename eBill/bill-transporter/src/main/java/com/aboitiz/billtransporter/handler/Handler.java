@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+import com.aboitiz.billtransporter.model.Payload;
 import com.aboitiz.billtransporter.model.StagedBillEvent;
 import com.aboitiz.billtransporter.service.BillService;
 import com.aboitiz.billtransporter.service.TransportService;
@@ -31,11 +32,14 @@ public class Handler {
 		return flux -> flux.flatMap(event -> {
 			log.info("received event {}", event);
 			return billService.getBills(event.getUuid())
-					.doOnNext(bill -> log.info("sending bill [{}, {}]", event.getDuCode(), bill.getBillNo()))
-					.flatMap(transportService::sendBill)
-					.doOnNext(log::info);
-		}).onErrorResume(e -> just("ERROR: " + e.getMessage()))
-		.subscribe(log::info);
+					.map(bill -> {
+						Payload payload = new Payload(event);
+						payload.setBill(bill);
+						return payload;
+					})
+					.doOnNext(bill -> log.info("sending bill [{}, {}]", event.getDuCode(), bill.getBill().getBillNo()))
+					.flatMap(transportService::sendBill);
+				}).onErrorResume(e -> just("ERROR: " + e.getMessage())).subscribe(log::info);
 	}
 
 }

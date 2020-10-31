@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +21,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Bill {
 
+	@JsonIgnore
+	private String billGroupId;
+	@JsonIgnore
+	private String uuid;
 	private Long tranNo;
 	private String batchCd;
 	private long batchNo;
@@ -85,6 +90,5 @@ public class Bill {
 	private Collection<ConsumptionHistory> consumptionHistory;
 	private Collection<LineDetail> lineDetails;
 	private Collection<Contact> contacts;
-	private String uuid;
 
 }

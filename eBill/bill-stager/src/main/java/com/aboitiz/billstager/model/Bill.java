@@ -25,6 +25,8 @@ import lombok.ToString;
 @ToString
 public class Bill {
 
+	private String billGroupId;
+	private String uuid;
 	private Long tranNo;
 	private String batchCd;
 	private long batchNo;
@@ -90,6 +92,5 @@ public class Bill {
 	private Collection<ConsumptionHistory> consumptionHistory;
 	private Collection<LineDetail> lineDetails;
 	private Collection<Contact> contacts;
-	private String uuid;
 
 }

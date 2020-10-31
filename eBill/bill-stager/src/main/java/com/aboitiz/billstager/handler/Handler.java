@@ -1,7 +1,7 @@
 package com.aboitiz.billstager.handler;
 
 import static java.time.Duration.ofMillis;
-import static reactor.core.publisher.Mono.just;
+import static java.util.UUID.randomUUID;
 
 import java.util.function.Function;
 
@@ -33,21 +33,18 @@ public class Handler {
 	@Bean
 	Function<Flux<ExtractedBillEvent>, Flux<StagedBillEvent>> stageBill() {
 		return flux -> flux.flatMap(extractedBillEvent -> billService.countBills(extractedBillEvent)
-					.doOnNext(count -> log.info("{} accounts", count))
 					.filter(count -> count.longValue() > 0)
 					.thenMany(subscriptionService.getAccounts(extractedBillEvent))
 					.delayElements(ofMillis(5))
 					.flatMap(account -> this.getBills(extractedBillEvent, account))
 					.flatMap(billService::save)
-					.doOnNext(bill -> log.info("Bill [{}, {}] saved", extractedBillEvent.getDuCode(), bill.getBillNo()))
-					.collectList()
-					.zipWith(just(new StagedBillEvent(extractedBillEvent)))
-					.map(tuple -> {
-						StagedBillEvent staged = tuple.getT2();
-						int size = tuple.getT1().size();
-						staged.setCount(size);
+					.doOnNext(bill -> log.info("Bill [{}, {}, {}] saved", bill.getUuid(), extractedBillEvent.getDuCode(), bill.getBillNo()))
+					.map(bill -> {
+						StagedBillEvent staged = new StagedBillEvent(extractedBillEvent);
+						staged.setUuid(bill.getUuid());
+						staged.setCount(1);
 						return staged;
-					}).doOnNext(stagedBillEvent -> log.info("{} bills staged", stagedBillEvent.getCount()))
+					}).doOnNext(stagedBillEvent -> log.info("{} staged", stagedBillEvent.getUuid()))
 		);
 	}
 	
@@ -57,7 +54,8 @@ public class Handler {
 	}
 
 	private Bill projectBill(ExtractedBillEvent event, Account account, Bill bill) {
-		bill.setUuid(event.getUuid());
+		bill.setBillGroupId(event.getUuid());
+		bill.setUuid(randomUUID().toString());
 		bill.setContacts(account.getContactList());
 
 		return bill;

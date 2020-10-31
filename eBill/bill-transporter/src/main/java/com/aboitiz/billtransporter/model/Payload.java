@@ -1,6 +1,5 @@
 package com.aboitiz.billtransporter.model;
 
-import java.util.Collection;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -17,7 +16,7 @@ public class Payload {
 	private String uuid;
 	private String duCode;
 	private Date creDttm;
-	private Collection<Bill> bills;
+	private Bill bill;
 	
 	public Payload(StagedBillEvent event) {
 		this.uuid = event.getUuid();

@@ -9,7 +9,7 @@ import com.aboitiz.billtransporter.model.Bill;
 import reactor.core.publisher.Flux;
 
 @RepositoryRestResource
-public interface BillRepository extends ReactiveMongoRepository<Bill, Long> {
+public interface BillRepository extends ReactiveMongoRepository<Bill, String> {
 
 	Flux<Bill> findByBatchNo(@Param("batchNo") Long batchNo);
 
