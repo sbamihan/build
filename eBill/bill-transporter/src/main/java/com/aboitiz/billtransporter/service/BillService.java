@@ -18,9 +18,9 @@ public class BillService {
 		this.billRepository = billRepository;
 	}
 
-	public Flux<Bill> getBill(String uuid) {
-		log.info("getting bills ...");
-		return billRepository.findByUuid(uuid);
+	public Flux<Bill> getBills(String uuid) {
+		log.info("getting bills for {}", uuid);
+		return billRepository.findByUuid(uuid).log();
 	}
 
 }

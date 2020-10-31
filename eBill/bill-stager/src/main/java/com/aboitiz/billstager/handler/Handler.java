@@ -41,7 +41,7 @@ public class Handler {
 					.flatMap(billService::save)
 					.doOnNext(bill -> log.info("Bill [{}, {}] saved", extractedBillEvent.getDuCode(), bill.getBillNo()))
 					.collectList()
-					.zipWith(just(new StagedBillEvent()))
+					.zipWith(just(new StagedBillEvent(extractedBillEvent)))
 					.map(tuple -> {
 						StagedBillEvent staged = tuple.getT2();
 						int size = tuple.getT1().size();

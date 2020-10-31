@@ -55,7 +55,10 @@ public class BillService {
 	public Flux<Bill> getBills(String duCode, Long batchNo, String accountNo) {
 		String uri = "/" + duCode + "/bills/search/findByBatchNoAndAcctNo?batchNo=" + batchNo + "&acctNo=" + accountNo;
 
-		return this.client.get().uri(uri).retrieve().bodyToFlux(Bill.class)
+		return this.client.get()
+				.uri(uri)
+				.retrieve()
+				.bodyToFlux(Bill.class)
 				.retryWhen(backoff(30, ofMillis(100)).jitter(0.5d).doAfterRetry(rs -> {
 					log.info("Retried {}: getBill({}, {}, {}) at {}", rs.totalRetries(), duCode, batchNo, accountNo,
 							LocalDateTime.now());
