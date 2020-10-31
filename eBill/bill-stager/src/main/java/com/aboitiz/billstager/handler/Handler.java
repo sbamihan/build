@@ -1,9 +1,8 @@
 package com.aboitiz.billstager.handler;
 
 import static java.time.Duration.ofMillis;
-import static reactor.core.publisher.Flux.just;
+import static reactor.core.publisher.Mono.just;
 
-import java.util.List;
 import java.util.function.Function;
 
 import org.springframework.context.annotation.Bean;
@@ -18,7 +17,6 @@ import com.aboitiz.billstager.service.SubscriptionService;
 
 import lombok.extern.log4j.Log4j2;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 @Component
 @Log4j2
@@ -34,28 +32,25 @@ public class Handler {
 
 	@Bean
 	Function<Flux<ExtractedBillEvent>, Flux<StagedBillEvent>> stageBill() {
-		return flux -> flux.flatMap(event -> {
-			Mono<List<Bill>> bills = billService.countBills(event.getDuCode(), event.getBatchNo())
-					.doOnNext(count -> log.info("{} accounts", count))
-					.filter(count -> count.longValue() > 0)
-					.thenMany(subscriptionService.getAccounts(event))
+		return flux -> flux.flatMap(e -> billService.countBills(e)
+					.doOnNext(c -> log.info("{} accounts", c))
+					.filter(c -> c.longValue() > 0)
+					.thenMany(subscriptionService.getAccounts(e))
 					.delayElements(ofMillis(5))
-					.flatMap(account -> this.getBills(event, account))
+					.flatMap(a -> this.getBills(e, a))
 					.flatMap(billService::save)
-					.doOnNext(savedBill -> log.info("Bill [{}, {}] saved", event.getDuCode(), savedBill.getAltBillId()))
-					.collectList();
-
-			return just(new StagedBillEvent(event))
-					.zipWith(bills)
+					.doOnNext(b -> log.info("Bill [{}, {}] saved", e.getDuCode(), b.getAltBillId()))
+					.collectList()
+					.zipWith(just(new StagedBillEvent()))
 					.map(tuple -> {
-						StagedBillEvent staged = tuple.getT1();
-						int size = tuple.getT2().size();
-						staged.setCount(size);
-						return staged;
-					}).doOnNext(c -> log.info("{} bills staged", c.getCount()));
-		});
+						StagedBillEvent sbe = tuple.getT2();
+						int size = tuple.getT1().size();
+						sbe.setCount(size);
+						return sbe;
+					}).doOnNext(sbe -> log.info("{} bills staged", sbe.getCount()))
+		);
 	}
-
+	
 	private Flux<Bill> getBills(ExtractedBillEvent event, Account account) {
 		return billService.getBills(event.getDuCode(), event.getBatchNo(), account.getAccountId())
 				.map(bill -> projectBill(event, account, bill));

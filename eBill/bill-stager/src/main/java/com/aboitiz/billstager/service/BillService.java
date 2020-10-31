@@ -11,6 +11,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import com.aboitiz.billstager.config.ClientConfig;
 import com.aboitiz.billstager.exception.RetrieveBillTimeoutException;
 import com.aboitiz.billstager.model.Bill;
+import com.aboitiz.billstager.model.ExtractedBillEvent;
 import com.aboitiz.billstager.repository.BillRepository;
 
 import lombok.extern.log4j.Log4j2;
@@ -29,6 +30,16 @@ public class BillService {
 		this.config = config;
 		this.billRepository = billRepository;
 		this.client = webClientBuilder.baseUrl(this.config.getBillServiceUrl()).build();
+	}
+	
+	public Mono<Long> countBills(ExtractedBillEvent event) {
+		if (event.getAccountId() != null) {
+			return Mono.just(1L);
+		} 
+
+		String uri = "/" + event.getDuCode() + "/bills/countByBatchNo?batchNo=" + event.getBatchNo();
+		
+		return this.client.get().uri(uri).retrieve().bodyToMono(Long.class);
 	}
 
 	public Mono<Long> countBills(String duCode, Long batchNo) {
