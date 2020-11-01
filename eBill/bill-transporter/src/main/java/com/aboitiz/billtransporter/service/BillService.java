@@ -19,7 +19,7 @@ public class BillService {
 	}
 
 	public Flux<Bill> getBills(String uuid) {
-		log.info("getting bills for {}", uuid);
+		log.info("getting bill for {}", uuid);
 		return billRepository.findByUuid(uuid);
 	}
 

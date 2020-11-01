@@ -37,7 +37,7 @@ public class Handler {
 						payload.setBill(bill);
 						return payload;
 					})
-					.doOnNext(bill -> log.info("sending bill [{}, {}]", event.getDuCode(), bill.getBill().getBillNo()))
+					.doOnNext(bill -> log.info("sending bill for {}", event.getUuid()))
 					.flatMap(transportService::sendBill);
 				}).onErrorResume(e -> just("ERROR: " + e.getMessage())).subscribe(log::info);
 	}

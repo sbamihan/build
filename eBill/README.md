@@ -31,8 +31,8 @@ Here is how it looks in a high level.
 11. **Bill Transporter** sends staged bills to 3rd party client
 12. **eBill API** receives delivery status of sent bills from 3rd party client
 13. **eBill API** publishes Bill Delivery Status event to Kafka
-14. **Bill Transporter** reacts to Bill Delivery Status event, then probably update it's own persistence store
-
+14. **Bill Transporter** reacts to Bill Delivery Status event store
+15. **Bill Transporter** updates delivery status of the bill on its own data store
 ..14. Another application could also probably react to Bill Delivery Status event to update CC&B
 	
 ## eBill API
