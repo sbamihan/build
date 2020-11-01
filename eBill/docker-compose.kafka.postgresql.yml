@@ -14,7 +14,7 @@ services:
       ZOOKEEPER_SYNC_LIMIT: 2
       ZOOKEEPER_SERVERS: 'zookeeper-1:12888:13888;zookeeper-2:22888:23888;zookeeper-3:32888:33888'
     networks:
-      - server_network
+      - ebill_network
   zookeeper-2:
     container_name: zookeeper-2
     image: 'confluentinc/cp-zookeeper:latest'
@@ -29,7 +29,7 @@ services:
       ZOOKEEPER_SYNC_LIMIT: 2
       ZOOKEEPER_SERVERS: 'zookeeper-1:12888:13888;zookeeper-2:22888:23888;zookeeper-3:32888:33888'
     networks:
-      - server_network
+      - ebill_network
   zookeeper-3:
     container_name: zookeeper-3
     image: 'confluentinc/cp-zookeeper:latest'
@@ -44,7 +44,7 @@ services:
       ZOOKEEPER_SYNC_LIMIT: 2
       ZOOKEEPER_SERVERS: 'zookeeper-1:12888:13888;zookeeper-2:22888:23888;zookeeper-3:32888:33888'
     networks:
-      - server_network
+      - ebill_network
   kafka-1:
     container_name: kafka-1
     image: 'confluentinc/cp-kafka:latest'
@@ -60,7 +60,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper-1:12181,zookeeper-2:12181,zookeeper-3:12181'
       KAFKA_ADVERTISED_LISTENERS: 'PLAINTEXT://kafka-1:19092'
     networks:
-      - server_network
+      - ebill_network
   kafka-2:
     container_name: kafka-2
     image: 'confluentinc/cp-kafka:latest'
@@ -76,7 +76,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper-1:12181,zookeeper-2:12181,zookeeper-3:12181'
       KAFKA_ADVERTISED_LISTENERS: 'PLAINTEXT://kafka-2:29092'
     networks:
-      - server_network
+      - ebill_network
   kafka-3:
     container_name: kafka-3
     image: 'confluentinc/cp-kafka:latest'
@@ -92,7 +92,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper-1:12181,zookeeper-2:12181,zookeeper-3:12181'
       KAFKA_ADVERTISED_LISTENERS: 'PLAINTEXT://kafka-3:39092'
     networks:
-      - server_network
+      - ebill_network
   postgresql:
     container_name: postgresql
     image: 'postgres:9.6-alpine'
@@ -104,10 +104,10 @@ services:
       - './postgresql/configuration/initdb:/docker-entrypoint-initdb.d'
       - 'postgresqldata:/var/lib/postgresql/data'
     networks:
-      - server_network
+      - ebill_network
 volumes:
   postgresqldata: null
 networks:
-  server_network:
-    external:
-      name: server_network
+  ebill_network:
+    driver: overlay
+    internal: true
