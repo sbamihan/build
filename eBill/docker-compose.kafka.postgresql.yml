@@ -110,6 +110,5 @@ volumes:
 networks:
   ebill_network:
     driver: overlay
-    attachable: true
     external:
       name: ebill_network
