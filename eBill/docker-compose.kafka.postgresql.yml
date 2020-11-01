@@ -110,5 +110,5 @@ volumes:
 networks:
   ebill_network:
     driver: overlay
-    internal: true
-    name: ebill_network
+    external:
+      name: ebill_network
