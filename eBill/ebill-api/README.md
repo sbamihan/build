@@ -6,6 +6,7 @@ Procedures:
 1.	Receives data from Client.
 
     For CC&B:
+
     CC&B should be able to POST data through eBill API at `/events/billExtracted` endpoint containing a payload like this. 
 
     ```json
@@ -29,7 +30,8 @@ Procedures:
 
 
     For Yondu:
-    CC&B should be able to POST data through eBill API at `/bills/deliveryStatus` endpoint containing a payload like this.
+
+    Yondu should be able to POST data through eBill API at `/bills/deliveryStatus` endpoint containing a payload like this.
 
     ```json
     {
