@@ -20,8 +20,8 @@ Here is how it looks in a high level.
 
 1. CC&B posts data to [**eBill API**](https://github.com/sbamihan/build/tree/master/eBill/ebill-api) after BPX
 2. **eBill API** publishes Bill Extracted event to Kafka
-3. [Bill Stager](https://github.com/sbamihan/build/tree/master/eBill/bill-stager) reacts to Bill Extracted event
-4. **Bill Stager** gets subscribed customers' contact info from [**Subscription Service**]https://github.com/sbamihan/build/tree/master/eBill/subscription-service
+3. [**Bill Stager**](https://github.com/sbamihan/build/tree/master/eBill/bill-stager) reacts to Bill Extracted event
+4. **Bill Stager** gets subscribed customers' contact info from [**Subscription Service**](https://github.com/sbamihan/build/tree/master/eBill/subscription-service)
 5. **Bill Stager** calls Bill Retriever to retrieve Bill Info from BPX (expects result coming from step 6)
 6. [**Bill Retriever**](https://github.com/sbamihan/build/tree/master/eBill/bill-retriever) fetches Bill Info from BPX (result will be sent back to Bill Stager for finishing touches)
 7. **Bill Stager** combines Bill Info (result from step 6) and Account's Contact Info (result from step 4) then saves it to MongoDB
