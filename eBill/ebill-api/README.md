@@ -31,7 +31,7 @@ Procedures:
 
     For Yondu:
 
-    Yondu should be able to POST data through eBill API at `/bills/deliveryStatus` endpoint containing a payload like this.
+    Yondu should be able to POST data through eBill API at `/events/deliveryStatus` endpoint containing a payload like this.
 
     ```json
     {
