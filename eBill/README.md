@@ -20,7 +20,7 @@ Here is how it looks in a high level.
 9. [**Bill Transporter**](https://github.com/sbamihan/build/tree/master/eBill/bill-transporter) reacts to Bill Staged event
 10. **Bill Transporter** gets staged bills from MongoDb
 11. **Bill Transporter** sends staged bills to 3rd party client
-12. **eBill API** receives delivery status of sent bills from 3rd party client
+12. **eBill API** receives delivery status of transported bills from 3rd party client
 13. **eBill API** publishes Bill Delivery Status event to Kafka
 14. **Bill Transporter** reacts to Bill Delivery Status event store
 
