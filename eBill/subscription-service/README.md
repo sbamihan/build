@@ -1,6 +1,6 @@
 # Subscription Service
 
-This could be under the **Customer Service** domain. This is the one that manages the customer subscriptions. This is also where **Bill Stager** gets list of customers who signed up for eBill Service.
+This could be under the **Customer Service** domain. This is the one that manages the customer subscriptions. This is also where [**Bill Stager**](https://github.com/sbamihan/build/tree/master/eBill/bill-stager) gets list of customers who signed up for eBill Service.
 
 This service provides information in this structure.
 

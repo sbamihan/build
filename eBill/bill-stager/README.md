@@ -3,14 +3,14 @@
 This is the one responsible for preparing and finalizing the bill information of customers who signed up for eBill Service that are included in the extracted bills.
 
 Procedures:
-1.  Bill Stager reacts to `BILL-EXTRACTED` event.
+1.  **Bill Stager** reacts to `BILL-EXTRACTED` event published by [**eBill API**](https://github.com/sbamihan/build/tree/master/eBill/ebill-api).
 2.	Gets customer information (Account ID, email) from **Subscription Service**.
 
-    Should call **Subscription Service** at GET `/{{duCode}}/accounts/search/findByTypeCode?typeCode={{typeCode}}` endpoint, where **duCode** is a value taken from the `BILL-EXTRACTED` event data and **typeCode** is the code for the type of subscription such as **EBIL** (for eBill), **OUTN** (for Outage Notification), or **NEWS** (for News). A sample data structure that this service provides can be found at [Subscription Service](https://github.com/sbamihan/build/tree/master/eBill/subscription-service).
+    **Bill Stager** should call **Subscription Service** at GET `/{{duCode}}/accounts/search/findByTypeCode?typeCode={{typeCode}}` endpoint, where **duCode** is a value taken from the `BILL-EXTRACTED` event data and **typeCode** is the code for the type of subscription such as **EBIL** (for eBill), **OUTN** (for Outage Notification), or **NEWS** (for News). A sample data structure that this service provides can be found at [Subscription Service](https://github.com/sbamihan/build/tree/master/eBill/subscription-service).
 
-3.	Retrieves bill information of subscribed customers from CC&B through **Bill Retriever**.
+3.	Retrieves bill information of subscribed customers from CC&B through [**Bill Retriever**](https://github.com/sbamihan/build/tree/master/eBill/bill-retriever).
     
-    Should call **Bill Retriever** at GET `/{{duCode}}/bills/findByBatchNoAndAcctNo?batchNo={{batchNo}}&acctNo={{acctNo}}` endpoint, where **duCode** and **batchNo** are values from `BILL-EXTRACTED` event data and **acctNo** is a value from **Subscription Service**.
+    **Bill Stager** should call **Bill Retriever** at GET `/{{duCode}}/bills/findByBatchNoAndAcctNo?batchNo={{batchNo}}&acctNo={{acctNo}}` endpoint, where **duCode** and **batchNo** are values from `BILL-EXTRACTED` event data and **acctNo** is a value from **Subscription Service**.
 
 4.	Projects the bill information then saves to persistence store.
 
