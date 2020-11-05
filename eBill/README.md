@@ -9,7 +9,7 @@ Here is how it looks in a high level.
 
 ## Flow of Interactions between Components
 
-1. CC&B posts data to [**eBill API**](https://github.com/sbamihan/build/tree/master/eBill/ebill-api) after BPX
+1. CC&B posts data to [**eBill API**](https://github.com/sbamihan/build/tree/master/eBill/ebill-api) (Client Facing API) after BPX
 2. **eBill API** publishes Bill Extracted event to Kafka
 3. [**Bill Stager**](https://github.com/sbamihan/build/tree/master/eBill/bill-stager) reacts to Bill Extracted event
 4. **Bill Stager** gets subscribed customers' contact info from [**Subscription Service**](https://github.com/sbamihan/build/tree/master/eBill/subscription-service)
