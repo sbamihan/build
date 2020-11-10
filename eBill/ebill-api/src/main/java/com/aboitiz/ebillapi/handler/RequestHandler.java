@@ -35,7 +35,7 @@ public class RequestHandler {
 
 		return serverRequest.bodyToMono(ExtractedBill.class).flatMap(body -> {
 			ExtractedBillEvent event = new ExtractedBillEvent();
-			event.setUuid(event.getDuCode().toLowerCase() + "-" + randomUUID().toString());
+			event.setUuid(body.getDuCode().toLowerCase() + "-" + randomUUID().toString());
 			event.setDuCode(body.getDuCode());
 			event.setBatchNo(body.getBatchNo());
 			event.setAccountId(body.getAccountId());
