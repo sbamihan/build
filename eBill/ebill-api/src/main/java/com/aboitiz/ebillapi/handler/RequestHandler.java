@@ -14,6 +14,7 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 import com.aboitiz.ebillapi.model.BillDeliveryStatus;
+import com.aboitiz.ebillapi.model.BillDeliveryStatusEvent;
 import com.aboitiz.ebillapi.model.ExtractedBill;
 import com.aboitiz.ebillapi.model.ExtractedBillEvent;
 
@@ -27,14 +28,14 @@ import reactor.core.publisher.Mono;
 public class RequestHandler {
 
 	EmitterProcessor<ExtractedBillEvent> extractedBillProcessor = EmitterProcessor.create();
-	EmitterProcessor<BillDeliveryStatus> billDeliveryStatusProcessor = EmitterProcessor.create();
+	EmitterProcessor<BillDeliveryStatusEvent> billDeliveryStatusProcessor = EmitterProcessor.create();
 
 	public Mono<ServerResponse> createExtractedBillEvent(ServerRequest serverRequest) {
 		log.info("publishing ExtractedBill event...");
 
 		return serverRequest.bodyToMono(ExtractedBill.class).flatMap(body -> {
 			ExtractedBillEvent event = new ExtractedBillEvent();
-			event.setUuid(randomUUID().toString());
+			event.setUuid(event.getDuCode().toLowerCase() + "-" + randomUUID().toString());
 			event.setDuCode(body.getDuCode());
 			event.setBatchNo(body.getBatchNo());
 			event.setAccountId(body.getAccountId());
@@ -53,11 +54,20 @@ public class RequestHandler {
 		log.info("publishing BillDeliveryStatus event...");
 
 		return serverRequest.bodyToMono(BillDeliveryStatus.class).flatMap(body -> {
-			billDeliveryStatusProcessor.onNext(body);
-			return Mono.just(body);
+			BillDeliveryStatusEvent event = new BillDeliveryStatusEvent();
+			event.setTransId(body.getTransid());
+			event.setMsisdn(body.getMsisdn());
+			event.setStatusCode(body.getStatus_code());
+			event.setTimestamp(body.getTimestamp());
+			event.setBillUuid(body.getRcvd_transid());
+			event.setShortUrl(body.getShort_url());
+			event.setLongUrl(body.getLong_url());
+
+			billDeliveryStatusProcessor.onNext(event);
+			return Mono.just(event);
 		}).doOnSuccess(event -> {
-			log.info("BillDeliveryStatus event {} published!", event.getRcvd_transid());
-		}).flatMap(serverResponse -> created(create(serverResponse.getShort_url())).contentType(APPLICATION_JSON)
+			log.info("BillDeliveryStatus event {} published!", event.getBillUuid());
+		}).flatMap(serverResponse -> created(create(serverResponse.getShortUrl())).contentType(APPLICATION_JSON)
 				.bodyValue(serverResponse)).switchIfEmpty(ServerResponse.badRequest().build());
 	}
 
@@ -67,7 +77,7 @@ public class RequestHandler {
 	}
 
 	@Bean
-	public Supplier<Flux<BillDeliveryStatus>> publishBillDeliveryStatusEvent() {
+	public Supplier<Flux<BillDeliveryStatusEvent>> publishBillDeliveryStatusEvent() {
 		return () -> billDeliveryStatusProcessor;
 	}
 
