@@ -56,8 +56,8 @@ public class RequestHandler {
 			billDeliveryStatusProcessor.onNext(body);
 			return Mono.just(body);
 		}).doOnSuccess(event -> {
-			log.info("BillDeliveryStatus event {} published!", event.getRcvdTransId());
-		}).flatMap(serverResponse -> created(create(serverResponse.getShortUrl())).contentType(APPLICATION_JSON)
+			log.info("BillDeliveryStatus event {} published!", event.getRcvd_transid());
+		}).flatMap(serverResponse -> created(create(serverResponse.getShort_url())).contentType(APPLICATION_JSON)
 				.bodyValue(serverResponse)).switchIfEmpty(ServerResponse.badRequest().build());
 	}
 

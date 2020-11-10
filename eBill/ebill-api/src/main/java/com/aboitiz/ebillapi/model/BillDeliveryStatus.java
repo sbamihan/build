@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BillDeliveryStatus {
 
-	private Long transId;
-	private String msIsdn;
-	private Long statusCode;
+	private Long transid;
+	private String msisdn;
+	private Long status_code;
 	private Date timestamp;
-	private String rcvdTransId;
-	private String shortUrl;
-	private String longUrl;
+	private String rcvd_transid;
+	private String short_url;
+	private String long_url;
 
 }
