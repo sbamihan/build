@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: employee-service
+  name: nginx-service
 spec:
   type: NodePort
   selector:
-    app: employee-service
+    app: nginx
   ports:
     - protocol: TCP
-      port: 8081
-      targetPort: 8081
+      port: 80
+      targetPort: 80
