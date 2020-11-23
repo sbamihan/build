@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: "ebill-ingress"
-  namespace: "default"
+  namespace: "ebill"
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
@@ -14,5 +14,5 @@ spec:
         paths:
           - path: /*
             backend:
-              serviceName: "nginx"
-              servicePort: 80
+              serviceName: "employee-service"
+              servicePort: 8081
