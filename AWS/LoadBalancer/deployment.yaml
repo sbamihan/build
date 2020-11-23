@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: "employee-service-deployment"
-  namespace: "ebill"
+  namespace: "default"
 spec:
   selector:
     matchLabels:

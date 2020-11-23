@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: "employee-service"
-  namespace: "ebill"
+  namespace: "default"
 spec:
   ports:
     - port: 8081
@@ -10,4 +10,4 @@ spec:
       protocol: TCP
   type: NodePort
   selector:
-    app: "2048"
+    app: "8081"
