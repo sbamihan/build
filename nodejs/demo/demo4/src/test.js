@@ -36,8 +36,7 @@ app.post('/events', function (req, res) {
     uuid: uuid.v1(),
     duCode: req.body.duCode,
     batchNo: req.body.batchNo,
-    creDttm: new Date(),
-    newItem: newObject
+    creDttm: new Date()
   }
 
   var sendMessage = async () => {

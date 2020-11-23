@@ -33,8 +33,10 @@ public class Handler {
 	@Bean
 	Function<Flux<ExtractedBillEvent>, Flux<StagedBillEvent>> stageBill() {
 		return flux -> flux.flatMap(extractedBillEvent -> billService.countBills(extractedBillEvent)
-				.filter(count -> count.longValue() > 0).thenMany(subscriptionService.getAccounts(extractedBillEvent))
-				.delayElements(ofMillis(5)).flatMap(account -> this.getBills(extractedBillEvent, account))
+				.filter(count -> count.longValue() > 0)
+				.thenMany(subscriptionService.getAccounts(extractedBillEvent))
+				.delayElements(ofMillis(5))
+				.flatMap(account -> this.getBills(extractedBillEvent, account))
 				.flatMap(billService::save).doOnNext(bill -> log.info("Bill [{}, {}, {}] saved", bill.getUuid(),
 						extractedBillEvent.getDuCode(), bill.getBillNo()))
 				.map(bill -> {
