@@ -28,3 +28,6 @@ spec:
       containers:
         - name: employee-service
           image: sbamihan/employee-service:latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8081

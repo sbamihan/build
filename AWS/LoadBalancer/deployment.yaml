@@ -1,21 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "employee-service-deployment"
-  namespace: "ebill"
+  name: employee-service
+  namespace: ebill
 spec:
+  replicas: 3
   selector:
     matchLabels:
-      app: "employee-service"
-  replicas: 3
+      app: employee-service
   template:
     metadata:
       labels:
-        app: "employee-service"
+        app: employee-service
     spec:
       containers:
-      - image: sbamihan/employee-service:latest
-        imagePullPolicy: Always
-        name: "employee-service"
-        ports:
-        - containerPort: 8081
+        - name: employee-service
+          image: sbamihan/employee-service:latest
