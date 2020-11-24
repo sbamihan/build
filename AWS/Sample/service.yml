@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: employee-service-deployment
+spec:
+  type: LoadBalancer
+  selector:
+    app: employee-service
+  ports:
+    - port: 8081
+      targetPort: 8081
+      protocol: TCP
